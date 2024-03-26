@@ -1,28 +1,27 @@
 import React, { useEffect, useState } from 'react'
 import ReactDOM from 'react-dom'
-import $ from 'jquery'
-import List from './components/List.jsx'
+import {BrowserRouter as Router, Route,Routes} from  'react-router-dom'; 
+import About from './Pages/About.jsx'
+import Home from './Pages/Home.jsx';
+ 
+
+
 
 const App = () => {
-  const [items, setItems] = useState([])
-  useEffect(() => {
-    $.ajax({
-      url: '/api/items',
-      success: (data) => {
-        console.log(data)
-        setItems(data)
-      },
-      error: (err) => {
-        console.log('err', err)
-      },
-    })
-  }, [])
-
+  const [data, setData] = useState([])
+  useEffect(() => {  
+  },[])
   return (
-    <div>
-      <h1>Item List</h1>
-      <List items={items} />
+    
+   <Router>
+     <div>
+      <h1>index</h1>
+      <Routes>
+        <Route  path="/Home" element={<Home/>} >  </Route>
+        <Route  path="/" element={<About/>} >  </Route>
+      </Routes>
     </div>
+   </Router>
   )
 }
 
