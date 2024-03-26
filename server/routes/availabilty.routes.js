@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
 
-const { selectAll }=require("../controllers/user.controller");
+const { selectAll }=require("../controllers/availabilty.controller");
 
 router.get("/",selectAll);
 
