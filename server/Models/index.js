@@ -2,7 +2,7 @@
 const { Sequelize, DataTypes } = require("sequelize");
 
 // create a database connection in your application using a Sequelize instance and the config file
-const connection = new Sequelize('healthcare', 'brahim', 'root', {
+const connection = new Sequelize('healthcare', 'root', 'root', {
   host: 'localhost',
   dialect: 'mysql' 
 });
