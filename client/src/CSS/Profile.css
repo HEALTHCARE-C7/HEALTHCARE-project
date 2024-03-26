@@ -1,0 +1,107 @@
+
+/* Sidenav.css */
+
+.body {
+    font-family: "Lato", sans-serif;
+   
+  }
+  
+  .sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 10rem;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+  
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: hsl(0, 42%, 95%);
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  @media screen and (max-height: 450px) {
+    .sidenav { padding-top: 15px; }
+    .sidenav a { font-size: 18px; }
+  }
+  
+.topnav {
+  overflow: hidden;
+  background-color: hsl(0, 0%, 100%);
+  margin-left: 750px;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: rgb(158, 153, 153);
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 10px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: rgb(16, 16, 16);
+}
+
+.topnav a.active {
+  background-color: hsl(207, 35%, 57%);
+  color: white;
+}
+
+.topnav .search-container {
+  float: right;
+}
+.sideBar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100rem;
+    width: 200px;
+    background-color: hsl(0, 21%, 91%);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+.search-input {
+    border-radius: 30px;
+    width: 70%;
+    height: 50px;
+    margin-left: 200px;
+    border: none;
+    box-shadow: rgba(27, 31, 35, 0.04) 0px 1px 0px 0px;
+    padding-left: 15px;
+    background-color: rgb(232, 237, 241);
+  }
+
+
+
+
+
+
+
+
+
+
