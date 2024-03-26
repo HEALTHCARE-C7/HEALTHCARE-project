@@ -22,6 +22,8 @@ let App = () => {
         <Route  path="/About" element={<About/>} >  </Route>
         <Route  path="/Login" element={<LoginScreen/>} >  </Route>
         <Route  path="/Signup" element={<SignUp/>} >  </Route>
+        <Route  path="/docteur/profile" element={<ProfileDoc/>} >  </Route>
+
 
 
       </Routes>
