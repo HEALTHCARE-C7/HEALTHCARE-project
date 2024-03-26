@@ -1,7 +1,13 @@
 const express = require("express");
-const userRoutes = require('./routes/user.routes')
+const doctorRoutes = require('./routes/docteur.routes')
+const patientRoutes = require('./routes/patient.routes')
+const appoitmentRoutes = require('./routes/appoitment.routes')
+const availabiltyRoutes = require('./routes/availabilty.routes')
+const reviewsRoutes = require('./routes/reviews.routes')
 
-// const db = require('./database-mysql');
+
+
+const db = require('./Models/index');
 
 
 const app = express();
@@ -11,7 +17,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/../client/public"));
 
-app.use("/api/user",userRoutes);
+app.use("/api/doctor",doctorRoutes);
+app.use("/api/patient",patientRoutes);
+app.use("/api/appoitment",appoitmentRoutes);
+app.use("/api/availabilty",availabiltyRoutes);
+app.use("/api/Reviews",reviewsRoutes);
+
 
 
 
