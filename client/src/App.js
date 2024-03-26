@@ -4,7 +4,10 @@ import About from "./Pages/About.jsx";
 import {BrowserRouter as Router, Route,Routes} from  'react-router-dom';
 // import { useSelector, useDispatch } from 'react-redux' 
 import LoginScreen from "./components/Login.jsx";
-import SignUp from "./reducers/SignUp.js";
+import SignUp from "./reducers/SignUp.js";import ProfileDoc from "./Pages/ProfileDoc.jsx";
+
+
+
 let App = () => {
 //   const count = useSelector((state) => console.log(state))
 // const [products,setProducts]=useState([])
@@ -19,6 +22,8 @@ let App = () => {
         <Route  path="/About" element={<About/>} >  </Route>
         <Route  path="/Login" element={<LoginScreen/>} >  </Route>
         <Route  path="/Signup" element={<SignUp/>} >  </Route>
+        <Route  path="/docteur/profile" element={<ProfileDoc/>} >  </Route>
+
 
 
       </Routes>
