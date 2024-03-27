@@ -18,13 +18,17 @@ async function connectionTest (){
   connectionTest()
   const db={}
 
-db.Docteur=require('./doctor.model.js')(connection,DataTypes)
+db.Doctor=require('./doctor.model.js')(connection,DataTypes)
 db.Patient=require('./patien.model.js')(connection,DataTypes)
+db.Appoitment=require('./appoitment.model.js')(connection,DataTypes)
 
-db.Docteur.belongsToMany(db.Patient,{through : 'Doc_Patient'})
-db.Patient.belongsToMany(db.Docteur,{through : 'Doc_Patient'})
+
+db.Doctor.belongsToMany(db.Patient,{through : 'appoitment'})
+db.Patient.belongsToMany(db.Doctor,{through : 'appoitment'})
 
 //  connection.sync({force:true}) 
+//  appoitment.sync({force:true}) 
+
 
 
 
