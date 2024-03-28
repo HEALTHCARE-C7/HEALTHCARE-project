@@ -27,7 +27,7 @@ db.Doctor.belongsToMany(db.Patient,{through : 'appoitment'})
 db.Patient.belongsToMany(db.Doctor,{through : 'appoitment'})
 
 //  connection.sync({force:true}) 
-//  appoitment.sync({force:true}) 
+ db.Appoitment.sync({force:true}) 
 
 
 

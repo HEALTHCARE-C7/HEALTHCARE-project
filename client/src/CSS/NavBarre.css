@@ -1,0 +1,24 @@
+.col-logo{
+    text-align:left;
+    
+  
+}
+.log-btn{
+    gap: 1rem;
+    display: flex;
+}
+.btn-in{
+    background-color:#007E85;
+    font-weight: bold;
+    color: white;
+}
+.btn-up:hover{
+    background-color:#007E85;
+}
+.btn-up{
+    color: #007E85;
+    font-size: 20px;
+    font-weight: bold;
+    
+
+}
