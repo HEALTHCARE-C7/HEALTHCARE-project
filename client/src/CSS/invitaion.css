@@ -1,0 +1,79 @@
+.invitation {
+    background-color: #fff;
+    border-radius: 10%;
+    box-shadow: 0 2px 4px rgba(184, 62, 62, 0.1);
+    margin-top: 80px;
+    padding: 30px;
+   width: 800px;
+   height: 700px;
+
+    
+  }
+  .invitation2 {
+    background-color: #fff;
+    border-radius: 10%;
+  
+  
+    padding: 30px;
+   width:400px;
+   margin-left:900px;
+    
+  }
+  
+  .invitation img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+  }
+  
+  .invitation .info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .invitation .info h3 {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .invitation .options {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .invitation .options button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .invitation .options button.accept {
+    background-color: #0084ff;
+    color: #fff;
+  }
+  
+  .invitation .options button.delete {
+    background-color: #ff5252;
+    color: #fff;
+  }
+  .h{
+   
+    margin-top: 50px;
+    color: #000000;
+    font-weight: bold;
+  }
+  .user{
+    font-size: 50px;
+    border-radius: 30%;
+    color: blue;
+  }
+  .user1{
+    font-size: 50px;
+    border-radius: 30%;
+    color: #e1e156;
+  }
+
