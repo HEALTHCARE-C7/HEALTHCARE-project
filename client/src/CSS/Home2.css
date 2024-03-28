@@ -1,0 +1,121 @@
+.slide3{
+    background-image: url('../Images/slide3.jpeg');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 50rem;
+    /* align-items: center; */
+    justify-content: space-evenly;
+
+    
+}
+.col-slide-3{
+    display: flex;
+    flex-direction: column;
+
+}
+.col-box-slide{
+    /* border: 1px solid black !important; */
+    align-self: center;  
+    height: 30rem;
+    width: 30rem;
+
+}
+.col-box-slide2{
+    margin-top: 5rem;
+    /* border: 1px solid black !important;   */
+    height: 40rem;
+    width: 25rem;
+    padding-left: 2rem !important;
+    background-color:#ffffff;
+    border-radius: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+ 
+
+}
+.box-Appoitment{
+  
+        margin: 3rem 0  ;
+        width: 90%;
+        padding: 10px;
+      
+}
+.title-bookAppoitment{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+.title-slide3{
+    padding-top: 3.5rem;
+    padding-bottom: 2rem;   
+    font-size: 4.5rem;
+    
+}
+.text-slide-3{
+    padding-top: 2rem;
+    padding-bottom: 2rem;   
+    font-size: 1.5rem;
+    /* text-align: center; */
+    justify-content: center;
+    align-items: center;
+    color: #000000;
+}
+.btn-slide-3{
+    display: flex;
+    gap: 2rem;
+}
+
+/* Services we Provide ************************************/
+.title-services-provide{
+    padding-top: 3rem;
+    text-align: center;
+
+}
+.title-provide{
+    color: #007E85;
+    
+}
+.texte-provide{
+    font-size: 20px;
+    
+}
+.card-title-services{
+    color: #007E85;
+
+}
+/* .card-text-services{
+
+} */
+.btn-learn{
+    color: #007E85;
+    font-weight: bold !important;
+}
+.row-card-services{
+    padding-top:3rem;
+    padding-bottom: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+}
+.col-services{
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.card-img-top-services{
+    height: 18REM;
+}
+
+
+/* *********************************************** */
+.img-card-star{
+    display: flex;
+    gap: 0.5rem;
+    padding-bottom: 1rem;
+}
+.doc-img-card{
+    border-radius: 50rem;
+    width: 70px;
+    height: 70px;
+}

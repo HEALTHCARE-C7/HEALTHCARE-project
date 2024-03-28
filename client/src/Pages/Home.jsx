@@ -1,41 +1,79 @@
 import React, { Component } from 'react'
+import NavBarre from '../components/NavBarre.jsx'
+import Slide from '../components/Slide.jsx'
+import style from '../CSS/Home.css'
+import slide2 from '../Images/slide2.jpeg' 
 
 export class Home extends Component {
   render() {
     return (
-      <main className="container">
-      <div className="row">
-        <div className="col">
-          <h1>Providing Quality Healthcare For A Brighter And Healthy Future</h1>
-          <p>
-            At Our Hospital We Are Dedicated To Providing Exceptional Medical
-            Care To Our Patients And Their Families. Our Experienced Team Of
-            Medical Professionals, Cutting Edge Technology, And Compassionate
-            Approach Make Us A Leader In The Healthcare Industry.
-          </p>
-          <button type="button" className="btn btn-primary">
-            Appointments
-          </button>
-          <button type="button" className="btn btn-secondary">
-            Watch Video
-          </button>
-          <button type="button" className="btn btn-outline-secondary">
-            Find A Doctor
-          </button>
+      <>
+      
+      <Slide />
+      <main className="container" style={{}}>
+      <div className="container" style={{backgroundColor:"white",paddingBottom:"0.5rem",borderRadius:"20px"}}>
+        <div className="row" style={{height:"7rem" ,textAlign:"center"}}>
+            <div className="col-3" style={{paddingTop:"1rem"}}>
+                <h4 style={{paddingRight:"2.1rem"}}>Find A Doctor</h4>
+                <input style={{border:" 1px solid #007E85"}} placeholder='Name' type="text" />
+            </div>
+            <div className="col-3 " style={{paddingTop:"3.1rem"}}>
+                <input  style={{border:" 1px solid #007E85"}} type="text" placeholder='Speciality' />
+            </div>
+            <div className="col-3" style={{display:"flex",gap:"1.5rem",paddingTop:"3rem"}}>
+                <h4>Available</h4>
+                <div className="form-check form-switch">
+                <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault"/>
+                <label className="form-check-label" for="flexSwitchCheckDefault"></label>
+                </div>
+
+            </div>
+            <div className="col-3" style={{paddingTop:"2rem"}}>
+            <button type="button" className="btn btn-search"><h6>Search</h6> </button>
+            </div>
+
         </div>
       </div>
-      <div className="row">
-        <div className="col">
-          <h2>Our results in numbers</h2>
-          <p>24/7 Search</p>
-          <p>99% Customer satisfaction</p>
-          <p>15k Online Patients</p>
-          <p>12k Patients Recovered</p>
-          <p>240% Company growth</p>
-          <p>You have lots of reasons to choose us</p>
+      <div className="container" style={{paddingTop:"3rem"}}>
+        <div className="row" style={{textAlign:"center"}}>
+          <h3 style={{paddingBottom:"2rem", color:"#007E85"}}>Our results in numbers</h3>
+          <div className="col-3 col-results-numbers"><p className='p-numbers'>99%</p><h5> Customer satisfaction</h5></div>
+          <div className="col-3 col-results-numbers"><p className='p-numbers'>15k</p><h5> Online Patients</h5></div>
+          <div className="col-3 col-results-numbers"><p className='p-numbers'>12k </p><h5>Patients Recovered</h5></div>
+          <div className="col-3 col-results-numbers"><p className='p-numbers'>240%</p><h5> Company growth</h5></div>
+
         </div>
       </div>
+
+      <div className="container" style={{paddingTop:"5rem"}}>
+        <div className="row">
+          <div className="col-6">
+            <div className='title-slide2'>
+              <h1> You have lots of reasons to choose us</h1>
+            </div>
+            <div className='text-slide-2'>
+              <p>Lorem ipsum dolor sit amet consectetur adipiscing eli mattis sit phasellus mollis sit aliquam sit nullam.</p>
+            </div>
+            <div className='btn-slide-2'>
+            <button type="button" className="btn btn1-slide2"><h6>Get started</h6> </button>
+            <button type="button" className="btn btn2-slide2"><h6>Talk to sales</h6> </button>
+
+            </div>
+
+          </div>
+          <div className="col-6" >
+            <img src={slide2} alt="" style={{width:"100%",height:"100%"}} />
+          </div>
+        </div>
+      </div>
+
+      
+
+
+
+
     </main>
+      </>
     )
   }
 }

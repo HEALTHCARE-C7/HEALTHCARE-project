@@ -5,7 +5,7 @@ const appoitmentRoutes = require('./routes/appoitment.routes')
 const availabiltyRoutes = require('./routes/availabilty.routes')
 const reviewsRoutes = require('./routes/reviews.routes')
 
-
+const cors=require('cors')
 
 const db = require('./Models/index');
 
@@ -13,6 +13,7 @@ const db = require('./Models/index');
 const app = express();
 const PORT = process.env.PORT || 5000
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/../client/public"));

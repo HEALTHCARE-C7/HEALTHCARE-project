@@ -1,4 +1,5 @@
 // DELETE THIS LINE
+const db=require('../Models/index.js');
 module.exports = {
     
     getAllPatient:async function(req,res){
@@ -19,6 +20,12 @@ module.exports = {
         }
     },
     addPatient: async function(req,res){
+        try {
+            const patient= await db.Patient.create(req.body)
+            res.status(200).send(patient)    
+        } catch (error) {
+            throw error    
+        }
 
     },
     deletePatient:async function(req,res){
@@ -33,9 +40,7 @@ module.exports = {
     },
     updatePatient:async function(req,res){
         try {
-            const patient= await db.Patient.update({                
-                
-            },{
+            const patient= await db.Patient.update(req.body,{
                 where:{
                     id:req.params.id
                 }
