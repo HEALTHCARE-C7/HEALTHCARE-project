@@ -1,98 +1,36 @@
-import React from 'react';
-import '../css/invitaion.css'
-import {GrUser } from "react-icons/gr";
+import InvitationCard from '../components/Profiledetaille.jsx';
 
-const Invitation = ({  imageSrc, onAccept, onDelete }) => {
+const invitationList = [
+  {
+    id: 1,
+    name: 'John Doe',
+    message: 'Hey, I would like to invite you to my party!',
+    image: 'https://via.placeholder.com/150',
+  },
+  // other invitations
+];
+
+const ParentComponent = () => {
+  const handleAccept = (id) => {
+    // handle acceptance logic here
+  };
+
+  const handleDelete = (id) => {
+    // handle deletion logic here
+  };
+
   return (
-    
-    <div className="invitation">
-        
-      <div className="info">
-        <img src={imageSrc} alt="Profile Picture" />
-        <h3>iheb ghdifi</h3>
-       
-       
-      </div>
-      
-      <div className="options">
-        <button className="accept" onClick={onAccept}>Accept</button>
-        <button className="delete" onClick={onDelete}>Delete</button>
-      </div>
-      <br />
-      <div className="info">
-        <img src={imageSrc} alt="Profile Picture" />
-        <h3>brahim ben salah</h3>
-      </div>
-      <div className="options">
-        <button className="accept" onClick={onAccept}>Accept</button>
-        <button className="delete" onClick={onDelete}>Delete</button>
-      </div>
-      <br />
-      <div className="info">
-        <img src={imageSrc} alt="Profile Picture" />
-        <h3>youssef naili</h3>
-      </div>
-      <div className="options">
-        <button className="accept" onClick={onAccept}>Accept</button>
-        <button className="delete" onClick={onDelete}>Delete</button>
-      </div>
-      <br />
-      <div className="info">
-        <img src={imageSrc} alt="Profile Picture" />
-        <h3>omar mrad </h3>
-      </div>
-      <div className="options">
-        <button className="accept" onClick={onAccept}>Accept</button>
-        <button className="delete" onClick={onDelete}>Delete</button>
-      </div>
-      <br />
-      <div className="info">
-        <img src={imageSrc} alt="Profile Picture" />
-        <h3>raed zouaoui</h3>
-      </div>
-      <div className="options">
-        <button className="accept" onClick={onAccept}>Accept</button>
-        <button className="delete" onClick={onDelete}>Delete</button>
-      </div>
-      <br />
-     
-
-
-
-
-
-
-
-
-      <br />
-      <div className="invitation2">
-      <div className="info">
-      <GrUser className='user'/>
-        <h3>new patient</h3>
-       
-       
-      </div>
-      
-      <div className="options">
-      
-      </div>
-      <br />
-      <div className="info">
-      <GrUser className='user1'/> <br />
-        <h3>old patient</h3>
-      </div>
-      <div className="options">
-      
-      </div>
-    
-    
-     
-     
+    <div>
+      {invitationList.map((invitation) => (
+        <InvitationCard
+          key={invitation.id}
+          invitation={invitation}
+          onAccept={() => handleAccept(invitation.id)}
+          onDelete={() => handleDelete(invitation.id)}
+        />
+      ))}
     </div>
-    </div>
-    
-    
   );
 };
 
-export default Invitation;
+export default ParentComponent;
