@@ -56,7 +56,7 @@
     font-weight: bold;
   }
   
-  .form-input {
+  .form-input-signup {
     width: 100%;
     padding: 10px;
     font-size: 16px;
@@ -64,7 +64,7 @@
     border: 1px solid #ccc;
   }
   
-  .button {
+  .button-signup {
     display: inline-block;
     padding: 10px 20px;
     font-size: 16px;
@@ -76,7 +76,7 @@
     transition: background-color 0.3s ease;
   }
   
-  .button:hover {
+  .button-signup:hover {
     background-color: #00A86B;
   }
   

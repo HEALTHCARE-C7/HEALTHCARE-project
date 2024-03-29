@@ -23,21 +23,21 @@ const [showPassword, setShowPassword] = useState(false);
         <div className="login-page">
           <h1>Login</h1>
           <form onSubmit={handleSubmit(submitForm)}>
-            <div className="form-group">
+            <div className="form-group-login">
               <label className="email" htmlFor="email">Email</label>
               <input
                 type="email"
-                className="form-input"
+                className="form-input-login"
                 {...register('email')}
                 required
                 placeholder="Email"
               />
             </div>
-            <div className="form-group">
+            <div className="form-group-login">
               <label className="password" htmlFor="password">Password</label>
             <div className="password-input-container">
               <input
-                className="form-input"
+                className="form-input-login"
                 {...register('password')}
                 required
                 placeholder="Password"
@@ -50,7 +50,7 @@ const [showPassword, setShowPassword] = useState(false);
              </div>
              
             </div>
-            <button type="submit" className="button">Login</button>
+            <button type="submit" className="button-login">Login</button>
           </form>
         </div>
       </div>

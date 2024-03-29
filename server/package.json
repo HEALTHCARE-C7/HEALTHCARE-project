@@ -4,7 +4,7 @@
   "description": "technical-assessment",
   "main": "index.js",
   "scripts": {
-    "server-dev": "NODE_ENV=developmen nodemon index.js",
+    "server-dev": " nodemon index.js",
     "seeds": "node database-mysql/seed.js"
   },
   "author": "Brahim",
