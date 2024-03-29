@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import NavBarre from '../components/NavBarre.jsx'
 import Slide from '../components/Slide.jsx'
-import style from '../CSS/home.css'
+import style from '../CSS/Home.css'
 import slide2 from '../Images/slide2.jpeg' 
 
 export class Home extends Component {
