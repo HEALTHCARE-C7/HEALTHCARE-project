@@ -62,6 +62,11 @@ function Home2() {
 
                                 </select>
                             </div>
+                            <div className="mb-3">
+                            <label for="start">Choose date    :</label>
+
+                                <input type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2018-12-31" />
+                            </div>
                             <div class="mb-3">
                                 <label for="" class="form-label">Time *</label>
                                 <select id="" class="form-select">
