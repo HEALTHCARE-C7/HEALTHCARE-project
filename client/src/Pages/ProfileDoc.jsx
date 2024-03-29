@@ -1,5 +1,5 @@
 import React from 'react'
-import Style from '../css/Profile.css'
+import Style from '../CSS/Profile.css'
 import 'bootstrap';
 import { IoMdNotifications} from "react-icons/io";
 import { FaRegCircleQuestion } from "react-icons/fa6";

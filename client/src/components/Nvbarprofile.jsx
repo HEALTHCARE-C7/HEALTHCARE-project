@@ -1,5 +1,5 @@
 import React from "react";
-import Style from '../css/Profile.css'
+import Style from '../CSS/Profile.css'
 
 export default function Nvbar() {
     return (

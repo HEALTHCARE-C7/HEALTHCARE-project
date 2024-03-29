@@ -1,5 +1,5 @@
 import React from "react";
-import Style from '../css/Profile.css'
+import Style from '../CSS/Profile.css'
 import { FaStar } from 'react-icons/fa';
 import {
   MDBBtn,
