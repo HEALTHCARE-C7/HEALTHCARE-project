@@ -1,7 +1,7 @@
 // import React, { useState } from "react";
 import Home from "./Pages/Home.jsx";
 import About from "./Pages/About.jsx";
-import {BrowserRouter as Router, Route,Routes,Switch} from  'react-router-dom';
+import {BrowserRouter as Router, Route,Routes} from  'react-router-dom';
 // import { useSelector, useDispatch } from 'react-redux' 
 import LoginScreen from "./components/Login.jsx";
 import SignUp from "./reducers/SignUp.js";
@@ -10,6 +10,8 @@ import Home2 from "./Pages/Home2.jsx";
 import NavBarre from "./components/NavBarre.jsx";
 import Contact from "./Pages/Contact.jsx";
 import OneProfileDoc from "./Pages/Profiledetaille.jsx";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.min.js";
 
 
 

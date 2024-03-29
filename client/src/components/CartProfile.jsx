@@ -21,7 +21,7 @@ export default function CartProfile() {
 
         <div>
 <div className="cart" style={{ width: "500px" }}>
-<div className="card-body1">
+<div className="card-body10">
 <img className="card-img-bottom1" src="https://www.legalmedcard.com/wp-content/uploads/2019/06/doctor-img-01-free-img.jpg" alt="Card image"  />
 <br /> <br /> <br /><br />
   <h4 className="card-titl">dr.stephane </h4>
@@ -43,7 +43,7 @@ export default function CartProfile() {
 </div>
 
 
-<div className="container">
+<div className="container10">
 <h2>Review</h2>
 <section className="vh-100" >
    

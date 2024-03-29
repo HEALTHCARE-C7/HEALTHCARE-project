@@ -4,8 +4,7 @@ import 'bootstrap';
 import { IoMdNotifications} from "react-icons/io";
 import { FaRegCircleQuestion } from "react-icons/fa6";
 import SideBar from "../components/Sidebarprofile.jsx";
-import Cart from "../components/cart2.jsx"
-import Invitation from "../components/invitationprofile.jsx"
+
 
 
 
@@ -13,20 +12,17 @@ import Invitation from "../components/invitationprofile.jsx"
 export default function Profiledetaille() {
   return (
     <div>
-
+   
         <SideBar  SideBar={SideBar}/>
 
- <input className='search-input'  type="text" name="search"  placeholder="Search.." />
+ <input className='search-input1'  type="text" name="search"  placeholder="Search.." />
  <IoMdNotifications className='notf ' />
  <FaRegCircleQuestion className='quest' />
 
  <h1 className='h1'>welcom Doctor stephen </h1>
  <h2  className='h2'>have a nice day at great work</h2>
 <br />
-<div>
-<Invitation />
-</div>
-   
+
 {/* <div className="App">
       <h1>Invitations</h1>
       <Invitation />
