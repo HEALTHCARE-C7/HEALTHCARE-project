@@ -52,6 +52,12 @@ module.exports = {
         }
     },
     addDoc: async function(req,res){
+        try {
+            const doctor= await db.Doctor.create(req.body)
+            res.status(200).send(doctor)    
+        } catch (error) {
+            throw error    
+        }
 
     },
     deleteDoc:async function(req,res){
@@ -66,10 +72,7 @@ module.exports = {
     },
     updateDoc:async function(req,res){
         try {
-            const doctor= await db.Doctor.update({
-                
-                
-            },{
+            const doctor= await db.Doctor.update(req.body,{
                 where:{
                     id:req.params.id
                 }

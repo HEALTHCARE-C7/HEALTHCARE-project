@@ -2,7 +2,7 @@ const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = new Sequelize('sqlite::memory:');
 
 module.exports=(sequelize,DataTypes)=>{
-  const Doctor = sequelize.define('docteur', {
+  const Doctor = sequelize.define('doctor', {
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,

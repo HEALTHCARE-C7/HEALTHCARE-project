@@ -1,3 +1,5 @@
+const db=require('../Models/index.js');
+
 // DELETE THIS LINE
 module.exports = {
 
