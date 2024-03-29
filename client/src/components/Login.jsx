@@ -1,5 +1,5 @@
 // import { useForm } from 'react-hook-form
-import style from '../CSS/Auth.css'
+import Style from '../CSS/Auth.css'
 
 
 const LoginScreen = () => {

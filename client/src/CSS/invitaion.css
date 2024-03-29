@@ -1,0 +1,29 @@
+.InvitationCard-root {
+    width: 300px;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .InvitationCard-root:hover {
+    transform: translateY(-5px);
+  }
+  
+  .InvitationCard-media {
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  
+  .InvitationCard-content {
+    padding: 16px;
+  }
+  
+  .InvitationCard-actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 16px 16px;
+  }
+  
