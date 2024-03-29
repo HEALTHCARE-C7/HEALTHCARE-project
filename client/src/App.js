@@ -4,7 +4,8 @@ import About from "./Pages/About.jsx";
 import {BrowserRouter as Router, Route,Routes} from  'react-router-dom';
 // import { useSelector, useDispatch } from 'react-redux' 
 import LoginScreen from "./components/Login.jsx";
-import SignUp from "./reducers/SignUp.js";import ProfileDoc from "./Pages/ProfileDoc.jsx";
+import SignUp from "./reducers/SignUp.js";
+import ProfileDoc from "./Pages/ProfileDoc.jsx";
 import Home2 from "./Pages/Home2.jsx";
 import NavBarre from "./components/NavBarre.jsx";
 import Contact from "./Pages/Contact.jsx";
