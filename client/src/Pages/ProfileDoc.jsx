@@ -14,7 +14,7 @@ export default function ProfileDoc() {
     <div >
     <SideBar  SideBar={SideBar}/>
 
-        <input className='search-input1'  type="text" name="search"  placeholder="Search.." />
+        <input className='search-input10'  type="text" name="search"  placeholder="Search.." />
         <IoMdNotifications className='notf ' />
         <FaRegCircleQuestion className='quest' />
         <br />  <br />  <br />

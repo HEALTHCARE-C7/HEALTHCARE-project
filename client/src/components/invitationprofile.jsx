@@ -1,93 +1,257 @@
-import React, { useState } from "react";
-import {
-  Card,
-  Button,
-  Badge,
-  Container,
-  Row,
-  Col,
-  Spinner,
-} from "react-bootstrap";
+// import React from "react";
+// import Style from '../CSS/Profile.css'
+// import { FaStar } from 'react-icons/fa';
+// import {
+//   MDBBtn,
+//   MDBCard,
+//   MDBCardBody,
+//   MDBCardFooter,
+//   MDBCardImage,
+//   MDBCol,
+//   MDBContainer,
+//   MDBIcon,
+//   MDBRow,
+//   MDBTextArea,
+// } from "mdb-react-ui-kit";
 
-import BootstrapSpinner from "react-bootstrap/Spinner";
-// import ReactImg from "./placeholder-image.png";
+// export default function CartProfile() {
 
-const InvitationCard = ({ name, onDelete, onAccept }) => {
-  return (
-    <Card
-      style={{
-        width: "18rem",
-        backgroundColor: "#000",
-        color: "#fff",
-        border: "none",
-      }}
-    >
-      <Card.Body>
-        <Card.Title>
-          {name}
-          <Badge
-            pill
-            bg="danger"
-            className="float-end"
-            onClick={onDelete}
-            style={{ cursor: "pointer" }}
-          >
-            X
-          </Badge>
-          <Badge
-            pill
-            bg="success"
-            className="float-end"
-            onClick={onAccept}
-            style={{ cursor: "pointer" }}
-          >
-            Accept
-          </Badge>
-        </Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the bulk
-          of the card's content.
-        </Card.Text>
-      </Card.Body>
-    </Card>
-  );
-};
+//     return (
 
-const App = () => {
-  const [invitations, setInvitations] = useState([
-    { id: 1, name: "Invitation 1" },
-    { id: 2, name: "Invitation 2" },
-    { id: 3, name: "Invitation 3" },
-  ]);
-  const [isLoading, setIsLoading] = useState(false);
 
-  const handleDelete = (id) => {
-    setInvitations(invitations.filter((invitation) => invitation.id !== id));
-  };
+//         <div>
 
-  const handleAccept = (id) => {
-    // Add logic for accepting an invitation
-  };
+// <div className="container10">
+// <h2>Review</h2>
+// <section className="vh-100" >
+   
+     
+//           <MDBCol md="12" lg="10" xl="8">
+//             <MDBCard>
+//               <MDBCardBody>
+//                 <div className="d-flex flex-start align-items-center">
+//                   <MDBCardImage
+//                     className="rounded-circle shadow-1-strong me-3"
+//                     src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp"
+//                     alt="avatar"
+//                     width="60"
+//                     height="60"
+//                   />
+//                   <div>
+//                     <h6 className="fw-bold text-primary mb-1">Lily Coleman</h6>
+//                     <p className="text-muted small mb-0">
+//                       Shared publicly - Jan 2020
+//                     </p>
+//                   </div>
+//                 </div>
 
-  const renderInvitations = () => {
-    return invitations.map(({ id, name }) => {
-      return (
-        <Col key={id} className="mb-4" sm={6} md={4} lg={3}>
-          <InvitationCard name={name} onDelete={() => handleDelete(id)} onAccept={() => handleAccept(id)} />
-        </Col>
-      );
-    });
-  };
+//                 <p className="mt-3 mb-4 pb-2">
+//                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+//                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+//                   Ut enim ad minim veniam, quis nostrud exercitation ullamco
+//                   laboris nisi ut aliquip consequat.
+//                 </p>
 
-  return (
-    <>
-      <Container fluid className="p-0 my-5" style={{ backgroundColor: "#000", color: "#fff" }}>
-        <Container className="d-flex justify-content-center">
-          <Row>{isLoading ? <BootstrapSpinner animation="border" variant="light" /> : renderInvitations()}</Row>
-        </Container>
-      </Container>
-    </>
-  );
-};
+//                 <div className="small d-flex justify-content-start">
+//                   <a href="#!" className="d-flex align-items-center me-3">
+//                     <MDBIcon far icon="thumbs-up me-2" />
+//                     <p className="mb-0">Like</p>
+//                   </a>
+//                   <a href="#!" className="d-flex align-items-center me-3">
+//                     <MDBIcon far icon="comment-dots me-2" />
+//                     <p className="mb-0">Comment</p>
+//                   </a>
+//                   <a href="#!" className="d-flex align-items-center me-3">
+//                     <MDBIcon fas icon="share me-2" />
+//                     <p className="mb-0">Share</p>
+//                   </a>
+//                 </div>
+//               </MDBCardBody>
+//             </MDBCard>
+//           </MDBCol>
+        
+      
+   
+   
+     
+//           <MDBCol md="12" lg="10" xl="8">
+//             <MDBCard>
+//               <MDBCardBody>
+//                 <div className="d-flex flex-start align-items-center">
+//                   <MDBCardImage
+//                     className="rounded-circle shadow-1-strong me-3"
+//                     src="https://m.media-amazon.com/images/M/MV5BZDA1ODgyODEtOWI3Yy00N2UzLTk5ZGMtZGI1MzU5YzFkZDQ1XkEyXkFqcGdeQXVyMTc4MzI2NQ@@._V1_.jpg"
+//                     alt="avatar"
+//                     width="60"
+//                     height="60"
+//                   />
+//                   <div>
+//                     <h6 className="fw-bold text-primary mb-1">Loly slovetitich</h6>
+//                     <p className="text-muted small mb-0">
+//                       Shared publicly - Jan 2020
+//                     </p>
+//                   </div>
+//                 </div>
 
-export default App;
+//                 <p className="mt-3 mb-4 pb-2">
+//                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+//                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+//                   Ut enim ad minim veniam, quis nostrud exercitation ullamco
+//                   laboris nisi ut aliquip consequat.
+//                 </p>
+
+//                 <div className="small d-flex justify-content-start">
+//                   <a href="#!" className="d-flex align-items-center me-3">
+//                     <MDBIcon far icon="thumbs-up me-2" />
+//                     <p className="mb-0">Like</p>
+//                   </a>
+//                   <a href="#!" className="d-flex align-items-center me-3">
+//                     <MDBIcon far icon="comment-dots me-2" />
+//                     <p className="mb-0">Comment</p>
+//                   </a>
+//                   <a href="#!" className="d-flex align-items-center me-3">
+//                     <MDBIcon fas icon="share me-2" />
+//                     <p className="mb-0">Share</p>
+//                   </a>
+//                 </div>
+//               </MDBCardBody>
+//             </MDBCard>
+//           </MDBCol>
+//           <MDBCol md="12" lg="10" xl="8">
+//             <MDBCard>
+//               <MDBCardBody>
+//                 <div className="d-flex flex-start align-items-center">
+//                   <MDBCardImage
+//                     className="rounded-circle shadow-1-strong me-3"
+//                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZCkoANluJuSi_Si8y5af6dkvSOUVpootMivhgS-qmVQ&s"
+//                     alt="avatar"
+//                     width="60"
+//                     height="60"
+//                   />
+//                   <div>
+//                     <h6 className="fw-bold text-primary mb-1">morad Colan</h6>
+//                     <p className="text-muted small mb-0">
+//                       Shared publicly - Jan 2020
+//                     </p>
+//                   </div>
+//                 </div>
+
+//                 <p className="mt-3 mb-4 pb-2">
+//                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+//                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+//                   Ut enim ad minim veniam, quis nostrud exercitation ullamco
+//                   laboris nisi ut aliquip consequat.
+//                 </p>
+
+//                 <div className="small d-flex justify-content-start">
+//                   <a href="#!" className="d-flex align-items-center me-3">
+//                     <MDBIcon far icon="thumbs-up me-2" />
+//                     <p className="mb-0">Like</p>
+//                   </a>
+//                   <a href="#!" className="d-flex align-items-center me-3">
+//                     <MDBIcon far icon="comment-dots me-2" />
+//                     <p className="mb-0">Comment</p>
+//                   </a>
+//                   <a href="#!" className="d-flex align-items-center me-3">
+//                     <MDBIcon fas icon="share me-2" />
+//                     <p className="mb-0">Share</p>
+//                   </a>
+//                 </div>
+//               </MDBCardBody>
+//             </MDBCard>
+//           </MDBCol>
+//           <MDBCol md="12" lg="10" xl="8">
+//             <MDBCard>
+//               <MDBCardBody>
+//                 <div className="d-flex flex-start align-items-center">
+//                   <MDBCardImage
+//                     className="rounded-circle shadow-1-strong me-3"
+//                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsrOx0JOBzKIvaNkYIPD6ZuK-KcqKTQW2lZ7xx5OFyHQ&s"
+//                     alt="avatar"
+//                     width="60"
+//                     height="60"
+//                   />
+//                   <div>
+//                     <h6 className="fw-bold text-primary mb-1">michelle porovitch</h6>
+//                     <p className="text-muted small mb-0">
+//                       Shared publicly - Jan 2020
+//                     </p>
+//                   </div>
+//                 </div>
+
+//                 <p className="mt-3 mb-4 pb-2">
+//                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+//                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+//                   Ut enim ad minim veniam, quis nostrud exercitation ullamco
+//                   laboris nisi ut aliquip consequat.
+//                 </p>
+
+//                 <div className="small d-flex justify-content-start">
+//                   <a href="#!" className="d-flex align-items-center me-3">
+//                     <MDBIcon far icon="thumbs-up me-2" />
+//                     <p className="mb-0">Like</p>
+//                   </a>
+//                   <a href="#!" className="d-flex align-items-center me-3">
+//                     <MDBIcon far icon="comment-dots me-2" />
+//                     <p className="mb-0">Comment</p>
+//                   </a>
+//                   <a href="#!" className="d-flex align-items-center me-3">
+//                     <MDBIcon fas icon="share me-2" />
+//                     <p className="mb-0">Share</p>
+//                   </a>
+//                 </div>
+//               </MDBCardBody>
+//             </MDBCard>
+//           </MDBCol>
+//           <MDBCol md="12" lg="10" xl="8">
+//             <MDBCard>
+//               <MDBCardBody>
+//                 <div className="d-flex flex-start align-items-center">
+//                   <MDBCardImage
+//                     className="rounded-circle shadow-1-strong me-3"
+//                     src="https://pictures.artify.tn/media/wpz8fttbcujitmjnwcoe.jpg"
+//                     alt="avatar"
+//                     width="60"
+//                     height="60"
+//                   />
+//                   <div>
+//                     <h6 className="fw-bold text-primary mb-1">marlina gh</h6>
+//                     <p className="text-muted small mb-0">
+//                       Shared publicly - Jan 2020
+//                     </p>
+//                   </div>
+//                 </div>
+
+//                 <p className="mt-3 mb-4 pb-2">
+//                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+//                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+//                   Ut enim ad minim veniam, quis nostrud exercitation ullamco
+//                   laboris nisi ut aliquip consequat.
+//                 </p>
+
+//                 <div className="small d-flex justify-content-start">
+//                   <a href="#!" className="d-flex align-items-center me-3">
+//                     <MDBIcon far icon="thumbs-up me-2" />
+//                     <p className="mb-0">Like</p>
+//                   </a>
+//                   <a href="#!" className="d-flex align-items-center me-3">
+//                     <MDBIcon far icon="comment-dots me-2" />
+//                     <p className="mb-0">Comment</p>
+//                   </a>
+//                   <a href="#!" className="d-flex align-items-center me-3">
+//                     <MDBIcon fas icon="share me-2" />
+//                     <p className="mb-0">Share</p>
+//                   </a>
+//                 </div>
+//               </MDBCardBody>
+//             </MDBCard>
+//           </MDBCol>
+        
+      
+//     </section>
+
+
+// </div>
+//    </div>
+//     )}
+ 

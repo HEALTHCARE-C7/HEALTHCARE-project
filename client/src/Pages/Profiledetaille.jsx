@@ -34,6 +34,14 @@ export default function Profiledetaille() {
       </div>
       <Invitation />
     </div> */}
+
+
+    
+    {/* .vh-100{
+  background-color:hwb(0 100% 0%);
+  width: 1200px;
+  display: flex;
+} */}
    
       </div>
    

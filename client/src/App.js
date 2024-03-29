@@ -10,8 +10,7 @@ import Home2 from "./Pages/Home2.jsx";
 import NavBarre from "./components/NavBarre.jsx";
 import Contact from "./Pages/Contact.jsx";
 import OneProfileDoc from "./Pages/Profiledetaille.jsx";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.min.js";
+
 
 
 
@@ -23,7 +22,7 @@ let App = () => {
 
     <Router>
      <div>
-      <NavBarre/>
+     
       <Routes>
         <Route exact  path="/" element={<Home/>} >  </Route>
         <Route  path="/About" element={<About/>} >  </Route>
