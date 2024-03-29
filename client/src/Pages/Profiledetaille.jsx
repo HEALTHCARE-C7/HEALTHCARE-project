@@ -4,7 +4,9 @@ import 'bootstrap';
 import { IoMdNotifications} from "react-icons/io";
 import { FaRegCircleQuestion } from "react-icons/fa6";
 import SideBar from "../components/Sidebarprofile.jsx";
-
+import Cart from "../components/invitationprofile.jsx"
+import FullCalendar from '@fullcalendar/react';
+import dayGridPlugin from '@fullcalendar/daygrid';
 
 
 
@@ -34,14 +36,24 @@ export default function Profiledetaille() {
       </div>
       <Invitation />
     </div> */}
+<div className='patientname'>
 
 
-    
-    {/* .vh-100{
-  background-color:hwb(0 100% 0%);
-  width: 1200px;
-  display: flex;
-} */}
+</div>
+<footer>
+<Cart   />
+    </footer>
+    <div className="calendar-container"> {/* Add a parent container */}
+            <FullCalendar
+                plugins={[ dayGridPlugin ]}
+                initialView="dayGridMonth"
+                events={[
+                    { title: 'Event 1', date: '2024-03-01' },
+                    { title: 'Event 2', date: '2024-03-02' }
+                    // Add more events as needed
+                ]}
+            />
+        </div>
    
       </div>
    

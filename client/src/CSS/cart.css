@@ -1,4 +1,4 @@
-/* body {
+body {
     background-color: #f7f6f6
 }
 
@@ -78,7 +78,7 @@
 }
 .vh-100{
     margin-left: 100px;
-    background-color: #f7f6f6;
+    background-color: hwb(0 81% 16%);
     
 }
 .row{
@@ -87,4 +87,10 @@
     border-radius: 30%;
     background-color: red;
 }
- */
+ .vh-1000{
+  background-color:hwb(0 100% 0%);
+  width: 1200px;
+  display: flex;
+  margin-bottom: 100px;
+ margin-left: 200px;
+} 
