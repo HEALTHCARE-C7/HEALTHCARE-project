@@ -6,14 +6,15 @@ import DoctorLogin from "./components/DoctorLogin.jsx";
 import DoctoreSignup from "./components/DoctoreSignup.jsx";
 import PatientLogin from "./components/PatientLogin.jsx";
 import PatientSignup from "./components/PatientSignup.jsx";
-// import ProfileDoc from "./Pages/ProfileDoc.jsx";
+import ProfileDoc from "./Pages/ProfileDoc.jsx";
 import Home2 from "./Pages/Home2.jsx";
 import NavBarre from "./components/NavBarre.jsx";
 import Contact from "./Pages/Contact.jsx";
 import { useEffect } from "react";
 import { fetchAppoitments } from "./reducers/appoitmentSlice.js"; 
 import { useDispatch } from "react-redux";
-// import OneProfileDoc from "./Pages/Profiledetaille.jsx";
+import OneProfileDoc from "./Pages/Profiledetaille.jsx";
+
 
 
 
@@ -40,7 +41,8 @@ const dispatch=useDispatch()
         <Route  path="/doctor/Signup" element={<DoctoreSignup/>} >  </Route>
         <Route  path="/patient/login" element={<PatientLogin/>} >  </Route>
         <Route  path="/patient/Signup" element={<PatientSignup/>} >  </Route>
-        {/* <Route  path="/docteur/profile" element={<ProfileDoc/>} >  </Route> */}
+        <Route  path="/docteur/profile" element={<ProfileDoc/>} >  </Route>
+        <Route  path="/docteur/profile" element={<ProfileDoc/>} >  </Route>
       </Routes>
     </div>
   

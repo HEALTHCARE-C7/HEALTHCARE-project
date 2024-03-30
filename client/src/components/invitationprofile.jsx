@@ -1,49 +1,127 @@
-import React from 'react';
-import InvitationCard from '../components/Profiledetaille.jsx'; // Assuming the component is in a file named InvitationCard.js
+import React from "react";
+import style from '../CSS/Cartiheb.css'
+import { MdInsertInvitation } from "react-icons/md";
+import { SiGooglemessages } from "react-icons/si";
+import { FaVideo } from "react-icons/fa";
+import { FaPerson } from "react-icons/fa6";
+export default function CartProfile() {
 
-const YourComponent = () => {
-  // Sample data for invitations
-  const invitations = [
-    {
-      name: 'John Doe',
-      imageUrl: 'https://example.com/john.jpg',
-      id: 1 // You might have some unique identifier for each invitation
-    },
-    {
-      name: 'Jane Smith',
-      imageUrl: 'https://example.com/jane.jpg',
-      id: 2
-    },
-    // Add more invitations as needed
-  ];
+    return (
 
-  // Handlers for delete and accept actions
-  const handleDelete = (id) => {
-    console.log(`Invitation with ID ${id} deleted`);
-    // Perform delete logic here
-  };
 
-  const handleAccept = (id) => {
-    console.log(`Invitation with ID ${id} accepted`);
-    // Perform accept logic here
-  };
-
-  return (
-    <div>
-      <h1>Invitations</h1>
-      <div className="invitation-list">
-        {invitations.map(invitation => (
-          <InvitationCard
-            key={invitation.id}
-            name={invitation.name}
-            imageUrl={invitation.imageUrl}
-            onDelete={() => handleDelete(invitation.id)}
-            onAccept={() => handleAccept(invitation.id)}
-          />
-        ))}
-      </div>
+        <div>
+          
+<div className="cart99" >
+<div class="container99">
+<div className="cube96">
+<div className="icon" >
+    <MdInsertInvitation />
+        </div>
+      
     </div>
-  );
-};
+    <div className="cube99"> 
+    <div className="icon" >
+    <SiGooglemessages />
+        </div>
+    
+       
+    </div>
+    <div className="cube98">
+    <div className="icon" >
+    <FaVideo />
+        </div>
+       
+    </div>
+    <div className="cube97">
+    <div className="icon" >
+    <FaPerson />
+        </div>
+       
+    </div>
+    </div>
+<div className="card-body99">
 
-export default YourComponent;
+
+<div className="item-container0" style={{witdh:"100px"}}>
+    <div className="left99">
+   
+        <span className="item-name99"></span>
+    </div>
+    <div className="right99">
+        <span className="delete-icon99"></span>
+        <span className="accept-icon99"></span>
+    </div>
+</div>
+<div className="item-container99">
+    <div className="left99">
+    <img className="item-image99" src="https://www.legalmedcard.com/wp-content/uploads/2019/06/doctor-img-01-free-img.jpg" alt="Card image"  />
+        <span className="item-name99">Item Name</span>
+    </div>
+    <div className="right99">
+        <span className="delete-icon99">❌</span>
+        <span className="accept-icon99">✔️</span>
+    </div>
+</div>
+<div className="item-container99">
+    <div className="left99">
+    <img className="item-image99" src="https://www.legalmedcard.com/wp-content/uploads/2019/06/doctor-img-01-free-img.jpg" alt="Card image"  />
+        <span className="item-name99">Item Name</span>
+    </div>
+    <div className="right99">
+        <span className="delete-icon99">❌</span>
+        <span className="accept-icon99">✔️</span>
+    </div>
+</div>
+<div className="item-container99">
+    <div className="left99">
+    <img className="item-image99" src="https://www.legalmedcard.com/wp-content/uploads/2019/06/doctor-img-01-free-img.jpg" alt="Card image"  />
+        <span className="item-name99">Item Name</span>
+    </div>
+    <div className="right99">
+        <span className="delete-icon99">❌</span>
+        <span className="accept-icon99">✔️</span>
+    </div>
+</div>
+<div className="item-container99">
+    <div className="left99">
+    <img className="item-image99" src="https://www.legalmedcard.com/wp-content/uploads/2019/06/doctor-img-01-free-img.jpg" alt="Card image"  />
+        <span className="item-name99">Item Name</span>
+    </div>
+    <div className="right99">
+        <span className="delete-icon99">❌</span>
+        <span className="accept-icon99">✔️</span>
+    </div>
+</div>
+<div className="item-container99">
+    <div className="left99">
+    <img className="item-image99" src="https://www.legalmedcard.com/wp-content/uploads/2019/06/doctor-img-01-free-img.jpg" alt="Card image"  />
+        <span className="item-name99">Item Name</span>
+    </div>
+    <div className="right99">
+        <span className="delete-icon99">❌</span>
+        <span className="accept-icon99">✔️</span>
+    </div>
+</div>
+</div>
+<div className="item-container99">
+    <div className="left99">
+    <img className="item-image99" src="https://www.legalmedcard.com/wp-content/uploads/2019/06/doctor-img-01-free-img.jpg" alt="Card image"  />
+        <span className="item-name99">Item Name</span>
+    </div>
+    <div className="right99">
+        <span className="delete-icon99">❌</span>
+        <span className="accept-icon99">✔️</span>
+    </div>
+</div>
+
+
+</div>
+
+
+
+
+
+
+   </div>
+    )}
+ 

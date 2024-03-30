@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Style from '../CSS/invitaion.css'
 const InvitationCard = ({ name, imageUrl, onDelete, onAccept }) => {
   return (
     <div className="invitation-card">

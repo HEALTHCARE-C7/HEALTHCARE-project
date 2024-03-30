@@ -26,7 +26,7 @@ export default function CartProfile() {
 <br /> <br /> <br /><br />
   <h4 className="card-titl">dr.stephane </h4>
   <br /><br />
-  <a className="btn1">edit Profile</a>
+  <a className="b">edit Profile</a>
   <br /><br /><br /><br />
   <h3 className='h3'>150 Rates</h3>
   <br />
