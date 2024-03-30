@@ -2,7 +2,7 @@
 const { Sequelize, DataTypes } = require("sequelize");
 
 // create a database connection in your application using a Sequelize instance and the config file
-const connection = new Sequelize('healthcare', 'brahim', 'root', {
+const connection = new Sequelize('healthcare', 'root', 'root', {
   host: 'localhost',
   dialect: 'mysql' 
 });
@@ -21,13 +21,23 @@ async function connectionTest (){
 db.Doctor=require('./doctor.model.js')(connection,DataTypes)
 db.Patient=require('./patien.model.js')(connection,DataTypes)
 db.Appoitment=require('./appoitment.model.js')(connection,DataTypes)
+db.Availabilty=require('./availabilty.model.js')(connection,DataTypes)
 
 
-db.Doctor.belongsToMany(db.Patient,{through : 'appoitment'})
-db.Patient.belongsToMany(db.Doctor,{through : 'appoitment'})
+db.Doctor.hasMany(db.Availabilty)
+db.Availabilty.belongsTo(db.Doctor)
+
+
+
+
+
+db.Patient.hasMany(db.Appoitment) 
+db.Appoitment.belongsTo(db.Patient)
+
+
 
 //  connection.sync({force:true}) 
- db.Appoitment.sync({force:true}) 
+//  db.Appoitment.sync({force:true}) 
 
 
 

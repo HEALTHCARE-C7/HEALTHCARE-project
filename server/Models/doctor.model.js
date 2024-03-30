@@ -30,7 +30,7 @@ module.exports=(sequelize,DataTypes)=>{
          allowNull: false,
          defaultValue: "None",
     },
-    location:{
+    location:{  
       type:DataTypes.STRING,
       allowNull:true,
       defaultValue: "None"
