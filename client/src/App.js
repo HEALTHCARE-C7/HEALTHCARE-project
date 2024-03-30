@@ -14,7 +14,7 @@ import ProfileDoc from "./Pages/ProfileDoc.jsx";
 import Home2 from "./Pages/Home2.jsx";
 import NavBarre from "./components/NavBarre.jsx";
 import Contact from "./Pages/Contact.jsx";
-import OneProfileDoc from "./Pages/Profiledetaille.jsx";
+// import OneProfileDoc from "./Pages/Profiledetaille.jsx";
 
 
 
@@ -37,7 +37,7 @@ let App = () => {
         <Route  path="/Home2" element={<Home2/>} >  </Route>
         <Route  path="/contact" element={<Contact/>} >  </Route>
         <Route  path="/docteur/profile" element={<ProfileDoc/>} >  </Route>
-        <Route  path="/docteur/oneprofile" element={<OneProfileDoc/>} >  </Route>
+        {/* <Route  path="/docteur/oneprofile" element={<OneProfileDoc/>} >  </Route> */}
 
       </Routes>
     </div>
