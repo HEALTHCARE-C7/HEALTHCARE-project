@@ -3,7 +3,7 @@
   import authReducer from './reducers/DoctorLogin.js'
   import patientReducer from './reducers/PatientLogin.js'
 import appoitmentSlice from './reducers/appoitmentSlice.js';
-import availabiltySlice from './reducers/availabiltySlice.js';
+import availabiltySlice from './reducers/availabilitySlice.js';
 
 
   const store = configureStore({

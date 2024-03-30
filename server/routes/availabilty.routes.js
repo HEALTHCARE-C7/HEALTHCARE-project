@@ -1,8 +1,10 @@
 const router = require('express').Router();
 
 
-const { selectAll }=require("../controllers/availabilty.controller");
+const { getAllAvailability,addAvailability }=require("../controllers/availabilty.controller");
 
-router.get("/",selectAll);
+router.get("/getAllAvailability",getAllAvailability);
+router.post("/availability/addAvailability",addAvailability);
+
 
 module.exports = router;

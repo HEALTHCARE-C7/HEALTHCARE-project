@@ -1,93 +1,4 @@
 /* 
-
-
-body {
-  font-family: "Lato", sans-serif;
-  background-color: #f7f5f5;
-
-}
-
-.sidenav {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 10rem;
-  background-color: #961212;
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 60px;
-}
-.calendar-container {
-width: 800px;
-height: 10px;
-margin-left: 100px;
-float: right;
-}
-
-
-
-
-
-
-
-.sidenav a:hover {
-  color: #f1f1f1;
-}
-
-.sidenav .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-}
-
-@media screen and (max-height: 450px) {
-  .sidenav { padding-top: 15px; }
-  .sidenav a { font-size: 18px; }
-}
-
-.topnav {
-overflow: hidden;
-background-color: hwb(0 83% 13% / 0.258);
-margin-left: 1500px;
-width: 570px;
-font-size:10rem;
-
-
-}
-
-.topnav a {
-float: left;
-display: block;
-color: rgb(0, 0, 0);
-text-align: center;
-padding: 14px 16px;
-text-decoration: none;
-font-size: 20px;
-}
-.cart a {
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 20px;
-}
-
-.topnav a:hover {
-background-color: #ddd;
-color: rgb(16, 16, 16);
-}
-
-.topnav a.active {
-background-color: #f1f1f1b1;
-color: rgb(23, 22, 22);
-}
-
-/* .topnav .search-container {
-float: right;
-} */
 .container{
 
 margin-left: 1500px;
@@ -178,16 +89,7 @@ height: 100px;
 
 
 }
-  /* .card-body10{
-  height: 55rem;
-  width: 40rem;
-  border-radius: 10%;
- 
-  background-color: rgba(231, 225, 225, 0.714);
-  
 
-
-} */
 
 .card-titl{
   margin-left: 200px;
@@ -366,4 +268,4 @@ color: #a5aec0
 
 
 
-
+ */

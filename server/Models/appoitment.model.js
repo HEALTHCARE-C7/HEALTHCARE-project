@@ -3,11 +3,11 @@ const sequelize = new Sequelize('sqlite::memory:');
 
 module.exports=(sequelize,DataTypes)=>{
   const Appoitment = sequelize.define('appoitment', {
-    createdAt:{
-        type: DataTypes.DATE,
-        allowNull: false,
-        primaryKey: true,
-        defautValue: new Date() 
+    id:{
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true
     },
     date: {
       type: DataTypes.DATEONLY,
@@ -28,13 +28,14 @@ module.exports=(sequelize,DataTypes)=>{
       allowNull: true,
     },
     departement: {
-      type: DataTypes.STRING,
-      allowNull: true,
+      type: DataTypes.ENUM("DEP1","DEP2","DEP3","DEP4"),
+      allowNull: false,
+      defaultValue: "DEP1",
     },
     accepted: {
-      type: DataTypes.BOOLEAN,
+      type: DataTypes.ENUM("Declined","Confirmed"),
       allowNull: false,
-      defautValue:false
+      defaultValue: "Declined",
     },
    
   },{

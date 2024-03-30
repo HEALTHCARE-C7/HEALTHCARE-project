@@ -1,4 +1,4 @@
-
+/* 
 .modal {
     display: flex;
     justify-content: center;
@@ -12,14 +12,14 @@
     background-color: rgba(0, 0, 0, 0.4);
   }
   
-  /* Modal content */
+
   .modal-content {
     background-color: #fefefe;
     padding: 20px;
     border-radius: 5px;
   }
   
-  /* Login form styles */
+
   .login-page {
     text-align: center;
   }
@@ -68,16 +68,16 @@
   }
   
   .password-input {
-    padding-right: 40px; /* Adjust as needed to accommodate the icon */
+    padding-right: 40px; 
   }
   
   .password-toggle {
     position: absolute;
     top: 50%;
-    right: 5px; /* Adjust as needed for desired positioning */
+    right: 5px; 
     transform: translateY(-50%);
     border: none;
     background: none;
     cursor: pointer;
   }
-  
+   */

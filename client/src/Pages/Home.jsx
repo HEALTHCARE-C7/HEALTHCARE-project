@@ -2,7 +2,7 @@ import React from 'react'
  import { Component } from 'react'
 import NavBarre from '../components/NavBarre.jsx'
 import Slide from '../components/Slide.jsx'
-import style from '../CSS/home.css'
+import  '../CSS/Home.css'
 import slide2 from '../Images/slide2.jpeg' 
 import { useDispatch,useSelector } from 'react-redux' 
 export default function Home() {
