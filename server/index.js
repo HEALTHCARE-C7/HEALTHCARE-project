@@ -21,7 +21,7 @@ app.use(express.static(__dirname + "/../client/public"));
 app.use("/api/doctor",doctorRoutes);
 app.use("/api/patient",patientRoutes);
 app.use("/api/appoitment",appoitmentRoutes);
-app.use("/api/availabilty",availabiltyRoutes);
+app.use("/api/availability",availabiltyRoutes);
 app.use("/api/Reviews",reviewsRoutes);
 
 

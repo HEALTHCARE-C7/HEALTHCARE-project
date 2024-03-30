@@ -1,7 +1,5 @@
 import React from 'react'
-import style from '../CSS/Home2.css' 
-import slide3 from '../Images/slide3.jpeg'
-import NavBarre from '../components/NavBarre.jsx'
+import '../CSS/Home2.css' 
 import cardimg1 from '../Images/card-img1.jpeg'
 import cardimg2 from '../Images/card-img2.jpeg'
 import cardimg3 from '../Images/card-img3.jpeg'
@@ -13,6 +11,10 @@ import doc1 from '../Images/doc1.jpeg'
 import doc2 from '../Images/doc2.jpeg' 
 import doc3 from '../Images/doc3.jpeg' 
 
+import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import {addAppoitments } from '../reducers/appoitmentSlice.js'; 
+
 
 
 
@@ -20,6 +22,27 @@ import doc3 from '../Images/doc3.jpeg'
 
 
 function Home2() {
+    const [date,setDate]=useState()
+    const [time,setTime]=useState()
+    const [patientName,setpatientName]=useState("")
+    const [patientEmail,setpatientEmail]=useState()
+    const [departement,setdepartement]=useState()
+    const [accepted,setaccepted]=useState(false)
+
+
+
+  const dispatch= useDispatch()
+
+    const submitAppoitments=()=>{    
+        dispatch(addAppoitments({       
+            date:date,
+            time:time,
+            patientName:patientName,
+            patientEmail:patientEmail,
+            departement:departement,
+            accepted:accepted,
+            })) 
+        }
   return (
     <>
     
@@ -44,46 +67,46 @@ function Home2() {
             <div className="col-5  col-box-slide2" >
                <div className="box-Appoitment">
                <h3 className='title-bookAppoitment'>Book Appointment</h3>
-                    <form style={{paddingTop:"2rem"}}>
+                    <div style={{paddingTop:"2rem"}}>
                             <div className="mb-3">
-                                <label for="exampleInputPassword1" className="form-label">Name *</label>
-                                <input type="password" placeholder='Full Name *' className="form-control" id="exampleInputPassword1"/>
+                                <label className="">Name *</label>
+                                <input  onChange={(e)=>{setpatientName(e.target.value)}}  placeholder='Full Name *' className="form-control" />
                             </div>
                             <div className="mb-3">
-                                <label for="exampleInputEmail1" className="form-label">Email address</label>
-                                <input type="email" placeholder='example@gmail.com' className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
+                                <label  className="">Email address</label>
+                                <input type="email"   onChange={(e)=>{setpatientEmail(e.target.value)}} placeholder='example@gmail.com' className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
                             </div>                           
                             <div className="mb-3">
-                                <label for="" class="form-label">Departement</label>
-                                <select id="" class="form-select">
-                                    <option>Departement </option>
-                                    <option>Departement 2</option>
-                                    <option>Departement 3</option>
+                                <label  className="form-label">Departement</label>
+                                <select   onChange={(e)=>{setdepartement(e.target.value)}} className="form-select">
+                                    <option value="DEP1">Departement</option>
+                                    <option value="DEP2">Departement 2</option>
+                                    <option value="DEP3">Departement 3</option>
 
                                 </select>
                             </div>
                             <div className="mb-3">
                             <label for="start">Choose date    :</label>
 
-                                <input type="date" id="start" name="trip-start" value="2018-07-22" min="2018-01-01" max="2018-12-31" />
+                                <input type="date" onChange={(e)=>{setDate(e.target.value)}} id="start" name="trip-start"  />
                             </div>
-                            <div class="mb-3">
-                                <label for="" class="form-label">Time *</label>
-                                <select id="" class="form-select">
-                                    <option> 9:00 </option>
-                                    <option> 10:00 </option>
-                                    <option> 11:00 </option>
-                                    <option> 12:00 </option>
-                                    <option> 15:00 </option>
-                                    <option> 16:00 </option>
-                                    <option> 17:00 </option>
+                            <div className="mb-3">
+                                <label for="" className="form-label">Time *</label>
+                                <select id=""  onChange={(e)=>{setTime(e.target.value)}} className="form-select">
+                                    <option value="9:00" > 9:00 </option>
+                                    <option value="10:00"> 10:00 </option>
+                                    <option value="11:00"> 11:00 </option>
+                                    <option value="12:00"> 12:00 </option>
+                                    <option value="15:00"> 15:00 </option>
+                                    <option value="16:00"> 16:00 </option>
+                                    <option value="17:00"> 17:00 </option>
 
                                    
 
                                 </select>
                             </div>
-                            <button type="submit" className="btn btn-primary">Submit</button>
-                    </form>
+                            <button  onClick={()=>{ submitAppoitments()}} className="btn btn-primary">Submit</button>
+                    </div>
                </div>
             </div>
 
@@ -269,66 +292,66 @@ function Home2() {
                 <p className='texte-provide'>Problems trying to resolve the conflict between the two major realms of Classical physics: Newtonian mechanics </p>
             </div>
             <div className="col-4" style={{paddingBottom:"2rem",paddingTop:"2rem"}}>
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">the quick fox jumps over the 
+            <div className="card">
+                <div className="card-body">
+                    <h5 className="card-title">the quick fox jumps over the 
                         lazy dog</h5>
-                    <p class="card-text">Things on a very small scale 
+                    <p className="card-text">Things on a very small scale 
                         behave like nothing </p>
                    
                 </div>
                 </div>
             </div>
             <div className="col-4" style={{paddingBottom:"2rem",paddingTop:"2rem"}}>
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">the quick fox jumps over the 
+            <div className="card">
+                <div className="card-body">
+                    <h5 className="card-title">the quick fox jumps over the 
                         lazy dog</h5>
-                    <p class="card-text">Things on a very small scale 
+                    <p className="card-text">Things on a very small scale 
                         behave like nothing </p>
                    
                 </div>
                 </div>
             </div>   
             <div className="col-4" style={{paddingBottom:"2rem",paddingTop:"2rem"}}>
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">the quick fox jumps over the 
+            <div className="card">
+                <div className="card-body">
+                    <h5 className="card-title">the quick fox jumps over the 
                         lazy dog</h5>
-                    <p class="card-text">Things on a very small scale 
+                    <p className="card-text">Things on a very small scale 
                         behave like nothing </p>
                    
                 </div>
                 </div>
             </div>   
             <div className="col-4" style={{paddingBottom:"2rem",paddingTop:"2rem"}}>
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">the quick fox jumps over the 
+            <div className="card">
+                <div className="card-body">
+                    <h5 className="card-title">the quick fox jumps over the 
                         lazy dog</h5>
-                    <p class="card-text">Things on a very small scale 
+                    <p className="card-text">Things on a very small scale 
                         behave like nothing </p>
                    
                 </div>
                 </div>
             </div>   
             <div className="col-4" style={{paddingBottom:"2rem",paddingTop:"2rem"}}>
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">the quick fox jumps over the 
+            <div className="card">
+                <div className="card-body">
+                    <h5 className="card-title">the quick fox jumps over the 
                         lazy dog</h5>
-                    <p class="card-text">Things on a very small scale 
+                    <p className="card-text">Things on a very small scale 
                         behave like nothing </p>
                    
                 </div>
                 </div>
             </div>   
             <div className="col-4" style={{paddingBottom:"2rem",paddingTop:"2rem"}}>
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">the quick fox jumps over the 
+            <div className="card">
+                <div className="card-body">
+                    <h5 className="card-title">the quick fox jumps over the 
                         lazy dog</h5>
-                    <p class="card-text">Things on a very small scale 
+                    <p className="card-text">Things on a very small scale 
                         behave like nothing </p>
                    
                 </div>

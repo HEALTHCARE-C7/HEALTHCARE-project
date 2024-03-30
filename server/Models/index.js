@@ -36,6 +36,13 @@ db.Appoitment.belongsTo(db.Patient)
 
 
 
+
+db.Doctor.hasMany(db.Appoitment) 
+db.Appoitment.belongsTo(db.Doctor)
+
+
+
+
 //  connection.sync({force:true}) 
 //  db.Appoitment.sync({force:true}) 
 

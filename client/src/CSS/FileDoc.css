@@ -1,0 +1,12 @@
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: #fff;
+    background-color: #000000;
+}
+.serach-input-file-Doc{
+    width: 70%;
+   
+}
+
+.w-75-file-doc{
+    width: 100% !important;
+}
