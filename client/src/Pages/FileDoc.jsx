@@ -3,6 +3,7 @@ import '../CSS/FileDoc.css'
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchAppoitments,fetchPationOfDoctor,fetchPationOfThisDat } from '../reducers/appoitmentSlice.js'; 
+import { fetchAvailability,addAvailability} from '../reducers/availabilitySlice.js'
 import doc1 from '../Images/doc1.jpeg';
 
 
@@ -13,24 +14,41 @@ export default function FileDoc() {
   const { DataAppoitment } =useSelector (state => state.appoitment)
   const { DotorPation } =useSelector (state => state.appoitment)
   const { toDayAppoitment } =useSelector (state => state.appoitment)
+  const { dataAvalability } =useSelector (state => state.availabilty)
+
+  
   let date = new Date
   let day = date.getDate()  
   let month = date.getMonth() + 1
   let year = date.getFullYear()
   let today = year + '-' + month + '-' + day
-
   const dispatch=useDispatch()
+
+
+
+
+  const addAv=(data)=>{
+    const body={
+      date:data.date,
+      time:data.time,
+      patientName:data.patientName,
+    }
+    dispatch(addAvailability(body))
+    dispatch(fetchAvailability())
+  
+  }
     useEffect(() => {
     dispatch(fetchAppoitments())
     dispatch(fetchPationOfDoctor(1))
     dispatch(fetchPationOfThisDat(today))
-
-    
-   
+    dispatch(fetchAvailability())   
   }, [])
+
+
+
   return (
     <>
-  {console.log("today",toDayAppoitment)}
+  {console.log("avalability",dataAvalability)}
   <div className="container-fluid">
     <div className="row">
         <div className="col-2 " >
@@ -168,8 +186,7 @@ export default function FileDoc() {
           </div>
           {
             DataAppoitment.map((data)=>{
-              return(
-               
+              return(               
                   <ul className="list-group">
                       <li className="list-group-item d-flex justify-content-between align-items-center">
                        <div className="col-1">
@@ -182,7 +199,9 @@ export default function FileDoc() {
                        <span>{data.date}</span>
                        </div>
                        <div className="col-2">
-                       <button className='btn btn-learn'>{data.accepted}</button>
+                       <button className='btn btn-learn'onClick={()=>{
+                        addAv(data)
+                       }} >{data.accepted}</button>
 
                        </div>
                       </li>
@@ -191,22 +210,20 @@ export default function FileDoc() {
             })
           }
         </div>
-
         <div className="col-2"></div>
         <div className="col-5">
         <div className="title">
-            <h5>Today Appoitments</h5>
-          </div>
+            <h5>Aceepted Appoitments</h5>
+        </div>
           {
-            toDayAppoitment.map((data)=>{
-              return(
-               
+            dataAvalability.map((data,i)=>{   
+              return(               
                 <ul className="list-group">
                 <li className="list-group-item d-flex justify-content-between align-items-center">
                  <div className="col-1">
                   <img  style={{width:"100%",height:"100",borderRadius:"50rem"}} src={doc1} alt="" />
                  </div>
-                 <div className="col-6">
+                 <div className="col-6" key={i}>
                  {data.patientName}
                  </div>
                  <div className="col-3" style={{display:"flex",gap:"1rem" }}>

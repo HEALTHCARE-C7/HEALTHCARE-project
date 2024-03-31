@@ -5,6 +5,8 @@ const patientRoutes = require('./routes/patient.routes')
 const appoitmentRoutes = require('./routes/appoitment.routes')
 const availabiltyRoutes = require('./routes/availabilty.routes')
 const reviewsRoutes = require('./routes/reviews.routes')
+const serviceRoutes = require('./routes/service.routes')
+
 const cors=require('cors')
 
 
@@ -23,6 +25,8 @@ app.use("/api/patient",patientRoutes);
 app.use("/api/appoitment",appoitmentRoutes);
 app.use("/api/availability",availabiltyRoutes);
 app.use("/api/Reviews",reviewsRoutes);
+app.use("/api/services",serviceRoutes);
+
 
 
 

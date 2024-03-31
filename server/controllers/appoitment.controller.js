@@ -55,11 +55,11 @@ module.exports = {
         }
 
     },
-    deleteAppoitmentByDoctor:async function(req,res){
+    deleteAppoitment:async function(req,res){
         try {
             const appoitment=db.Appoitment.destroy({where:{
-                createdAt:req.params.createdAt,
-                doctorId:req.params.doctorId
+                id:req.params.id,
+               
             }})
             res.json(appoitment)
         } catch (err) {
