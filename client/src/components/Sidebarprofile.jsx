@@ -1,5 +1,5 @@
 import React from "react";
-import Style from '../CSS/Profile.css'
+import  '../CSS/Profile.css'
 import { AiOutlineMessage } from "react-icons/ai";
 import {GrUser } from "react-icons/gr";
 import { IoTimeOutline } from "react-icons/io5";

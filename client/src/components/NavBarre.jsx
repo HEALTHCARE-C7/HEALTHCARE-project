@@ -1,6 +1,8 @@
 import React from 'react'
-import style from '../CSS/NavBarre.css'
+import  '../CSS/NavBarre.css'
+import { useNavigate } from "react-router-dom";
 export default function NavBarre() {
+  const navigate = useNavigate();
   return (
     <nav className=" navbar navbar-expand-lg navbar-light " >
   <div className="container">
@@ -11,13 +13,13 @@ export default function NavBarre() {
     <div className="collapse navbar-collapse" id="navbarNav">
       <ul className="navbar-nav">
         <li className="nav-item">
-          <a className="nav-link active" aria-current="page" href="#">Home</a>
+          <a className="nav-link active" aria-current="page" href="#" onClick={()=>navigate('/')}>Home</a>
         </li>
         <li className="nav-item">
           <a className="nav-link" href="#">Service</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">Contact us</a>
+          <a className="nav-link" href="#" onClick={()=>navigate('/contact')}>Contact us</a>
         </li>
         <li className="nav-item">
           <a className="nav-link" href="#">Help</a>
@@ -28,8 +30,8 @@ export default function NavBarre() {
       </ul>
     </div>
    <div className='log-btn'>
-   <button type="button" className="btn btn-up">Sign Up </button>
-    <button type="button" className="btn btn-in">Log In</button>
+   <button type="button"  className="btn btn-up" onClick={()=>navigate('/signup')} >Sign Up </button>
+    <button type="button" onClick={()=>navigate('/login')}className="btn btn-in">Log In</button>
    </div>
   </div>
 </nav>

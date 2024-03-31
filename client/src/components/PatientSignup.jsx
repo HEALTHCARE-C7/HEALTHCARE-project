@@ -2,23 +2,56 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 import {registerPatient} from './AuthActionPatient.jsx'
+// import { useNavigate } from "react-router-dom";
+// import Securite from '../../../server/middleware/patien.middleware.js'
 const Signup = () => {
-//   const { loading, userInfo, error, success } = useSelector(
-//     (state) => state.auth
-//   )
+  // const navigate = useNavigate();
+
   const dispatch = useDispatch()
   const { register, handleSubmit } = useForm()
   const submitForm = (data) => {
-    // if (data.password !== data.confirmPassword) {
-    //   alert('Password mismatch')
-    // }
     data.email = data.email.toLowerCase()
     dispatch(registerPatient(data))
   }
-  return (
+//   function isValidEmail(email) {
+//     var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+//     return regex.test(email);
+// }
+  // const clear=(req,res)=>{
+  //   const {firstName,lastName,email,password,gender,location,age,phoneNumber}=req.body
+  //   if(!firstName){
+  //       return res.status(400).json('write your firstName')
+  //   }
+  //   if(!lastName){
+  //       return res.status(400).json('write your lastName')
+  //   }
+  //   if(!email || !isValidEmail(email)){
+        
+  //       return res.status(400).json('Please provide a valid email address')
+  //   }
+  //   if(!password || password.length<8){
+  //       return res.status(400).json('Password must be at least 8 characters long')
+  //   }
+  //   if(!location){
+  //       return res.status(400).json('select your location')
+  //   }
+  //    if(!age){
+  //       return res.status(400).json('select your age')
+  //   } 
+  //   if(!phoneNumber){
+  //       return res.status(400).json('select your phoneNumber')
+  //   }
+  //   if(!gender){
+  //     return res.status(400).json('select your phoneNumber')
+  // }
+  // else {
+  //   navigate('/login')
+  // }
+  // }
+    return (
     <div className="modal-content">
       <div className="signup-page">
-        <h1>Sign Up</h1>
+        <h1>Sign Up Patient</h1>
         <form onSubmit={handleSubmit(submitForm)}>
           <div className="form-group">
             <label for="firstName">First Name</label>
@@ -52,7 +85,7 @@ const Signup = () => {
             <label for="phoneNumber">Phone Number</label>
             <input type="tel" className="form-input-signup" {...register('phoneNumber')} required placeholder='Your Phone Number'/>
           </div>
-          <button type="submit" className="button-signup">Sign Up</button>
+          <button type="submit" className="button-signup"  >Sign Up</button>
         </form>
       </div>
     </div>
