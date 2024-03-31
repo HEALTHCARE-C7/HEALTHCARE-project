@@ -3,10 +3,15 @@ const sequelize = new Sequelize('sqlite::memory:');
 
 module.exports=(sequelize,DataTypes)=>{
   const Availabilty = sequelize.define('availabilty', {
+    id:{
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true
+    },
     date:{
         type: DataTypes.DATEONLY,
         allowNull: false,
-        primaryKey: true,
         defautValue: new Date() 
     },
     time: {   

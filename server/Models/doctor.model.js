@@ -44,8 +44,9 @@ module.exports=(sequelize,DataTypes)=>{
     allowNull:true,
   },
   speciality:{
-      type: DataTypes.STRING,
-      allowNull :true
+    type: DataTypes.ENUM("General","Dental treatments","Bones treatments","Diagnosis","Cardiology","Surgery","Eye care"),
+    allowNull: false,
+    defaultValue: "General",
     }
   });
   return Doctor

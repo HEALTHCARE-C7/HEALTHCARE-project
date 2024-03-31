@@ -14,16 +14,24 @@ const SignUp = () => {
   }
   return (
     <div>
-        <div className="nav">
+        <div className="nav-auth">
      <span className="items-login" onClick={handlerCategory}>
       Choose
      </span>
      {category && (
       <div className='menu'>
-     <span className='menu-item' onClick={()=>switchView('SignupD')} >
+     <span className='menu-item' onClick={()=>{
+      switchView('SignupD')
+      handlerCategory()
+
+      }} >
       Doctor 
      </span>
-     <span className='menu-item' onClick={()=>switchView('SignupP')}>
+     <span className='menu-item' onClick={()=>{
+      switchView('SignupP')
+      handlerCategory()
+
+      }}>
       Patient 
      </span>
      </div>

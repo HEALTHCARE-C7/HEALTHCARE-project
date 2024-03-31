@@ -16,6 +16,7 @@ const [showPassword, setShowPassword] = useState(false);
   const submitForm = (data) => {
     dispatch(patientLogin(data))
     console.log(data.email)
+  
   }
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -53,7 +54,7 @@ const [showPassword, setShowPassword] = useState(false);
              </div>
              
             </div>
-            <button type="submit" className="button-login" >Log In</button>
+            <button type="submit" className="button-login"  >Log In</button>
           </form>
         </div>
       </div>

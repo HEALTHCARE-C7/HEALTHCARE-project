@@ -1,7 +1,9 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import Home from "./Pages/Home.jsx";
 import About from "./Pages/About.jsx";
 import {BrowserRouter as Router, Route,Routes} from  'react-router-dom';
+import axios from 'axios'
+
 
 import Home2 from "./Pages/Home2.jsx";
 import NavBarre from "./components/NavBarre.jsx";
@@ -21,6 +23,26 @@ import ChatPage from "./components/Chat/ChatPage.jsx";
 const socket = io('<http://localhost:5000>');
 
 let App = () => {
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        
+        const  token  =localStorage.getItem('token')
+        const config={headers:{Authorization:`Bearer ${token}`}}
+        const response = await axios.get('http://localhost:5000/api/patient/user',config)
+     console.log('res data',response.data);
+        setUser(response.data);
+      } catch (error) {
+        
+      }
+    };
+
+    fetchProfile();
+  }, []);
+  console.log(user);
+    const refreshToken = localStorage.getItem('token');
+    console.log('hello world',refreshToken)
 
   return (
 

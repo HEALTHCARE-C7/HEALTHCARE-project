@@ -12,6 +12,15 @@ export const fetchAvailability=createAsyncThunk('fetchAvailability',async (dispa
    console.log(error);   
   } 
 }) 
+export const addAvailability=createAsyncThunk('addAvailability',async (body)=>{
+ 
+  try {
+   const res = await axios.post("http://localhost:5000/api/availability/addAvailability",body)  
+    return res.data
+  } catch (error) {
+   console.log(error);   
+  } 
+}) 
 
 const availabilitySlice = createSlice({
   name: 'availability',
@@ -33,6 +42,19 @@ const availabilitySlice = createSlice({
       state.error = action.error; 
     })  
     builder.addCase(fetchAvailability.pending, (state, action) => {
+      state.loading = true; 
+    })
+    builder.addCase(addAvailability.fulfilled, (state, action) => {
+      // Add user to the state array
+      state.loading = false;
+      state.dataAvalability = action.payload;
+      state.loading = true; 
+    })
+    builder.addCase(addAvailability.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.error; 
+    })  
+    builder.addCase(addAvailability.pending, (state, action) => {
       state.loading = true; 
     })
   },

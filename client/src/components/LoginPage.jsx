@@ -15,16 +15,22 @@ const handlerCategory=()=>{
 }
 return (
   <div>
-    <div className="nav">
+    <div className="nav nav-auth">
      <span className="items-login" onClick={handlerCategory}>
       Choose
      </span>
      {category && (
       <div className='menu'>
-     <span className='menu-item' onClick={()=>switchView('loginD')} >
+     <span className='menu-item' onClick={()=>{
+      switchView('loginD')
+      handlerCategory()
+      }} >
       Doctor 
      </span>
-     <span className='menu-item' onClick={()=>switchView('loginP')}>
+     <span className='menu-item' onClick={()=>{
+      switchView('loginP')
+      handlerCategory()
+      }}>
       Patient 
      </span>
      </div>

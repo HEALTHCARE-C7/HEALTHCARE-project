@@ -21,7 +21,12 @@ module.exports = {
     },    
     getAllDayAppoitment:async function(req,res){
         try {
-            const appoitment= await db.Appoitment.findAll({where:{date:req.params.date}});
+            const appoitment= await db.Appoitment.findAll({
+                where:{
+                    date:req.params.date,
+                    accepted:"Confirmed"
+
+                }});
             res.status(200).send(appoitment)    
         } catch (error) {
             throw error    
@@ -48,18 +53,18 @@ module.exports = {
     },
     addAppoitment: async function(req,res){
         try {
-            const appoitment= await db.Appoitment.create({...req.body,patientId:req.user.useerId})
+            const appoitment= await db.Appoitment.create(req.body)
             res.status(200).send(appoitment)    
         } catch (error) {
             throw error    
         }
 
     },
-    deleteAppoitmentByDoctor:async function(req,res){
+    deleteAppoitment:async function(req,res){
         try {
             const appoitment=db.Appoitment.destroy({where:{
-                createdAt:req.params.createdAt,
-                doctorId:req.params.doctorId
+                id:req.params.id,
+               
             }})
             res.json(appoitment)
         } catch (err) {
@@ -67,11 +72,11 @@ module.exports = {
         }
 
     },
-    updateAppoitm:async function(req,res){
+    updateAppoitment:async function(req,res){
         try {
-            const appoitment= await db.Appoitment.update(req.body,{
+            const appoitment= await db.Appoitment.update({accepted:"Confirmed"},{
                 where:{
-                    createdAt:req.createdAt
+                    id:req.params.id
                 }
             })
             res.status(200).send(appoitment)            

@@ -27,7 +27,7 @@ function Home2() {
     const [patientName,setpatientName]=useState("")
     const [patientEmail,setpatientEmail]=useState()
     const [departement,setdepartement]=useState()
-    const [accepted,setaccepted]=useState(false)
+    const [accepted,setaccepted]=useState("Declined")
 
 
 
@@ -39,7 +39,6 @@ function Home2() {
             time:time,
             patientName:patientName,
             patientEmail:patientEmail,
-            departement:departement,
             accepted:accepted,
             })) 
         }
