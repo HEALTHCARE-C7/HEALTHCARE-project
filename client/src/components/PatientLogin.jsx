@@ -53,7 +53,7 @@ const [showPassword, setShowPassword] = useState(false);
              </div>
              
             </div>
-            <button type="submit" className="button-login" onClick={()=>navigate('/')}>Log In</button>
+            <button type="submit" className="button-login" >Log In</button>
           </form>
         </div>
       </div>

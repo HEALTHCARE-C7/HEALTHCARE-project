@@ -18,7 +18,17 @@ module.exports = {
         } catch (error) {
             throw error    
         }   
+    },    
+    getAllDayAppoitment:async function(req,res){
+        try {
+            const appoitment= await db.Appoitment.findAll({where:{date:req.params.date}});
+            res.status(200).send(appoitment)    
+        } catch (error) {
+            throw error    
+        }   
     },
+    
+
     getAllAppoitmentPatient:async function(req,res){
         try {
             const appoitment= await db.Appoitment.findAll({where:{patientId:req.params.patientId}});

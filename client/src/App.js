@@ -2,9 +2,12 @@ import React from "react";
 import Home from "./Pages/Home.jsx";
 import About from "./Pages/About.jsx";
 import {BrowserRouter as Router, Route,Routes} from  'react-router-dom';
+
 import Home2 from "./Pages/Home2.jsx";
 import NavBarre from "./components/NavBarre.jsx";
 import Contact from "./Pages/Contact.jsx";
+
+import FileDoc from "./Pages/FileDoc.jsx";
 import LoginPage from "./components/LoginPage.jsx";
 import SignUp from "./components/SignUp.jsx";
 import FetchToken from "./components/FetchToken.jsx";
@@ -12,6 +15,9 @@ import FetchToken from "./components/FetchToken.jsx";
 import { io } from "socket.io-client";
 // import socketIO from 'socket.io-client';
 import ChatPage from "./components/Chat/ChatPage.jsx";
+
+
+
 const socket = io('<http://localhost:5000>');
 
 let App = () => {
@@ -20,9 +26,6 @@ let App = () => {
 
     <Router>
      <div>
-     
-    
-
       <NavBarre/>
       <Routes>
         <Route exact  path="/" element={<Home/>} >  </Route>
@@ -31,17 +34,16 @@ let App = () => {
         <Route  path="/contact" element={<Contact/>} >  </Route>
         <Route  path="/login" element={<LoginPage/>} >  </Route>
         <Route  path="/signup" element={<SignUp/>} >  </Route>  
-        {/* <Route  path="/docteur/profile" element={<ProfileDoc/>} >  </Route> */}
+        <Route  path="/FileDoc" element={<FileDoc/>} >  </Route>
         <Route  path="/fetch" element={<FetchToken/>} >  </Route>  
         {/* <Route  path="/chat" element={<ChatRoom/>} >  </Route>   */}
         <Route path="/chat" element={<ChatPage socket={socket} />}></Route>
 
 
         
-       
 
-
-
+        {/* <Route  path="/docteur/profile" element={<ProfileDoc/>} >  </Route>
+        <Route  path="/docteur/profile" element={<ProfileDoc/>} >  </Route> */}
       </Routes>
     </div>
   
