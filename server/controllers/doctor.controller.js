@@ -43,6 +43,17 @@ module.exports = {
             throw error    
         }   
     },
+    getAllByDepartement:async function(req,res){
+        try {
+            const doctor= await db.Doctor.findAll({ 
+                where: { 
+                    speciality:req.params.speciality
+                 } })
+            res.status(200).send(doctor)    
+        } catch (error) {
+            throw error    
+        }
+    },
     getOne:async function(req,res){
         try {
             const doctor= await db.Doctor.findOne({ where: { id:req.user.useerId } })

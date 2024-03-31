@@ -1,11 +1,13 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
+import { useNavigate } from "react-router-dom";
+
 import {registerPatient} from './AuthActionPatient.jsx'
 // import { useNavigate } from "react-router-dom";
 // import Securite from '../../../server/middleware/patien.middleware.js'
 const Signup = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const dispatch = useDispatch()
   const { register, handleSubmit } = useForm()
@@ -51,7 +53,7 @@ const Signup = () => {
             <label for="phoneNumber">Phone Number</label>
             <input type="tel" className="form-input-signup" {...register('phoneNumber')} required placeholder='Your Phone Number'/>
           </div>
-          <button type="submit" className="button-signup"  >Sign Up</button>
+          <button type="submit" className="button-signup">Sign Up</button>
         </form>
       </div>
     </div>

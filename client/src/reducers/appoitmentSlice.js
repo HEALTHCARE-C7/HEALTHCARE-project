@@ -25,7 +25,7 @@ export const fetchPationOfDoctor=createAsyncThunk('fetchPationOfDoctor',async (i
  
   try {
    const res = await axios.get(`http://localhost:5000/api/appoitment/getAllAppoitmentDoctor/${id}`)  
-   console.log(res.data);
+  //  console.log(res.data);
     return res.data
   } catch (error) {
    console.log(error);   
@@ -34,6 +34,15 @@ export const fetchPationOfDoctor=createAsyncThunk('fetchPationOfDoctor',async (i
 export const fetchPationOfThisDat=createAsyncThunk('fetchPationOfThisDat',async (date)=>{ 
   try {
    const res = await axios.get(`http://localhost:5000/api/appoitment/getAllDayAppoitment/${date}`)  
+  
+    return res.data
+  } catch (error) {
+   console.log(error);   
+  } 
+}) 
+export const acceptAppoitment=createAsyncThunk('acceptAppoitment',async (id)=>{ 
+  try {
+   const res = await axios.patch(`http://localhost:5000/api/appoitment/updateAppoitment/${id}`)  
   
     return res.data
   } catch (error) {
@@ -105,6 +114,19 @@ extraReducers: (builder) => {
     state.error = action.error; 
   })  
   builder.addCase(fetchPationOfThisDat.pending, (state, action) => {
+    state.loading = true; 
+  }) 
+  builder.addCase(acceptAppoitment.fulfilled, (state, action) => {
+    // Add user to the state array
+    state.loading = false;
+    state.DataAppoitment = action.payload;
+    state.loading = true; 
+  })
+  builder.addCase(acceptAppoitment.rejected, (state, action) => {
+    state.loading = false;
+    state.error = action.error; 
+  })  
+  builder.addCase(acceptAppoitment.pending, (state, action) => {
     state.loading = true; 
   }) 
       

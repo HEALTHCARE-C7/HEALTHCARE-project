@@ -20,7 +20,14 @@ export default function NavBarre() {
         </li>
         <li className="nav-item">
           <a className="nav-link"  onClick={()=>navigate('/contact')}>Contact us</a>
+          {/* <a className="nav-link active" aria-current="page" href="/">Home</a> */}
         </li>
+        {/* <li className="nav-item"> */}
+          {/* <a className="nav-link" href="/Home2" >Service</a> */}
+        {/* </li> */}
+        {/* <li className="nav-item"> */}
+          {/* <a className="nav-link" href="Contact">Contact us</a> */}
+        {/* </li> */}
         <li className="nav-item">
           <a className="nav-link" >Help</a>
         </li>
