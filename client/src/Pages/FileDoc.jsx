@@ -167,7 +167,7 @@ export default function FileDoc() {
             <h5>Appoitment Request</h5>
           </div>
           {
-            DataAppoitment.map((data)=>{
+           DataAppoitment && DataAppoitment.length > 0 &&  DataAppoitment.map((data)=>{
               return(
                
                   <ul className="list-group">
@@ -198,7 +198,7 @@ export default function FileDoc() {
             <h5>Today Appoitments</h5>
           </div>
           {
-            toDayAppoitment.map((data)=>{
+         toDayAppoitment && toDayAppoitment.length > 0 &&  toDayAppoitment.map((data)=>{
               return(
                
                 <ul className="list-group">

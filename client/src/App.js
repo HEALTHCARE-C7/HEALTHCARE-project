@@ -6,11 +6,17 @@ import DoctorLogin from "./components/DoctorLogin.jsx";
 import DoctoreSignup from "./components/DoctoreSignup.jsx";
 import PatientLogin from "./components/PatientLogin.jsx";
 import PatientSignup from "./components/PatientSignup.jsx";
-// import ProfileDoc from "./Pages/ProfileDoc.jsx";
+import ProfileDoc from "./Pages/ProfileDoc.jsx";
 import Home2 from "./Pages/Home2.jsx";
 import NavBarre from "./components/NavBarre.jsx";
 import Contact from "./Pages/Contact.jsx";
+import { useEffect } from "react";
+import { fetchAppoitments } from "./reducers/appoitmentSlice.js"; 
+import { useDispatch } from "react-redux";
+import FileDoc from "./Pages/FileDoc.jsx";
 // import OneProfileDoc from "./Pages/Profiledetaille.jsx";
+
+
 
 
 
@@ -28,19 +34,14 @@ let App = () => {
         <Route  path="/About" element={<About/>} >  </Route>
         <Route  path="/Home2" element={<Home2/>} >  </Route>
         <Route  path="/contact" element={<Contact/>} >  </Route>
-<<<<<<< HEAD
-        <Route  path="/docteur/profile" element={<ProfileDoc/>} >  </Route>
-        {/* <Route  path="/docteur/oneprofile" element={<OneProfileDoc/>} >  </Route> */}
-=======
         <Route  path="/doctor/Login" element={<DoctorLogin/>} >  </Route>
         <Route  path="/doctor/Signup" element={<DoctoreSignup/>} >  </Route>
         <Route  path="/patient/login" element={<PatientLogin/>} >  </Route>
         <Route  path="/patient/Signup" element={<PatientSignup/>} >  </Route>
         <Route  path="/FileDoc" element={<FileDoc/>} >  </Route>
->>>>>>> 8adabba27c1714227466ae93ed11a810237bf21c
 
-        {/* <Route  path="/docteur/profile" element={<ProfileDoc/>} >  </Route>
-        <Route  path="/docteur/profile" element={<ProfileDoc/>} >  </Route> */}
+         {/* <Route  path="/docteur/profile" element={<ProfileDoc/>} >  </Route> */}
+        <Route  path="/docteur/profile" element={<ProfileDoc/>} >  </Route> 
       </Routes>
     </div>
   

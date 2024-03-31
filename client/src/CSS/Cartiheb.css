@@ -1,4 +1,4 @@
-/* 
+
 .item-container99{
     width: 100rem;
     background-color: rgb(25, 32, 32);
@@ -16,6 +16,30 @@
 
 
 } 
+.review{
+    border-radius: 30px;
+  width: 30rem;
+  height: 80px;
+  margin-left: 1700px;
+  border: none;
+  box-shadow: rgba(20, 39, 57, 0.04) 0px 1px 0px 0px;
+  padding-left: 15px;
+  background-color: rgb(195, 193, 193);
+  margin-top: 20px;
+
+}
+.rates{
+    margin-left: 270px;
+}
+.stephane{
+    height: 900px;
+    width: 700px;
+    
+    margin-right: 600px;
+  border-radius: 30%;
+    background-color: #ffffff;
+
+}
 .item-container0{
     width: 600px;
     height: 100px;
@@ -41,6 +65,20 @@ border-radius: 30%;
            
         
       
+}
+.ediProfile{
+    margin-left: 230px;
+    background-color: #aca8ac;
+    font-size: 40px;
+    color: black;
+    border-radius: 30%;
+    padding: 10px;
+}
+.stephaneimg{
+    border-radius: 30%;
+    width: 300px;
+    margin-left: 190px;
+    margin-top: 90px;
 }
 .card-titl99{
    
@@ -159,8 +197,8 @@ border-radius: 30%;
 }
 
 .icon {
-    width: 500px; 
-    height: 80px; 
+    width: 500px; /* Adjust icon size as needed */
+    height: 80px; /* Adjust icon size as needed */
     
 }
 
@@ -168,4 +206,4 @@ border-radius: 30%;
     font-size: 14px;
     margin-top: 5px;
 }
- */
+
