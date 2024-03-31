@@ -4,11 +4,14 @@ import { useDispatch } from 'react-redux'
 import { doctorLogin } from './AuthActionDoctor'
 import { useState } from 'react'
 import { FaEye,FaEyeSlash  } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 const LoginScreen = () => {
+  const navigate = useNavigate();
+
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch()
   const { register, handleSubmit } = useForm()
-  // const { loading, error } = useSelector((state) => state.user)
+  
   const submitForm = (data) => {
   dispatch(doctorLogin(data))  
   }
@@ -21,7 +24,7 @@ const LoginScreen = () => {
       // <div className="modal">
       <div className="modal-content">
         <div className="login-page">
-          <h1>Login</h1>
+          <h1>Log In Doctor</h1>
           <form onSubmit={handleSubmit(submitForm)}>
             <div className="form-group-login">
               <label className="email" htmlFor="email">Email</label>
@@ -50,7 +53,7 @@ const LoginScreen = () => {
              </div>
              
             </div>
-            <button type="submit" className="button-login">Login</button>
+            <button type="submit" className="button-login" onClick={()=>navigate('/')}>Log In</button>
           </form>
         </div>
       </div>

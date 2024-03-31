@@ -24,11 +24,27 @@ db.Appoitment=require('./appoitment.model.js')(connection,DataTypes)
 db.Availabilty=require('./availabilty.model.js')(connection,DataTypes)
 
 
+db.UserChat=require('../Models/UserChat.js')(connection,DataTypes)
+db.Message=require('../Models/Message.js')(connection,DataTypes)
+db.Conversation=require('../Models/Conversation.js')(connection,DataTypes)
+db.UserToConversation=require('../Models/UserToConversation.js')(connection,DataTypes)
+
+
+// db.UserChat.hasMany(db.UserToConversation);
+// db.UserToConversation.belongsTo(db.UserChat);
+// db.Conversation.hasMany(db.UserToConversation);
+// db.UserToConversation.belongsTo(db.Conversation);
+// db.Conversation.hasMany(db.Message);
+// db.Message.belongsTo(db.Conversation);
+// db.UserChat.hasMany(db.Message);
+// db.Message.belongsTo(db.UserChat);
+
+
 db.Doctor.hasMany(db.Availabilty)
 db.Availabilty.belongsTo(db.Doctor)
 
 
-
+// db.Message.belongsTo(db.UserChat, { foreignKey: 'sender_id' });
 
 
 db.Patient.hasMany(db.Appoitment) 

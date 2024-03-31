@@ -48,7 +48,7 @@ module.exports = {
     },
     addAppoitment: async function(req,res){
         try {
-            const appoitment= await db.Appoitment.create(req.body)
+            const appoitment= await db.Appoitment.create({...req.body,patientId:req.user.useerId})
             res.status(200).send(appoitment)    
         } catch (error) {
             throw error    
