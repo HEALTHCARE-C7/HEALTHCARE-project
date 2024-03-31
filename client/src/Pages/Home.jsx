@@ -43,7 +43,7 @@ export default function Home() {
     <>    
     <Slide />
     <main className="container" style={{}}>
-      {console.log("doc",DocByDep)}
+      {/* {console.log("doc",DocByDep)} */}
 
 
         <div className="container" style={{backgroundColor:"white",paddingBottom:"0.5rem",borderRadius:"20px"}}>

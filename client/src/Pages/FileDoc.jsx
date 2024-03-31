@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import '../CSS/FileDoc.css'
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { fetchAppoitments,fetchPationOfDoctor,fetchPationOfThisDat } from '../reducers/appoitmentSlice.js'; 
+import { fetchAppoitments,fetchPationOfDoctor,fetchPationOfThisDat,acceptAppoitment } from '../reducers/appoitmentSlice.js'; 
 import { fetchAvailability,addAvailability} from '../reducers/availabilitySlice.js'
 import doc1 from '../Images/doc1.jpeg';
 
@@ -15,40 +15,38 @@ export default function FileDoc() {
   const { DotorPation } =useSelector (state => state.appoitment)
   const { toDayAppoitment } =useSelector (state => state.appoitment)
   const { dataAvalability } =useSelector (state => state.availabilty)
-
+  const [isFetch,setIsFetch]=useState(false)
+  
   
   let date = new Date
   let day = date.getDate()  
   let month = date.getMonth() + 1
   let year = date.getFullYear()
   let today = year + '-' + month + '-' + day
+
+
+
+
   const dispatch=useDispatch()
 
-
-
-
-  const addAv=(data)=>{
-    const body={
-      date:data.date,
-      time:data.time,
-      patientName:data.patientName,
-    }
-    dispatch(addAvailability(body))
-    dispatch(fetchAvailability())
-  
-  }
     useEffect(() => {
     dispatch(fetchAppoitments())
     dispatch(fetchPationOfDoctor(1))
     dispatch(fetchPationOfThisDat(today))
     dispatch(fetchAvailability())   
-  }, [])
+  }, [isFetch])
+
+
+  const toogle=()=>{
+    setIsFetch(!isFetch)  
+  }
+
 
 
 
   return (
     <>
-  {console.log("avalability",dataAvalability)}
+  {/* {console.log("avalability",dataAvalability)} */}
   <div className="container-fluid">
     <div className="row">
         <div className="col-2 " >
@@ -185,9 +183,9 @@ export default function FileDoc() {
             <h5>Appoitment Request</h5>
           </div>
           {
-            DataAppoitment.map((data)=>{
+            DataAppoitment.map((data,i)=>{
               return(               
-                  <ul className="list-group">
+                  <ul className="list-group"  key={i}>
                       <li className="list-group-item d-flex justify-content-between align-items-center">
                        <div className="col-1">
                         <img  style={{width:"100%",height:"100",borderRadius:"50rem"}} src={doc1} alt="" />
@@ -200,7 +198,15 @@ export default function FileDoc() {
                        </div>
                        <div className="col-2">
                        <button className='btn btn-learn'onClick={()=>{
-                        addAv(data)
+                       dispatch(addAvailability({
+                        date:data.date,
+                        time:data.time,
+                        patientName:data.patientName,
+                      }))
+                      dispatch(acceptAppoitment(data.id))
+                      
+                     
+
                        }} >{data.accepted}</button>
 
                        </div>
@@ -216,14 +222,14 @@ export default function FileDoc() {
             <h5>Aceepted Appoitments</h5>
         </div>
           {
-            dataAvalability.map((data,i)=>{   
+            toDayAppoitment.map((data,i)=>{   
               return(               
-                <ul className="list-group">
+                <ul className="list-group" key={i}>
                 <li className="list-group-item d-flex justify-content-between align-items-center">
                  <div className="col-1">
                   <img  style={{width:"100%",height:"100",borderRadius:"50rem"}} src={doc1} alt="" />
                  </div>
-                 <div className="col-6" key={i}>
+                 <div className="col-6" >
                  {data.patientName}
                  </div>
                  <div className="col-3" style={{display:"flex",gap:"1rem" }}>

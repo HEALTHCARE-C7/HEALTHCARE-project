@@ -27,7 +27,11 @@ module.exports=(sequelize,DataTypes)=>{
       type: DataTypes.STRING,
       allowNull: true,
     },
-  
+    departement: {
+      type: DataTypes.STRING,
+      allowNull: true,
+
+    },  
     accepted: {
       type: DataTypes.ENUM("Declined","Confirmed"),
       allowNull: false,

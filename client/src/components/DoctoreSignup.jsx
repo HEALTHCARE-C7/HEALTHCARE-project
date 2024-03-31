@@ -1,27 +1,28 @@
-import React from 'react'
+// import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 import {registerDoctor} from './AuthActionDoctor.jsx'
 import '../CSS/Signup.css'
+import { useNavigate } from "react-router-dom";
+
 const Signup = () => {
-  // const { loading, userInfo, error, success } = useSelector(
-  //   (state) => state.auth
-  // )
+  const navigate = useNavigate();
+ 
   const dispatch = useDispatch()
   const { register, handleSubmit } = useForm()
   const submitForm = (data) => {
-    // if (data.password !== data.confirmPassword) {
-    //   alert('Password mismatch')
-    // }
+   
     data.email = data.email.toLowerCase()
    const doctor= dispatch(registerDoctor(data))
     console.log(doctor);
   }
+ 
+
   return (
     // <div id="signupModal" className="modal">
     <div className="modal-content">
       <div className="signup-page">
-        <h1>Sign Up</h1>
+        <h1>Sign Up Doctor</h1>
         <form onSubmit={handleSubmit(submitForm)}>
           <div className="form-group">
             <label for="firstName">First Name</label>
@@ -59,9 +60,10 @@ const Signup = () => {
             <label for="speciality">Speciality</label>
             <input type="text" className="form-input-signup" {...register('speciality')} required placeholder='Your Speciality'/>
           </div>
-          <button type="submit" className="button-signup">Sign Up</button>
+          <button type="submit" className="button-signup" onClick={()=>navigate('/login')} >Sign Up</button>
         </form>
       </div>
+     
     </div>
   // </div>
   

@@ -7,10 +7,13 @@ const availabiltyRoutes = require('./routes/availabilty.routes')
 const reviewsRoutes = require('./routes/reviews.routes')
 const serviceRoutes = require('./routes/service.routes')
 
+const UserRouter = require('./routes/UserChat.routes.js')
+const MessageRouter = require('./routes/MessageChat.routes.js')
+const Conversation = require('./routes/Conversation.routes.js')
 const cors=require('cors')
 
 
-const db = require('./Models/index');
+ require('./Models/index');
 
 console.log(process.env.NODE_ENV);
 const app = express();
@@ -29,6 +32,9 @@ app.use("/api/services",serviceRoutes);
 
 
 
+app.use('/api/chat',UserRouter)
+app.use('/api/message',MessageRouter)
+app.use('/api/conversation',Conversation)
 
 
 app.listen(PORT, () => {

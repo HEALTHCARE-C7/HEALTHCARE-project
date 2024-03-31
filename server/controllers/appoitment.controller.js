@@ -21,7 +21,12 @@ module.exports = {
     },    
     getAllDayAppoitment:async function(req,res){
         try {
-            const appoitment= await db.Appoitment.findAll({where:{date:req.params.date}});
+            const appoitment= await db.Appoitment.findAll({
+                where:{
+                    date:req.params.date,
+                    accepted:"Confirmed"
+
+                }});
             res.status(200).send(appoitment)    
         } catch (error) {
             throw error    
@@ -67,11 +72,11 @@ module.exports = {
         }
 
     },
-    updateAppoitm:async function(req,res){
+    updateAppoitment:async function(req,res){
         try {
-            const appoitment= await db.Appoitment.update(req.body,{
+            const appoitment= await db.Appoitment.update({accepted:"Confirmed"},{
                 where:{
-                    createdAt:req.createdAt
+                    id:req.params.id
                 }
             })
             res.status(200).send(appoitment)            

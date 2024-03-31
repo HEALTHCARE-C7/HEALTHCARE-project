@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const securite=require('../middleware/doc.middleware')
+const securite=require('../middleware/patien.middleware')
 const verifyUser=require('../middleware/VerifyUser')
 const {   getAllPatient ,getOnePatient,addPatient ,deletePatient,updatePatient,register,login }=require("../controllers/patient.controller");
 

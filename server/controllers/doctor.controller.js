@@ -11,7 +11,7 @@ module.exports = {
         const {firstName,lastName,email,password,gender,location,age,phoneNumber,speciality}=req.body
         const saltRounds = await bcrypt.genSalt();
         const passwordHash = await bcrypt.hash(password, saltRounds);
-        const newDocteur=await db.Docteur.create({firstName,lastName,email,password:passwordHash,gender,location,age,phoneNumber,speciality})
+        const newDocteur=await db.Doctor.create({firstName,lastName,email,password:passwordHash,gender,location,age,phoneNumber,speciality})
         const saveDocteur= newDocteur.toJSON()
         res.status(200).json(saveDocteur)   
      } catch (error) {  
@@ -21,7 +21,7 @@ module.exports = {
  
     login:async function(req,res){
      const {email,password}=req.body
-     const docteur=await db.Docteur.findOne({where:{email}})
+     const docteur=await db.Doctor.findOne({where:{email}})
      if(!docteur){
         return res.status(400).json('Your Email Is Not Exist')
      }
@@ -56,7 +56,7 @@ module.exports = {
     },
     getOne:async function(req,res){
         try {
-            const doctor= await db.Docteur.findOne({ where: { id:req.user.useerId } })
+            const doctor= await db.Doctor.findOne({ where: { id:req.user.useerId } })
             res.status(200).send(doctor)    
         } catch (error) {
             throw error    
