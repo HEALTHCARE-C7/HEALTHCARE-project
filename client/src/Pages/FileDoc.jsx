@@ -6,10 +6,12 @@ import { fetchAppoitments,fetchPationOfDoctor,fetchPationOfThisDat,acceptAppoitm
 import { fetchAvailability,addAvailability} from '../reducers/availabilitySlice.js'
 import doc1 from '../Images/doc1.jpeg';
 import axios from 'axios'
+import { useNavigate } from "react-router-dom";
 
 import search from '../Images/icons/search.png'
 
 export default function FileDoc() {
+  const navigate = useNavigate();
 
   const { DataAppoitment } =useSelector (state => state.appoitment)
   const { DotorPation } =useSelector (state => state.appoitment)
@@ -41,7 +43,7 @@ export default function FileDoc() {
     fetchDoctor();
   },[])
 
-
+console.log(user);
   const dispatch=useDispatch()
 
     useEffect(() => {
@@ -55,7 +57,10 @@ export default function FileDoc() {
   const toogle=()=>{
     setIsFetch(!isFetch)  
   }
+const logout=()=>{
+  localStorage.removeItem('token')
 
+}
 
 
 
@@ -140,7 +145,10 @@ export default function FileDoc() {
         <li><a className="dropdown-item" href="#">Settings</a></li>
         <li><a className="dropdown-item" href="#">Profile</a></li>
         <li><hr className="dropdown-divider"/></li>
-        <li><a className="dropdown-item" href="#">Sign out</a></li>
+        <li><a className="dropdown-item" href="#" 
+        onClick={()=>{
+          logout() 
+        navigate('/')}}>Sign out</a></li>
       </ul>
     </div>
             </div>

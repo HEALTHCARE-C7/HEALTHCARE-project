@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ChatBody from './ChatBody';
+// import ChatBody from './ChatBody';
 
 const ChatFooter = ({ socket }) => {
   const [message, setMessage] = useState('');

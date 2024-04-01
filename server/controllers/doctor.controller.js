@@ -35,6 +35,14 @@ module.exports = {
      delete docteurData.password;
      res.status(200).json({ token, docteur: docteurData });
     },
+    logout:async function(req, res){
+        try {
+            const logout=await db.Doctor.destroy(token,{where:{id:req.params.id}});
+            res.status(200).send({ message: 'You have been logged out' });
+        } catch (error) {
+            throw error
+        }
+    },
     getAll:async function(req,res){
         try {
             const doctor= await db.Doctor.findAll({})

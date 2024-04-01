@@ -14,6 +14,7 @@ const LoginScreen = () => {
   const success= useSelector((state)=>
     state.doctor.success
   )
+  console.log('succes',success);
   const submitForm = (data) => {
   dispatch(doctorLogin(data))  
   if(success){

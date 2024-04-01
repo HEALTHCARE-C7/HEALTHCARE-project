@@ -56,6 +56,7 @@ const initialState = {
         .addCase(doctorLogin.fulfilled, (state, action) => {
           state.loading = false;
           state.data = action.payload;
+          state.success=true
         })
         .addCase(doctorLogin.rejected, (state, action) => {
           state.loading = false;
@@ -66,9 +67,9 @@ const initialState = {
         })
         .addCase(fetchDoc.fulfilled, (state, action) => {
           state.loading = false;
-          state.success=true
           state.allDoc = action.payload;
           state.loading = true; 
+          state.success=true
         })
         .addCase(fetchDoc.rejected, (state, action) => {
           state.loading = false;

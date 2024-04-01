@@ -30,8 +30,8 @@ const initialState = {
         })
         .addCase(patientLogin.fulfilled, (state, action) => {
           state.loading = false;
-          state.success=true;
           state.data = action.payload;
+          state.success=true;
         })
         .addCase(patientLogin.rejected, (state, action) => {
           state.loading = false;
