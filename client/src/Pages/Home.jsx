@@ -12,8 +12,9 @@ import doc1 from '../Images/doc1.jpeg'
 import { useState } from "react";
 import {fetchDoc,fetchDocByDep} from '../reducers/DoctorLogin.js'
 import {fetchService} from '../reducers/serviceSlice.js'
+import axios from 'axios'
 
-export default function Home() {
+export default function Home(props) {
   const dispatch= useDispatch()
   const { allDoc } =useSelector (state => state.doctor)
   const { DocByDep } =useSelector (state => state.doctor)
@@ -21,13 +22,7 @@ export default function Home() {
 
   const { serviceData } =useSelector (state => state.service)
 
-  // const searchDocByC=(dep)=>{
-  //   dispatch(fetchDocByDep(dep))
-  //   console.log(DocByDep);
-  //   // setDocSearch(DocByDep)
-  //   // console.log(dep)
-  //   // console.log("search",docSearch);  
-  // }
+
 
   
 
@@ -43,7 +38,7 @@ export default function Home() {
     <>    
     <Slide />
     <main className="container" style={{}}>
-      {/* {console.log("doc",DocByDep)} */}
+      {/* {console.log("user",user)} */}
 
 
         <div className="container" style={{backgroundColor:"white",paddingBottom:"0.5rem",borderRadius:"20px"}}>

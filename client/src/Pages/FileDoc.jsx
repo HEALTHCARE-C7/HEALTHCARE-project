@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchAppoitments,fetchPationOfDoctor,fetchPationOfThisDat,acceptAppoitment } from '../reducers/appoitmentSlice.js'; 
 import { fetchAvailability,addAvailability} from '../reducers/availabilitySlice.js'
+import{fetchreview} from '../reducers/reviewSlice.js'
 import doc1 from '../Images/doc1.jpeg';
 import axios from 'axios'
 
@@ -11,6 +12,7 @@ import search from '../Images/icons/search.png'
 import bell from '../Images/icons/bell.png'
 
 import MyProfile from '../components/MyProfile.jsx';
+import ProfilePatione from '../components/ProfilePatione.jsx';
 
 export default function FileDoc() {
 
@@ -18,8 +20,10 @@ export default function FileDoc() {
   const { DotorPation } =useSelector (state => state.appoitment)
   const { toDayAppoitment } =useSelector (state => state.appoitment)
   const { dataAvalability } =useSelector (state => state.availabilty)
+  const { DataReviews } =useSelector (state => state.review)
+
   const [isFetch,setIsFetch]=useState(false)
-  const [view,setView]=useState('Overview')
+  const [view,setView]=useState('MyProfile')
 
   
   
@@ -28,7 +32,21 @@ export default function FileDoc() {
   let month = date.getMonth() + 1
   let year = date.getFullYear()
   let today = year + '-' + month + '-' + day
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({});
+  const dispatch=useDispatch()
+
+
+
+
+    useEffect(() => {
+    dispatch(fetchAppoitments())
+    dispatch(fetchPationOfDoctor(1))
+    dispatch(fetchPationOfThisDat(today))
+    dispatch(fetchAvailability())   
+    dispatch(fetchreview())   
+
+  }, [isFetch])
+
   useEffect(()=>{
     const fetchDoctor = async () => {
       try {
@@ -38,6 +56,7 @@ export default function FileDoc() {
         const response = await axios.get('http://localhost:5000/api/doctor/user',config)
      console.log('res data',response.data);
         setUser(response.data);
+        console.log(user);
       } catch (error) {
         
       }
@@ -45,16 +64,6 @@ export default function FileDoc() {
 
     fetchDoctor();
   },[])
-
-
-  const dispatch=useDispatch()
-
-    useEffect(() => {
-    dispatch(fetchAppoitments())
-    dispatch(fetchPationOfDoctor(1))
-    dispatch(fetchPationOfThisDat(today))
-    dispatch(fetchAvailability())   
-  }, [isFetch])
 
 
   const toogle=()=>{
@@ -70,7 +79,6 @@ const changeView =(view)=>{
 
   return (
     <>
-  {/* {console.log("avalability",dataAvalability)} */}
   <div className="container-fluid">
     <div className="row">
         <div className="col-2 " >
@@ -254,7 +262,7 @@ const changeView =(view)=>{
                 <div className="col-2"></div>
                 <div className="col-5">
                 <div className="title">
-                    <h5>Aceepted Appoitments</h5>
+                    <h5>Appoitments Of To day</h5>
                 </div>
                   {
                     toDayAppoitment.map((data,i)=>{   
@@ -319,7 +327,7 @@ const changeView =(view)=>{
 
         </div>
         }
-        {view === "MyProfile" && <MyProfile/> }
+        {view === "MyProfile" && <ProfilePatione DataReviews={DataReviews}/> }
     </div>
   </div>
 

@@ -1,32 +1,146 @@
-import React from 'react'
-import MyProfile from './MyProfile';
-import  { useState } from 'react'
-import search from '../Images/icons/search.png'
+import React, { useState } from 'react'
+import '../CSS/FileDoc.css'
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { fetchAppoitments,fetchPationOfDoctor,fetchPationOfThisDat,acceptAppoitment } from '../reducers/appoitmentSlice.js'; 
+import{fetchreview} from '../reducers/reviewSlice.js'
 import doc1 from '../Images/doc1.jpeg';
+import axios from 'axios'
 import str from '../Images/icons/star.png' 
-import {
-  MDBBtn,
-  MDBCard,
-  MDBCardBody,
-  MDBCardFooter,
-  MDBCardImage,
-  MDBCol,
-  MDBContainer,
-  MDBIcon,
-  MDBRow,
-  MDBTextArea,
-} from "mdb-react-ui-kit";
-// import commentaireP from '../components/commentaireP/commentaire.jsx'
-export default function ProfilePatione({DataReviews}) {
-    const [view,setView]=useState('Overview')
-    const changeView =(view)=>{
-      setView(view)
-      console.log(view);
+import search from '../Images/icons/search.png'
+import bell from '../Images/icons/bell.png'
+
+
+
+export default function FileDoc() {
+
+  const { DataAppoitment } =useSelector (state => state.appoitment)
+  const { DotorPation } =useSelector (state => state.appoitment)
+  const { toDayAppoitment } =useSelector (state => state.appoitment)
+ 
+
+  const [isFetch,setIsFetch]=useState(false)
+  const [view,setView]=useState('MyProfile')
+
+  
+  
+  let date = new Date()
+  let day = date.getDate()  
+  let month = date.getMonth() + 1
+  let year = date.getFullYear()
+  let today = year + '-' + month + '-' + day
+  const [user, setUser] = useState({});
+  const dispatch=useDispatch()
+
+
+
+
+    useEffect(() => {
+    dispatch(fetchAppoitments())
+    dispatch(fetchPationOfDoctor(1))
+    dispatch(fetchPationOfThisDat(today))
     
-    }
+ 
+
+  }, [isFetch])
+
+   useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        
+        const  token  =localStorage.getItem('token')
+        const config={headers:{Authorization:`Bearer ${token}`}}
+        const response = await axios.get('http://localhost:5000/api/patient/user',config)
+     console.log('res user',response.data);
+        setUser(response.data);
+        console.log(user);
+
+      } catch (error) {
+        
+      }
+    };
+    fetchProfile()
+  
+  }, []);
+
+
+  const toogle=()=>{
+    setIsFetch(!isFetch)  
+  }
+
+const changeView =(view)=>{
+  setView(view)
+  console.log(view);
+
+}
+
+
   return (
-    <div className="col-10" style={{paddingLeft:"1.5rem",paddingRight:"1.5rem"}}>
-  {/* {console.log("DataReviews",DataReviews)} */}
+    <>
+  <div className="container-fluid">
+    <div className="row">
+        <div className="col-2 " >
+        <div className="d-flex flex-column flex-shrink-0 p-3 bg-light" style={{width: "20rem",height:"57rem"}}>
+    <a href="/" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+    
+      <span className="fs-4">Doct.</span>
+    </a>
+    <hr/>
+    <ul className="nav nav-pills flex-column mb-auto">
+      <li className="nav-item">
+    
+        <a href="#" className="nav-link active" aria-current="page" onClick={()=>{
+          changeView('Overview')  
+        }} >        
+          Overview
+        </a>
+      </li>
+      <li>
+        <a href="#" className="nav-link link-dark">         
+          Appoitment
+        </a>
+      </li>
+      <li>
+        <a href="#" className="nav-link link-dark">         
+          My Pateints
+        </a>
+      </li>
+      <li>
+        <a href="#" className="nav-link link-dark">
+         
+          Schedule Timings
+        </a>
+      </li>
+      <li>
+        <a href="#" className="nav-link link-dark">          
+          Payment
+        </a>
+      </li>
+      <li>
+        <a href="#" className="nav-link link-dark">          
+        Message
+
+        </a>
+      </li>
+      <li>
+        <a href="#" className="nav-link link-dark">          
+          Blog
+        </a>
+      </li>
+      <li>
+        <a href="#" className="nav-link link-dark">          
+          Settings
+        </a>
+      </li>
+    </ul>
+    <hr/>
+
+  </div>
+        </div>
+
+
+        <div className="col-10" style={{paddingLeft:"1.5rem",paddingRight:"1.5rem"}}>
+ 
 
                 <nav className="navbar">
                 <div className="container-fluid">
@@ -111,69 +225,8 @@ export default function ProfilePatione({DataReviews}) {
                 <h5>Reviews</h5>              
               </div>
 
-                {/* <div className="card">
-                <div className="card-body">
-                    <h5 className="card-title">the quick fox jumps over the 
-                        lazy dog</h5>
-                    <p className="card-text">Things on a very small scale 
-                        behave like nothing </p>
-                   
-                </div>
-                </div> */}
+       
 
-          <div class="carousel">
-            <div class="card-container">
-                {DataReviews.map((data,i)=>{
-                  return(
-
-                    <MDBCol md="12" lg="10" xl="8" key={i} style={{paddingBottom:"1rem"}}>
-            <MDBCard>
-              <MDBCardBody>
-                <div className="d-flex flex-start align-items-center">
-                  <MDBCardImage
-                    className="rounded-circle shadow-1-strong me-3"
-                    src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp"
-                    alt="avatar"
-                    width="60"
-                    height="60"
-                  />
-                  <div>
-                    <h6 className="fw-bold text-primary mb-1">Lily Coleman</h6>
-                    <p className="text-muted small mb-0">
-                      Shared publicly - Jan 2020
-                    </p>
-                  </div>
-                </div>
-
-                <p className="mt-3 mb-4 pb-2">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip consequat.
-                </p>
-
-                <div className="small d-flex justify-content-start">
-                  <a href="#!" className="d-flex align-items-center me-3">
-                    <MDBIcon far icon="thumbs-up me-2" />
-                    <p className="mb-0">Like</p>
-                  </a>
-                  <a href="#!" className="d-flex align-items-center me-3">
-                    <MDBIcon far icon="comment-dots me-2" />
-                    <p className="mb-0">Comment</p>
-                  </a>
-                  <a href="#!" className="d-flex align-items-center me-3">
-                    <MDBIcon fas icon="share me-2" />
-                    <p className="mb-0">Share</p>
-                  </a>
-                </div>
-              </MDBCardBody>
-            </MDBCard>
-                     </MDBCol>
-                  )
-                  
-                })}
-            </div>
-          </div>
            
 
                 </div>
@@ -186,12 +239,17 @@ export default function ProfilePatione({DataReviews}) {
             </div>
 
 
-            {/* Profile User */}
-            {/* <MyProfile/> */}
            
 
 
 
             </div>
+    </div>
+  </div>
+
+ 
+
+
+    </>
   )
 }

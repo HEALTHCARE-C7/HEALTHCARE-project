@@ -60,7 +60,8 @@ db.Doctor.belongsTo(db.Service)
 db.Doctor.hasMany(db.Appoitment) 
 db.Appoitment.belongsTo(db.Doctor)
 
-
+db.Doctor.hasMany(db.Review)
+db.Review.belongsTo(db.Doctor)
 
 
 //  connection.sync({force:true}) 
