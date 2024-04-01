@@ -61,7 +61,7 @@ export default function FileDoc() {
     };
     fetchProfile()
   
-  }, []);
+  }, [isFetch]);
 
 
   const toogle=()=>{
@@ -156,7 +156,7 @@ const changeView =(view)=>{
                   changeView('MyProfile');  
                 }} className="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="https://github.com/mdo.png" alt="" width="32" height="32" className="rounded-circle me-2"/>
-                <strong>mdo</strong>
+                <strong>{user.firstName}</strong>
               </a>
               <ul className="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
                 <li><a className="dropdown-item" href="#">New project...</a></li>
@@ -180,25 +180,24 @@ const changeView =(view)=>{
                 <div className="col-2" style={{paddingBottom:"2rem"}}>
                   <div className="card" style={{width:"18rem"}}>
                       <img src={doc1} style={{borderRadius:"50rem",width:"150px",height:"150px",marginLeft:"4rem",marginTop:"1rem"}} className="card-img-top" alt="..."/>
-                      <div className="card-body" style={{textAlign:"center"}}>
+                      <div className="card-body" style={{textAlign:""}}>
                         <div>
-                        <h5 className="card-title" style={{color:"black"}}>name</h5>
-                        <p>specialité</p>
+                        <h5 className="card-title" style={{color:"black"}}>{user.firstName}</h5>
+                       
+                        <p>{user.email}</p>
+                        <p>{user.age} ans</p>
+                        <p>{user.gender}</p>
+                        <p>{user.phoneNumber}</p>
+
                         </div>
                             <button className='btn btn1-slide2' style={{borderRadius:"0rem",backgroundColor:"#7a6efe"}}>Edite Profile</button>  
-                            <p>146 Rates</p>
-                            <div className='img-card-star' style={{textAlign:"center",paddingLeft:"4.2rem"}} >
-                        <img src={str} className="" alt="..."/>
-                        <img src={str} className="" alt="..."/>
-                        <img src={str} className="" alt="..."/>
-                        <img src={str} className="" alt="..."/>
-                        <img src={str} className="" alt="..."/>
-                    </div>
+                            
+                           
                       </div>
                     </div>
                   </div>                
-                <div className="col-8">
-                <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                <div className="col-8" style={{paddingLeft:"3rem"}}>
+                <nav className="navbar navbar-expand-lg navbar-light bg-light" >
                         <div className="container-fluid">
                             <a className="navbar-brand" href="#">My Profile</a>
                             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

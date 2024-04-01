@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import DoctorLogin from './DoctorLogin.jsx'
 import PatientLogin from './PatientLogin.jsx'
 import '../CSS/Auth.css'
+import NavBarre from '../components/NavBarre.jsx'
+
 
 const LoginPage = () => {
 const [view,setView]=useState('loginP')
@@ -15,6 +17,7 @@ const handlerCategory=()=>{
 }
 return (
   <div>
+    <NavBarre/>
     <div className="nav nav-auth">
      <span className="items-login" onClick={handlerCategory}>
       Choose

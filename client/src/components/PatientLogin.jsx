@@ -12,7 +12,6 @@ const LoginScreen = () => {
 const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch()
   const { register, handleSubmit } = useForm()
-  // const { loading, error } = useSelector((state) => state.user)
   const success= useSelector((state)=>
     state.patient.success
   )

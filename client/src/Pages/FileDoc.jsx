@@ -3,6 +3,8 @@ import '../CSS/FileDoc.css'
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchAppoitments,fetchPationOfDoctor,fetchPationOfThisDat,acceptAppoitment } from '../reducers/appoitmentSlice.js'; 
+import { useNavigate } from "react-router-dom";
+
 import { fetchAvailability,addAvailability} from '../reducers/availabilitySlice.js'
 import{fetchreview} from '../reducers/reviewSlice.js'
 import doc1 from '../Images/doc1.jpeg';
@@ -28,10 +30,8 @@ export default function FileDoc() {
   const [isFetch,setIsFetch]=useState(false)
   const [view,setView]=useState('MyProfile')
 
-  const changeView=(options) =>{
-    setView(options)
-  }
   
+  const navigate = useNavigate();
   let date = new Date()
   let day = date.getDate()  
   let month = date.getMonth() + 1
@@ -45,13 +45,17 @@ export default function FileDoc() {
 
     useEffect(() => {
     dispatch(fetchAppoitments())
-    dispatch(fetchPationOfDoctor(1))
+    dispatch(fetchPationOfDoctor(user.id))
     dispatch(fetchPationOfThisDat(today))
     dispatch(fetchAvailability())   
     dispatch(fetchreview())   
 
   }, [isFetch])
-
+  const logout=()=>{
+    localStorage.removeItem('token')
+    navigate('/')
+  
+  }
   useEffect(()=>{
     const fetchDoctor = async () => {
       try {
@@ -93,9 +97,10 @@ const logout=()=>{
 
   return (
     <>
+    {console.log("user",DotorPation)}
   <div className="container-fluid">
     <div className="row">
-        <div className="col-2 " >
+        <div className="col-2 " style={{paddingTop:"7rem"}} >
         <div className="d-flex flex-column flex-shrink-0 p-3 bg-light" style={{width: "20rem",height:"57rem"}}>
     <a href="/" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
     
@@ -152,41 +157,50 @@ const logout=()=>{
     <hr/>
 
   </div>
+       
         </div>
 
-
         {view === "Overview" &&
-        <div className="col-10" style={{paddingLeft:"1.5rem",paddingRight:"1.5rem"}}>
-                <nav className="navbar navbar-light">
-                <div className="container-fluid">
-                    <form className="d-flex serach-input-file-Doc">
+        
+           <>
+
+        <div className="col-10" style={{paddingLeft:"1.5rem",paddingRight:"1.5rem",paddingTop:"0rem"}}>
+        <nav className="">
+                <div className="container-fluid" style={{paddingTop:"1rem",paddingBottom:"3rem"}}>
+                  <div className="row">
+                 <div className="col-8">
+                 <form className="d-flex serach-input-file-Doc">
                     <img style={{ width: "20px",height:"30px",paddingTop:"6px"}} src={search} alt="" />
                     <input className="form-control me-2" type="search" style={{borderRadius:"2rem",backgroundColor:"transparent"}} placeholder="Search" aria-label="Search"/>
 
-          
-            </form> 
-            <div>
-            <div className="dropdown">
-      <a href="#" className="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="https://github.com/mdo.png" alt="" width="32" height="32" className="rounded-circle me-2"/>
-        <strong>mdo</strong>
-      </a>
-      <ul className="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-        <li><a className="dropdown-item" href="#">New project...</a></li>
-        <li><a className="dropdown-item" href="#">Settings</a></li>
-        <li><a className="dropdown-item" href="#">Profile</a></li>
-        <li><hr className="dropdown-divider"/></li>
-        <li><a className="dropdown-item" href="#">Sign out</a></li>
-      </ul>
-    </div>
-            </div>
-        </div>
+                  
+                    </form> 
+                    <div>
+                    <img style={{ width: "20px",height:"30px",paddingTop:"6px"}} src={bell} alt="" />
+
+                    <div className="dropdown">
+
+                        <a href="#" onClick={()=>{
+                            changeView('MyProfile');  
+                          }} className="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+                          <img src="https://github.com/mdo.png" alt="" width="32" height="32" className="rounded-circle me-2"/>
+                          <strong>mdo</strong>
+                        </a>
+                        <ul className="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+                          <li><a className="dropdown-item" href="#">New project...</a></li>
+                          <li><a className="dropdown-item" href="#">Settings</a></li>
+                          <li><a className="dropdown-item" href="#">Profile</a></li>
+                          <li><hr className="dropdown-divider"/></li>
+                          <li><a className="dropdown-item" href="#">Sign out</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                </div>
 
             </nav>
-
             <div className="row">
               <div className="col-12" style={{paddingBottom:"3rem"}}>
-                <h3>Welcome , Dr Stephen </h3>
+                <h3>Welcome , Dr {user.firstName} </h3>
                 <h6>Have a nice day at work</h6>
               </div>
               <div className="col-3" >
@@ -306,7 +320,7 @@ const logout=()=>{
                       </div>
                 <div className="row" style={{backgroundColor:"#bebebe",height:"2rem"}}>
                         
-                    <div className="col-2">Pateint Name</div>
+                    <div className="col-2">{user.firstName}</div>
                     <div className="col-2">Visit Id </div>
                     <div className="col-2">Date</div>
                     <div className="col-2">Gender</div>
@@ -335,8 +349,12 @@ const logout=()=>{
 
 
         </div>
+        </>
         }
-        {view === "MyProfile" && <ProfilePatione DataReviews={DataReviews}/> }
+        {view === "MyProfile" && <ProfilePatione DataReviews={DataReviews} user={user}/> }
+
+
+
     </div>
   </div>
 
