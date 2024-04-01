@@ -11,14 +11,13 @@ const LoginScreen = () => {
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch()
   const { register, handleSubmit } = useForm()
-  const success= useSelector((state)=>
-    state.doctor.success
-  )
+  const success= useSelector((state)=> state.doctor.success)
+  
   const submitForm = (data) => {
   dispatch(doctorLogin(data)) 
   console.log("succc",success); 
   if(success){
-    navigate('/FileDoc')
+    navigate('/Profile/doc')
   }else{
 
     console.log('error');
