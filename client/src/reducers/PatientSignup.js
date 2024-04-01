@@ -25,6 +25,8 @@ const authSlice = createSlice({
       .addCase(registerPatient.fulfilled, (state, action) => {
         state.loading = false;
         state.data = action.payload;
+        state.success=true
+
       })
       .addCase(registerPatient.rejected, (state, action) => {
         state.loading = false;
