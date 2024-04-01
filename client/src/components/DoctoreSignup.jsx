@@ -60,7 +60,7 @@ const Signup = () => {
             <label for="speciality">Speciality</label>
             <input type="text" className="form-input-signup" {...register('speciality')} required placeholder='Your Speciality'/>
           </div>
-          <button type="submit" className="button-signup" onClick={()=>navigate('/login')} >Sign Up</button>
+          <button type="submit" className="button-signup"  >Sign Up</button>
         </form>
       </div>
      

@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import { fetchAppoitments,fetchPationOfDoctor,fetchPationOfThisDat,acceptAppoitment } from '../reducers/appoitmentSlice.js'; 
 import { fetchAvailability,addAvailability} from '../reducers/availabilitySlice.js'
 import doc1 from '../Images/doc1.jpeg';
-
+import axios from 'axios'
 
 import search from '../Images/icons/search.png'
 import bell from '../Images/icons/bell.png'
@@ -28,8 +28,23 @@ export default function FileDoc() {
   let month = date.getMonth() + 1
   let year = date.getFullYear()
   let today = year + '-' + month + '-' + day
+  const [user, setUser] = useState(null);
+  useEffect(()=>{
+    const fetchDoctor = async () => {
+      try {
+        
+        const  token  =localStorage.getItem('token')
+        const config={headers:{Authorization:`Bearer ${token}`}}
+        const response = await axios.get('http://localhost:5000/api/doctor/user',config)
+     console.log('res data',response.data);
+        setUser(response.data);
+      } catch (error) {
+        
+      }
+    };
 
-
+    fetchDoctor();
+  },[])
 
 
   const dispatch=useDispatch()
