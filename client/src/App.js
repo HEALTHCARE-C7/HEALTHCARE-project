@@ -75,9 +75,9 @@ let App = () => {
         <Route  path="/contact" element={<Contact/>} >  </Route>
         <Route  path="/login" element={<LoginPage/>} >  </Route>
         <Route  path="/signup" element={<SignUp/>} >  </Route>  
-        <Route  path="/FileDoc" element={<FileDoc/>} >  </Route>
+        <Route  path="/Profile/doc" element={<FileDoc/>} >  </Route>
         <Route  path="/fetch" element={<FetchToken/>} >  </Route>  
-        <Route  path="/ProfilePatient" element={<ProfilePatient/>} >  </Route>  
+        <Route  path="/Profile/Patient" element={<ProfilePatient/>} >  </Route>  
 
         {/* <Route  path="/chat" element={<ChatRoom/>} >  </Route>   */}
         {/* <Route path="/chat" element={<ChatPage socket={socket} />}></Route> */}

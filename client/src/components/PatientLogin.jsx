@@ -18,12 +18,13 @@ const [showPassword, setShowPassword] = useState(false);
   )
   const submitForm = (data) => {
     dispatch(patientLogin(data))
-    console.log(data.email)
-    if(success){
+    console.log("succc",success); 
+  if(success){
+    navigate('/Profile/Patient')
+  }else{
 
-      navigate('/fileDoc')
-    }
-  
+    console.log('error');
+  }
   }
 
   const togglePasswordVisibility = () => {

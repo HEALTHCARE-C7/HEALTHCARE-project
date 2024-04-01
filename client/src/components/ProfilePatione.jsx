@@ -121,8 +121,8 @@ export default function ProfilePatione({DataReviews}) {
                 </div>
                 </div> */}
 
-          <div class="carousel">
-            <div class="card-container">
+          <div className="carousel">
+            <div className="card-container">
                 {DataReviews.map((data,i)=>{
                   return(
 
