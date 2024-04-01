@@ -9,12 +9,12 @@ import {patientLogin} from '../components/AuthActionPatient.jsx'
 //   return jsonData;
 // });
 const userToken = localStorage.getItem('userToken')
-  ? localStorage.getItem('userToken')
-  : null
+  // ? localStorage.getItem('userToken')
+  // : null
 const initialState = {
   loading: false,
   userInfo: null, 
-  userToken, 
+  userToken:null, 
   error: null,
   success: false,
   }

@@ -67,7 +67,6 @@ let App = () => {
 
     <Router>
      <div>
-      <NavBarre/>
       <Routes>
         <Route exact  path="/" element={<Home/>} >  </Route>
         <Route  path="/About" element={<About/>} >  </Route>
