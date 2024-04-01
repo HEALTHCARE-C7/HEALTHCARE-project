@@ -10,7 +10,7 @@ import str from '../Images/icons/star.png'
 import doc1 from '../Images/doc1.jpeg' 
 import doc2 from '../Images/doc2.jpeg' 
 import doc3 from '../Images/doc3.jpeg' 
-
+import NavBarre from '../components/NavBarre.jsx'
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import {addAppoitments } from '../reducers/appoitmentSlice.js'; 
@@ -44,6 +44,10 @@ function Home2() {
         }
   return (
     <>
+      <NavBarre/>
+
+
+
     
          <div className="container-fluide" style={{paddingBottom:"5rem"}}>
     <div className="row slide3">
