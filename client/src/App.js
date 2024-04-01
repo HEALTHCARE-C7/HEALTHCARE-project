@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from "react";
+import React from "react";
 import Home from "./Pages/Home.jsx";
 import About from "./Pages/About.jsx";
 import {BrowserRouter as Router, Route,Routes} from  'react-router-dom';
@@ -14,55 +14,17 @@ import LoginPage from "./components/LoginPage.jsx";
 import SignUp from "./components/SignUp.jsx";
 import FetchToken from "./components/FetchToken.jsx";
 // import ChatRoom from "./components/Chat/ChatRoom.jsx";
-import  io  from "socket.io-client";
+// import  io  from "socket.io-client";
 // import socketIO from 'socket.io-client';
-import ChatPage from "./components/Chat/ChatPage.jsx";
+// import ChatPage from "./components/Chat/ChatPage.jsx";
 
 
 
 // const socket = io('http://localhost:5000');
 
 let App = () => {
-  const [user, setUser] = useState(null);
-  // useEffect(() => {
-  //   const fetchProfile = async () => {
-  //     try {
-  // const [user, setUser] = useState(null);
-  // useEffect(() => {
-  //   const fetchProfile = async () => {
-  //     try {
-        
-        const  token  =localStorage.getItem('token')
-        const config={headers:{Authorization:`Bearer ${token}`}}
-        const response = await axios.get('http://localhost:5000/api/patient/user',config)
-     console.log('res data',response.data);
-        setUser(response.data);
-      } catch (error) {
-        
-  //     }
-  //   };
-  //   fetchProfile()
-  
-  // }, []);
-  // useEffect(()=>{
-  //   const fetchDoctor = async () => {
-  //     try {
-        
-        const  token  =localStorage.getItem('token')
-        const config={headers:{Authorization:`Bearer ${token}`}}
-        const response = await axios.get('http://localhost:5000/api/doctor/user',config)
-     console.log('res data',response.data);
-        setUser(response.data);
-      } catch (error) {
-        
-  //     }
-  //   };
+ 
 
-  //   fetchDoctor();
-  // },[])
-  // console.log(user);
-    // const refreshToken = localStorage.getItem('token');
-    // console.log('hello world',refreshToken)
 
   return (
 

@@ -14,6 +14,7 @@ import bell from '../Images/icons/bell.png'
 
 import MyProfile from '../components/MyProfile.jsx';
 import ProfilePatione from '../components/ProfilePatione.jsx';
+// import { options } from '../../../server/routes/docteur.routes.js';
 
 export default function FileDoc() {
   const navigate = useNavigate();
@@ -27,7 +28,9 @@ export default function FileDoc() {
   const [isFetch,setIsFetch]=useState(false)
   const [view,setView]=useState('MyProfile')
 
-  
+  const changeView=(options) =>{
+    setView(options)
+  }
   
   let date = new Date()
   let day = date.getDate()  
@@ -68,7 +71,7 @@ export default function FileDoc() {
   },[])
 
 
-  const dispatch=useDispatch()
+  // const dispatch=useDispatch()
 
     useEffect(() => {
     dispatch(fetchAppoitments())
@@ -83,7 +86,7 @@ export default function FileDoc() {
   }
 const logout=()=>{
   localStorage.removeItem('token')
-
+  navigate('/')
 
 }
 
