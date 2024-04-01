@@ -8,7 +8,7 @@ import axios from 'axios'
 import Home2 from "./Pages/Home2.jsx";
 import NavBarre from "./components/NavBarre.jsx";
 import Contact from "./Pages/Contact.jsx";
-
+import ProfilePatient from "./Pages/ProfilePatient.jsx";
 import FileDoc from "./Pages/FileDoc.jsx";
 import LoginPage from "./components/LoginPage.jsx";
 import SignUp from "./components/SignUp.jsx";
@@ -20,45 +20,48 @@ import ChatPage from "./components/Chat/ChatPage.jsx";
 
 
 
-const socket = io('http://localhost:5000');
+// const socket = io('http://localhost:5000');
 
 let App = () => {
   const [user, setUser] = useState(null);
-  useEffect(() => {
-    const fetchProfile = async () => {
-      try {
+  // useEffect(() => {
+  //   const fetchProfile = async () => {
+  //     try {
         
-        const  token  =localStorage.getItem('token')
-        const config={headers:{Authorization:`Bearer ${token}`}}
-        const response = await axios.get('http://localhost:5000/api/patient/user',config)
-     console.log('res data',response.data);
-        setUser(response.data);
-      } catch (error) {
-        
-      }
-    };
-    fetchProfile()
-  
-  }, []);
-  useEffect(()=>{
-    const fetchDoctor = async () => {
-      try {
-        
-        const  token  =localStorage.getItem('token')
-        const config={headers:{Authorization:`Bearer ${token}`}}
-        const response = await axios.get('http://localhost:5000/api/doctor/user',config)
-     console.log('res data',response.data);
-        setUser(response.data);
-      } catch (error) {
-        
-      }
-    };
+  //       const  token  =localStorage.getItem('token')
+  //       const config={headers:{Authorization:`Bearer ${token}`}}
+  //       const response = await axios.get('http://localhost:5000/api/patient/user',config)
+  //    console.log('res user',response.data);
+  //       setUser(response.data);
+  //       console.log(user);
 
-    fetchDoctor();
-  },[])
-  console.log(user);
-    const refreshToken = localStorage.getItem('token');
-    console.log('hello world',refreshToken)
+  //     } catch (error) {
+        
+  //     }
+  //   };
+  //   fetchProfile()
+  
+  // }, []);
+  // useEffect(()=>{
+  //   const fetchDoctor = async () => {
+  //     try {
+        
+  //       const  token  =localStorage.getItem('token')
+  //       const config={headers:{Authorization:`Bearer ${token}`}}
+  //       const response = await axios.get('http://localhost:5000/api/doctor/user',config)
+  //    console.log('res doc',response.data);
+  //       setUser(response.data);
+  //       console.log(user);
+  //     } catch (error) {
+        
+  //     }
+  //   };
+
+  //   fetchDoctor();
+  // },[])
+  // console.log(user);
+    // const refreshToken = localStorage.getItem('token');
+    // console.log('hello world',refreshToken)
 
   return (
 
@@ -74,8 +77,10 @@ let App = () => {
         <Route  path="/signup" element={<SignUp/>} >  </Route>  
         <Route  path="/FileDoc" element={<FileDoc/>} >  </Route>
         <Route  path="/fetch" element={<FetchToken/>} >  </Route>  
+        <Route  path="/ProfilePatient" element={<ProfilePatient/>} >  </Route>  
+
         {/* <Route  path="/chat" element={<ChatRoom/>} >  </Route>   */}
-        <Route path="/chat" element={<ChatPage socket={socket} />}></Route>
+        {/* <Route path="/chat" element={<ChatPage socket={socket} />}></Route> */}
 
 
         

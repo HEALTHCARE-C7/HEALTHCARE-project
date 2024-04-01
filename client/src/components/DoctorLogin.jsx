@@ -15,7 +15,8 @@ const LoginScreen = () => {
     state.doctor.success
   )
   const submitForm = (data) => {
-  dispatch(doctorLogin(data))  
+  dispatch(doctorLogin(data)) 
+  console.log("succc",success); 
   if(success){
     navigate('/FileDoc')
   }else{
