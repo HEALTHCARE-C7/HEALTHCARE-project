@@ -66,6 +66,7 @@ const initialState = {
         })
         .addCase(fetchDoc.fulfilled, (state, action) => {
           state.loading = false;
+          state.success=true
           state.allDoc = action.payload;
           state.loading = true; 
         })

@@ -14,13 +14,13 @@ import LoginPage from "./components/LoginPage.jsx";
 import SignUp from "./components/SignUp.jsx";
 import FetchToken from "./components/FetchToken.jsx";
 // import ChatRoom from "./components/Chat/ChatRoom.jsx";
-import { io } from "socket.io-client";
+import  io  from "socket.io-client";
 // import socketIO from 'socket.io-client';
 import ChatPage from "./components/Chat/ChatPage.jsx";
 
 
 
-const socket = io('<http://localhost:5000>');
+const socket = io('http://localhost:5000');
 
 let App = () => {
   const [user, setUser] = useState(null);
@@ -37,9 +37,25 @@ let App = () => {
         
       }
     };
-
-    fetchProfile();
+    fetchProfile()
+  
   }, []);
+  useEffect(()=>{
+    const fetchDoctor = async () => {
+      try {
+        
+        const  token  =localStorage.getItem('token')
+        const config={headers:{Authorization:`Bearer ${token}`}}
+        const response = await axios.get('http://localhost:5000/api/doctor/user',config)
+     console.log('res data',response.data);
+        setUser(response.data);
+      } catch (error) {
+        
+      }
+    };
+
+    fetchDoctor();
+  },[])
   console.log(user);
     const refreshToken = localStorage.getItem('token');
     console.log('hello world',refreshToken)

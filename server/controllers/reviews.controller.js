@@ -1,22 +1,18 @@
-// DELETE THIS LINE
+const db=require('../Models/index.js');
+
 module.exports = {
 
 
-    selectAll:async function(req,res){
-       try {
-           res.send('hello')
-           
-       } catch (error) {
-           
-       }
-   
+    addCOmment:async function(req,res){
+        try {
+            const Review= await db.Review.findAll({})
+            res.status(200).send(Review)
+        } catch (error) {
+            throw error
+        }
+
     }
-   
-   
-   
+
+
+
    }
-   
-   
-   
-   
-   

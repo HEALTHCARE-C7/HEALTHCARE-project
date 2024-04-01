@@ -23,7 +23,7 @@ db.Patient=require('./patien.model.js')(connection,DataTypes)
 db.Appoitment=require('./appoitment.model.js')(connection,DataTypes)
 db.Availabilty=require('./availabilty.model.js')(connection,DataTypes)
 db.Service=require('./service.model.js')(connection,DataTypes)
-
+db.Review=require('./reviews.model.js')(connection,DataTypes)
 
 
 db.UserChat=require('../Models/UserChat.js')(connection,DataTypes)
@@ -64,7 +64,7 @@ db.Appoitment.belongsTo(db.Doctor)
 
 
 //  connection.sync({force:true}) 
-//  db.Availabilty.sync({force:true}) 
+//  db.Review.sync({force:true}) 
 
 
 

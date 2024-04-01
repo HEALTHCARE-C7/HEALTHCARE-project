@@ -39,7 +39,7 @@ export const registerDoctor = createAsyncThunk(
           
         )
         
-        localStorage.setItem('userToken', data.token)
+        localStorage.setItem('token', data.token)
         return data
       } catch (error) {
       

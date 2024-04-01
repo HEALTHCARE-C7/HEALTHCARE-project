@@ -9,7 +9,7 @@ const ChatFooter = ({ socket }) => {
     // if (message.trim() && localStorage.getItem('token')) {
       socket.emit('message', {
         text: message,
-        name: localStorage.getItem('token'),
+        // name: localStorage.getItem('token'),
        
       });
     // }
