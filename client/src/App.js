@@ -14,13 +14,13 @@ import LoginPage from "./components/LoginPage.jsx";
 import SignUp from "./components/SignUp.jsx";
 import FetchToken from "./components/FetchToken.jsx";
 // import ChatRoom from "./components/Chat/ChatRoom.jsx";
-import { io } from "socket.io-client";
+import  io  from "socket.io-client";
 // import socketIO from 'socket.io-client';
 import ChatPage from "./components/Chat/ChatPage.jsx";
 
 
 
-const socket = io('<http://localhost:5000>');
+const socket = io('http://localhost:5000');
 
 let App = () => {
   const [user, setUser] = useState(null);
@@ -37,6 +37,10 @@ let App = () => {
         
       }
     };
+    fetchProfile()
+  
+  }, []);
+  useEffect(()=>{
     const fetchDoctor = async () => {
       try {
         
@@ -51,7 +55,7 @@ let App = () => {
     };
 
     fetchDoctor();
-  }, []);
+  },[])
   console.log(user);
     const refreshToken = localStorage.getItem('token');
     console.log('hello world',refreshToken)
@@ -68,7 +72,7 @@ let App = () => {
         <Route  path="/contact" element={<Contact/>} >  </Route>
         <Route  path="/login" element={<LoginPage/>} >  </Route>
         <Route  path="/signup" element={<SignUp/>} >  </Route>  
-        <Route  path="/FileDoc" element={<FileDoc />} >  </Route>
+        <Route  path="/FileDoc" element={<FileDoc/>} >  </Route>
         <Route  path="/fetch" element={<FetchToken/>} >  </Route>  
         {/* <Route  path="/chat" element={<ChatRoom/>} >  </Route>   */}
         <Route path="/chat" element={<ChatPage socket={socket} />}></Route>

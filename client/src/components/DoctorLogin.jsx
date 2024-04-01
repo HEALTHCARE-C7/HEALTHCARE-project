@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form'
 import  '../CSS/Auth.css'
-import { useDispatch } from 'react-redux'
+import { useDispatch,useSelector } from 'react-redux'
 import { doctorLogin } from './AuthActionDoctor'
 import { useState } from 'react'
 import { FaEye,FaEyeSlash  } from "react-icons/fa";
@@ -11,9 +11,17 @@ const LoginScreen = () => {
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch()
   const { register, handleSubmit } = useForm()
-  
+  const success= useSelector((state)=>
+    state.doctor.success
+  )
   const submitForm = (data) => {
   dispatch(doctorLogin(data))  
+  if(success){
+    navigate('/FileDoc')
+  }else{
+
+    console.log('error');
+  }
   }
    
   const togglePasswordVisibility = () => {

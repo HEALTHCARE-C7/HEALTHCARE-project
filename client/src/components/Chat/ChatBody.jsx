@@ -5,8 +5,8 @@ const ChatBody = ({ messages }) => {
   const navigate = useNavigate();
 
   const handleLeaveChat = () => {
-    localStorage.removeItem('userName');
-    navigate('/');
+    localStorage.removeItem('token');
+    // navigate('/');
     window.location.reload();
   };
 
@@ -21,7 +21,7 @@ const ChatBody = ({ messages }) => {
 
       <div className="message__container">
         {messages.map((message) =>
-          message.name === localStorage.getItem('userName') ? (
+          message.name === localStorage.getItem('token') ? (
             <div className="message__chats" key={message.id}>
               <p className="sender__name">You</p>
               <div className="message__sender">

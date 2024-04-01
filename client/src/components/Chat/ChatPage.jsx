@@ -6,7 +6,7 @@ import '../../CSS/chat.css'
 const ChatPage = ({ socket }) => {
     const [messages, setMessages] = useState([]);
     useEffect(() => {
-        socket.on('messageResponse', (data) => setMessages([...messages, data]));
+        socket.on('message', (data) => setMessages([...messages, data]));
       }, [socket, messages]);
       console.log(messages);
       console.log(socket);
