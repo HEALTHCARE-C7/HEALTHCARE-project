@@ -1,19 +1,31 @@
 import { useForm } from 'react-hook-form'
 import  '../CSS/Auth.css'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { patientLogin } from './AuthActionPatient.jsx'
 import { useState } from 'react'
 import { FaEye,FaEyeSlash  } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const LoginScreen = () => {
+  const navigate = useNavigate();
+
 const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch()
   const { register, handleSubmit } = useForm()
-  // const { loading, error } = useSelector((state) => state.user)
+  const success= useSelector((state)=>
+    state.patient.success
+  )
   const submitForm = (data) => {
     dispatch(patientLogin(data))
-    console.log(data.email)
+    console.log("succc",success); 
+  if(success){
+    navigate('/Profile/Patient')
+  }else{
+
+    console.log('error');
   }
+  }
+
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -21,7 +33,7 @@ const [showPassword, setShowPassword] = useState(false);
     return (
         <div className="modal-content">
         <div className="login-page">
-          <h1>Login</h1>
+          <h1>Log In Patient</h1>
           <form onSubmit={handleSubmit(submitForm)}>
             <div className="form-group-login">
               <label className="email" htmlFor="email">Email</label>
@@ -50,7 +62,7 @@ const [showPassword, setShowPassword] = useState(false);
              </div>
              
             </div>
-            <button type="submit" className="button-login">Login</button>
+            <button type="submit" className="button-login">Log In</button>
           </form>
         </div>
       </div>

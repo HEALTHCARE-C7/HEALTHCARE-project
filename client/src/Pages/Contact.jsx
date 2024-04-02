@@ -1,9 +1,13 @@
 import React from 'react'
-import style from '../CSS/Contact.css'
+import '../CSS/Contact.css'
+import NavBarre from '../components/NavBarre.jsx'
+
 
 function Contact() {
   return (
     <>
+      <NavBarre/>
+
     <div className="container-fluid">
         <div className="row slide3">
         </div>         
@@ -18,16 +22,16 @@ function Contact() {
             </div>
         <div className=" row contact-box">
         <div className="col-6 col-contact-box">
-                         <label for="" class="form-label">First name</label>
+                         <label for="" className="form-label">First name</label>
                         <input  style={{ background:"none",border:" 1px solid #007E85"}} type="text" className="form-control" aria-describedby="emailHelp" placeholder="Enter your first name" />
                 </div>
                 <div className="col-6 col-contact-box">     
-                         <label for="" class="form-label">Last name</label>
+                         <label for="" className="form-label">Last name</label>
                         <input   style={{ background:"none",border:" 1px solid #007E85"}} type="text" className="form-control"  aria-describedby="emailHelp" placeholder="Enter your last name" />
                 </div>
                 <div className="col-12 col-contact-box">
-                <label  for="" class="form-label">Choose a topic</label>
-                                <select  style={{ background:"none",border:" 1px solid #007E85"}} id="" class="form-select">
+                <label  for="" className="form-label">Choose a topic</label>
+                                <select  style={{ background:"none",border:" 1px solid #007E85"}} id="" className="form-select">
                                     <option>Select One </option>
                                     <option> topic 2 </option>
                                     <option> topic 3 </option>
@@ -35,7 +39,7 @@ function Contact() {
 
                 </div>
                 <div className="col-12 col-contact-box">
-                <label for="" class="form-label">Message</label>
+                <label for="" className="form-label">Message</label>
 
                     <textarea   style={{ background:"none",border:" 1px solid #007E85"}} type="text" className="form-control"  aria-describedby="emailHelp" placeholder="Type your message..." rows="8" cols="50"  />
                 </div>

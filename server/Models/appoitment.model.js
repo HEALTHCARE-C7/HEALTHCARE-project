@@ -28,10 +28,10 @@ module.exports=(sequelize,DataTypes)=>{
       allowNull: true,
     },
     departement: {
-      type: DataTypes.ENUM("DEP1","DEP2","DEP3","DEP4"),
-      allowNull: false,
-      defaultValue: "DEP1",
-    },
+      type: DataTypes.STRING,
+      allowNull: true,
+
+    },  
     accepted: {
       type: DataTypes.ENUM("Declined","Confirmed"),
       allowNull: false,

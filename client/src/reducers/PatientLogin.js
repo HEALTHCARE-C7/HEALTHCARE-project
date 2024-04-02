@@ -9,12 +9,12 @@ import {patientLogin} from '../components/AuthActionPatient.jsx'
 //   return jsonData;
 // });
 const userToken = localStorage.getItem('userToken')
-  ? localStorage.getItem('userToken')
-  : null
+  // ? localStorage.getItem('userToken')
+  // : null
 const initialState = {
   loading: false,
   userInfo: null, 
-  userToken, 
+  userToken:null, 
   error: null,
   success: false,
   }
@@ -31,6 +31,7 @@ const initialState = {
         .addCase(patientLogin.fulfilled, (state, action) => {
           state.loading = false;
           state.data = action.payload;
+          state.success=true;
         })
         .addCase(patientLogin.rejected, (state, action) => {
           state.loading = false;
