@@ -44,7 +44,7 @@ function Home2() {
         }
   return (
     <>
-      <NavBarre/>
+      
 
 
 

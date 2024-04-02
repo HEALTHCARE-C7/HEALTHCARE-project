@@ -7,9 +7,10 @@ import axios from 'axios'
 
 import Home2 from "./Pages/Home2.jsx";
 import NavBarre from "./components/NavBarre.jsx";
+import NavBarreLog from './components/NavBarreLog.jsx';
 import Contact from "./Pages/Contact.jsx";
 import ProfilePatient from "./Pages/ProfilePatient.jsx";
-import FileDoc from "./Pages/FileDoc.jsx";
+import ProfileDoc from "./Pages/ProfileDoc.jsx";
 import LoginPage from "./components/LoginPage.jsx";
 import SignUp from "./components/SignUp.jsx";
 import FetchToken from "./components/FetchToken.jsx";
@@ -20,63 +21,45 @@ import ChatPage from "./components/Chat/ChatPage.jsx";
 
 
 
-// const socket = io('http://localhost:5000');
+import { fetchDoctor} from './reducers/DoctorLogin.js'
+import { useDispatch } from "react-redux";
+
+
 
 let App = () => {
-  const [user, setUser] = useState(null);
-  // useEffect(() => {
-  //   const fetchProfile = async () => {
-  //     try {
-        
-  //       const  token  =localStorage.getItem('token')
-  //       const config={headers:{Authorization:`Bearer ${token}`}}
-  //       const response = await axios.get('http://localhost:5000/api/patient/user',config)
-  //    console.log('res user',response.data);
-  //       setUser(response.data);
-  //       console.log(user);
+  const dispatch=useDispatch()
 
-  //     } catch (error) {
-        
-  //     }
-  //   };
-  //   fetchProfile()
-  
-  // }, []);
-  // useEffect(()=>{
-  //   const fetchDoctor = async () => {
-  //     try {
-        
-  //       const  token  =localStorage.getItem('token')
-  //       const config={headers:{Authorization:`Bearer ${token}`}}
-  //       const response = await axios.get('http://localhost:5000/api/doctor/user',config)
-  //    console.log('res doc',response.data);
-  //       setUser(response.data);
-  //       console.log(user);
-  //     } catch (error) {
-        
-  //     }
-  //   };
+  const [LoginView, setLoginView] = useState("logout");
 
-  //   fetchDoctor();
-  // },[])
-  // console.log(user);
-    // const refreshToken = localStorage.getItem('token');
-    // console.log('hello world',refreshToken)
+  const changeView=(LoginView)=>{
+    setLoginView(LoginView);  
+  }
+  useEffect(()=>{
+    dispatch( fetchDoctor())
+
+
+  },[])
 
   return (
-
+    
+    <>
+    
     <Router>
+
+      {LoginView==="logout" && <NavBarre/> }
+      {LoginView=="login" && <NavBarreLog/>}
+    
      <div>
       <Routes>
         <Route exact  path="/" element={<Home/>} >  </Route>
         <Route  path="/About" element={<About/>} >  </Route>
         <Route  path="/Home2" element={<Home2/>} >  </Route>
         <Route  path="/contact" element={<Contact/>} >  </Route>
-        <Route  path="/login" element={<LoginPage/>} >  </Route>
-        <Route  path="/signup" element={<SignUp/>} >  </Route>  
-        <Route  path="/Profile/doc" element={<FileDoc/>} >  </Route>
+        <Route  path="/login" element={<LoginPage changeView={changeView} />}  >  </Route>
+        <Route  path="/signup" element={<SignUp changeView={changeView} />} >  </Route>  
         <Route  path="/fetch" element={<FetchToken/>} >  </Route>  
-        <Route  path="/Profile/Patient" element={<ProfilePatient/>} >  </Route>  
+        <Route  path="/Profile/doc" element={<ProfileDoc changeView={changeView} />} >  </Route>
+        <Route  path="/Profile/Patient" element={<ProfilePatient changeView={changeView} />} >  </Route>  
 
         {/* <Route  path="/chat" element={<ChatRoom/>} >  </Route>   */}
         {/* <Route path="/chat" element={<ChatPage socket={socket} />}></Route> */}
@@ -90,6 +73,7 @@ let App = () => {
     </div>
   
    </Router>
+    </>
    
    
   );

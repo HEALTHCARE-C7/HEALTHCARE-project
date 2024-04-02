@@ -40,7 +40,7 @@ export const registerDoctor = createAsyncThunk(
         )
         
         localStorage.setItem('token', data.token)
-        return data
+        return data.docteur
       } catch (error) {
       
         if (error.response && error.response.data.message) {
