@@ -1,6 +1,9 @@
 import React from 'react';
 
 const ChatBar = () => {
+
+
+
   return (
     <div className="chat__sidebar">
       <h2>Open Chat</h2>

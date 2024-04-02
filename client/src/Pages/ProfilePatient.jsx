@@ -62,7 +62,7 @@ export default function FileDoc() {
     fetchProfile()
   
   }, [isFetch]);
-
+console.log(user);
 
   const toogle=()=>{
     setIsFetch(!isFetch)  

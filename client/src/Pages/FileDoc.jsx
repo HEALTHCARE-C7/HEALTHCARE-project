@@ -1,25 +1,20 @@
 import React, { useState } from 'react'
+import axios from 'axios'
 import '../CSS/FileDoc.css'
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchAppoitments,fetchPationOfDoctor,fetchPationOfThisDat,acceptAppoitment } from '../reducers/appoitmentSlice.js'; 
 import { useNavigate } from "react-router-dom";
-
 import { fetchAvailability,addAvailability} from '../reducers/availabilitySlice.js'
-import{fetchreview} from '../reducers/reviewSlice.js'
+import { fetchreview} from '../reducers/reviewSlice.js'
 import doc1 from '../Images/doc1.jpeg';
-import axios from 'axios'
-import { useNavigate } from "react-router-dom";
-
 import search from '../Images/icons/search.png'
 import bell from '../Images/icons/bell.png'
 
-import MyProfile from '../components/MyProfile.jsx';
-import ProfilePatione from '../components/ProfilePatione.jsx';
-// import { options } from '../../../server/routes/docteur.routes.js';
 
-export default function FileDoc() {
-  const navigate = useNavigate();
+import ProfilePatione from '../components/ProfilePatione.jsx';
+
+export default function ProfileDoc(props) {
 
   const { DataAppoitment } =useSelector (state => state.appoitment)
   const { DotorPation } =useSelector (state => state.appoitment)
@@ -28,7 +23,8 @@ export default function FileDoc() {
   const { DataReviews } =useSelector (state => state.review)
 
   const [isFetch,setIsFetch]=useState(false)
-  const [view,setView]=useState('MyProfile')
+  const [view,setView]=useState('Overview')
+  const [user, setUser] = useState({});
 
   
   const navigate = useNavigate();
@@ -37,7 +33,6 @@ export default function FileDoc() {
   let month = date.getMonth() + 1
   let year = date.getFullYear()
   let today = year + '-' + month + '-' + day
-  const [user, setUser] = useState({});
   const dispatch=useDispatch()
 
 
@@ -48,22 +43,14 @@ export default function FileDoc() {
     dispatch(fetchPationOfDoctor(user.id))
     dispatch(fetchPationOfThisDat(today))
     dispatch(fetchAvailability())   
-    dispatch(fetchreview())   
-
-  }, [isFetch])
-  const logout=()=>{
-    localStorage.removeItem('token')
-    navigate('/')
-  
-  }
-  useEffect(()=>{
+    dispatch(fetchreview())  
     const fetchDoctor = async () => {
       try {
         
         const  token  =localStorage.getItem('token')
         const config={headers:{Authorization:`Bearer ${token}`}}
         const response = await axios.get('http://localhost:5000/api/doctor/user',config)
-     console.log('res data',response.data);
+        console.log('res data',response.data);
         setUser(response.data);
         console.log(user);
       } catch (error) {
@@ -72,25 +59,39 @@ export default function FileDoc() {
     };
 
     fetchDoctor();
-  },[])
 
-
-  // const dispatch=useDispatch()
-
-    useEffect(() => {
-    dispatch(fetchAppoitments())
-    dispatch(fetchPationOfDoctor(1))
-    dispatch(fetchPationOfThisDat(today))
-    dispatch(fetchAvailability())   
   }, [isFetch])
+  const logout=()=>{
+    localStorage.removeItem('token')
+    navigate('/')
+  
+  }
+  // useEffect(()=>{
+  //   const fetchDoctor = async () => {
+  //     try {
+        
+  //       const  token  =localStorage.getItem('token')
+  //       const config={headers:{Authorization:`Bearer ${token}`}}
+  //       const response = await axios.get('http://localhost:5000/api/doctor/user',config)
+  //       console.log('res data',response.data);
+  //       setUser(response.data);
+  //       console.log(user);
+  //     } catch (error) {
+        
+  //     }
+  //   };
+
+  //   fetchDoctor();
+  // },[])
 
 
   const toogle=()=>{
     setIsFetch(!isFetch)  
   }
-const logout=()=>{
-  localStorage.removeItem('token')
-  navigate('/')
+
+const changeView =(view)=>{
+  setView(view)
+  console.log(view);
 
 }
 
@@ -169,13 +170,10 @@ const logout=()=>{
                 <div className="container-fluid" style={{paddingTop:"1rem",paddingBottom:"3rem"}}>
                   <div className="row">
                  <div className="col-8">
-                 <form className="d-flex serach-input-file-Doc">
-                    <img style={{ width: "20px",height:"30px",paddingTop:"6px"}} src={search} alt="" />
-                    <input className="form-control me-2" type="search" style={{borderRadius:"2rem",backgroundColor:"transparent"}} placeholder="Search" aria-label="Search"/>
-
+                
+                 </div>
+                  <div className="col-4" style={{display:"flex",gap:"2rem"}}>
                   
-                    </form> 
-                    <div>
                     <img style={{ width: "20px",height:"30px",paddingTop:"6px"}} src={bell} alt="" />
 
                     <div className="dropdown">
@@ -184,17 +182,22 @@ const logout=()=>{
                             changeView('MyProfile');  
                           }} className="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
                           <img src="https://github.com/mdo.png" alt="" width="32" height="32" className="rounded-circle me-2"/>
-                          <strong>mdo</strong>
+                          <strong>{user.firstName}</strong>
                         </a>
                         <ul className="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
                           <li><a className="dropdown-item" href="#">New project...</a></li>
                           <li><a className="dropdown-item" href="#">Settings</a></li>
                           <li><a className="dropdown-item" href="#">Profile</a></li>
                           <li><hr className="dropdown-divider"/></li>
-                          <li><a className="dropdown-item" href="#">Sign out</a></li>
+                          <li><a className="dropdown-item"  onClick={()=>{
+                            props.changeView("logout")
+                             logout(); 
+                          }}>Sign out</a></li>
                         </ul>
                       </div>
                     </div>
+                  </div>
+                 
                 </div>
 
             </nav>

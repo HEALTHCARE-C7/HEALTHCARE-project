@@ -6,10 +6,10 @@ const ChatBody = ({ messages }) => {
 
   const handleLeaveChat = () => {
     localStorage.removeItem('token');
-    navigate('/');
+    navigate('/Home2');
     window.location.reload();
   };
-
+console.log('hello',messages.id);
   return (
     <>
       <header className="chat__mainHeader">

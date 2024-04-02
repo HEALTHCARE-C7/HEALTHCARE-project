@@ -1,9 +1,6 @@
 module.exports = (sequelize,DataTypes) => {
-    sequelize.define("conversation", {
-      users: {
-        type: DataTypes.STRING,
-        unique: true,
-      },
+   const conversation= sequelize.define("conversation", {
+
     });
-    
+    return conversation
   };

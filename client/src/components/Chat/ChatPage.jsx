@@ -3,11 +3,36 @@ import ChatBar from './ChatBar';
 import ChatBody from './ChatBody';
 import ChatFooter from './ChatFooter';
 import '../../CSS/chat.css'
-const ChatPage = ({ socket }) => {
-    const [messages, setMessages] = useState([]);
-    useEffect(() => {
-        socket.on('message', (data) => setMessages([...messages, data]));
-      }, [socket, messages]);
+import  io  from "socket.io-client";
+// import socketIO from 'socket.io-client';
+
+
+const socket = io('http://localhost:4000');
+
+const ChatPage = () => {
+  const [messages, setMessages] = useState([]);
+  // const [socket, setSocket] = useState(null);
+
+
+  socket.on('connect', () => {
+    console.log('Connected to server');
+});
+
+
+
+
+useEffect(() => {
+  if (!socket) return;
+ 
+
+  socket.on('message', (data) => {
+    setMessages((prevMessages) => [...prevMessages, data]);
+  });
+
+  return () => socket.off('message');
+}, []);
+
+
       console.log(messages);
       console.log(socket);
   return (

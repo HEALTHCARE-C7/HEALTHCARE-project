@@ -1,39 +1,167 @@
-import React from 'react'
-import MyProfile from './MyProfile';
-import  { useState } from 'react'
-import search from '../Images/icons/search.png'
-import doc1 from '../Images/doc1.jpeg';
-import str from '../Images/icons/star.png' 
-import '../CSS/Contact.css'
-import bell from '../Images/icons/bell.png'
+import React, { useState } from 'react'
+import '../CSS/FileDoc.css'
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { fetchAppoitments,fetchPationOfDoctor,fetchPationOfThisDat,acceptAppoitment } from '../reducers/appoitmentSlice.js'; 
+import{fetchreview} from '../reducers/reviewSlice.js'
 import { useNavigate } from "react-router-dom";
+import doc1 from '../Images/doc1.jpeg';
+import axios from 'axios'
+import str from '../Images/icons/star.png' 
+import search from '../Images/icons/search.png'
+import bell from '../Images/icons/bell.png'
 
 
-import {
-  MDBBtn,
-  MDBCard,
-  MDBCardBody,
-  MDBCardFooter,
-  MDBCardImage,
-  MDBCol,
-  MDBContainer,
-  MDBIcon,
-  MDBRow,
-  MDBTextArea,
-} from "mdb-react-ui-kit";
-// import commentaireP from '../components/commentaireP/commentaire.jsx'
-export default function ProfilePatione({DataReviews,user}) {
-  const navigate = useNavigate();
 
-    const [view,setView]=useState('review')
-    const changeView =(view)=>{
-      setView(view)
-      console.log(view);
+export default function FileDoc(props) {
+  const navigate = useNavigate(props);
+
+
+  const { DataAppoitment } =useSelector (state => state.appoitment)
+  const { DotorPation } =useSelector (state => state.appoitment)
+  const { toDayAppoitment } =useSelector (state => state.appoitment)
+ 
+
+  const [isFetch,setIsFetch]=useState(false)
+  const [view,setView]=useState('MyProfile')
+
+  
+  
+  let date = new Date()
+  let day = date.getDate()  
+  let month = date.getMonth() + 1
+  let year = date.getFullYear()
+  let today = year + '-' + month + '-' + day
+  const [user, setUser] = useState({});
+  const dispatch=useDispatch()
+
+
+
+
+    useEffect(() => {
+    dispatch(fetchAppoitments())
+    dispatch(fetchPationOfDoctor(1))
+    const fetchProfile = async () => {
+      try {        
+        const  token  =localStorage.getItem('token')
+        const config={headers:{Authorization:`Bearer ${token}`}}
+        const response = await axios.get('http://localhost:5000/api/patient/user',config)
+        console.log('res user',response.data);
+        setUser(response.data);
+        console.log(user);
+
+      } catch (error) {
+        
+      }
+    };
+    fetchProfile()
+    dispatch(fetchPationOfThisDat(today))
     
-    }
+ 
+
+  }, [isFetch])
+
+  //  useEffect(() => {
+  //   const fetchProfile = async () => {
+  //     try {        
+  //       const  token  =localStorage.getItem('token')
+  //       const config={headers:{Authorization:`Bearer ${token}`}}
+  //       const response = await axios.get('http://localhost:5000/api/patient/user',config)
+  //       console.log('res user',response.data);
+  //       setUser(response.data);
+  //       console.log(user);
+
+  //     } catch (error) {
+        
+  //     }
+  //   };
+  //   fetchProfile()
+  
+  // }, [isFetch]);
+
+
+  const toogle=()=>{
+    setIsFetch(!isFetch)  
+  }
+  const logout=()=>{
+    localStorage.removeItem('token')
+    navigate('/')
+  
+  }
+
+const changeView =(view)=>{
+  setView(view)
+  console.log(view);
+
+}
+
+
   return (
-    <div className="col-10" style={{paddingLeft:"1.5rem",paddingRight:"1.5rem"}}>
-  {/* {console.log("DataReviews",DataReviews)} */}
+    <>
+  <div className="container-fluid">
+    <div className="row">
+        <div className="col-2 " >
+        <div className="d-flex flex-column flex-shrink-0 p-3 bg-light" style={{width: "20rem",height:"57rem"}}>
+    <a href="/" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+    
+      <span className="fs-4">Doct.</span>
+    </a>
+    <hr/>
+    <ul className="nav nav-pills flex-column mb-auto">
+      <li className="nav-item">
+    
+        <a href="#" className="nav-link active" aria-current="page" onClick={()=>{
+          changeView('Overview')  
+        }} >        
+          Overview
+        </a>
+      </li>
+      <li>
+        <a href="#" className="nav-link link-dark">         
+          Appoitment
+        </a>
+      </li>
+      <li>
+        <a href="#" className="nav-link link-dark">         
+          My Pateints
+        </a>
+      </li>
+      <li>
+        <a href="#" className="nav-link link-dark">
+         
+          Schedule Timings
+        </a>
+      </li>
+      <li>
+        <a href="#" className="nav-link link-dark">          
+          Payment
+        </a>
+      </li>
+      <li>
+        <a href="#" className="nav-link link-dark">          
+        Message
+
+        </a>
+      </li>
+      <li>
+        <a href="#" className="nav-link link-dark">          
+          Blog
+        </a>
+      </li>
+      <li>
+        <a href="#" className="nav-link link-dark">          
+          Settings
+        </a>
+      </li>
+    </ul>
+    <hr/>
+
+  </div>
+        </div>
+
+
+        <div className="col-10" style={{paddingLeft:"1.5rem",paddingRight:"1.5rem"}}>
+ 
 
                 <nav className="navbar">
                 <div className="container-fluid">
@@ -49,14 +177,18 @@ export default function ProfilePatione({DataReviews,user}) {
                   changeView('MyProfile');  
                 }} className="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="https://github.com/mdo.png" alt="" width="32" height="32" className="rounded-circle me-2"/>
-                <strong>mdo</strong>
+                <strong>{user.firstName}</strong>
               </a>
               <ul className="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
                 <li><a className="dropdown-item" href="#">New project...</a></li>
                 <li><a className="dropdown-item" href="#">Settings</a></li>
                 <li><a className="dropdown-item" href="#">Profile</a></li>
                 <li><hr className="dropdown-divider"/></li>
-                <li><a className="dropdown-item" href="#">Sign out</a></li>
+                <li><a className="dropdown-item" href="#"  onClick={()=>{
+                  props.changeView("logout")
+                  logout();
+                }}
+                >Sign out</a></li>
               </ul>
             </div>
                     </div>
@@ -73,25 +205,24 @@ export default function ProfilePatione({DataReviews,user}) {
                 <div className="col-2" style={{paddingBottom:"2rem"}}>
                   <div className="card" style={{width:"18rem"}}>
                       <img src={doc1} style={{borderRadius:"50rem",width:"150px",height:"150px",marginLeft:"4rem",marginTop:"1rem"}} className="card-img-top" alt="..."/>
-                      <div className="card-body" style={{textAlign:"center"}}>
+                      <div className="card-body" style={{textAlign:""}}>
                         <div>
-                        <h5 className="card-title" style={{color:"black"}}>name</h5>
-                        <p>specialité</p>
+                        <h5 className="card-title" style={{color:"black"}}>{user.firstName}</h5>
+                       
+                        <p>{user.email}</p>
+                        <p>{user.age} ans</p>
+                        <p>{user.gender}</p>
+                        <p>{user.phoneNumber}</p>
+
                         </div>
                             <button className='btn btn1-slide2' style={{borderRadius:"0rem",backgroundColor:"#7a6efe"}}>Edite Profile</button>  
-                            <p>146 Rates</p>
-                            <div className='img-card-star' style={{textAlign:"center",paddingLeft:"4.2rem"}} >
-                        <img src={str} className="" alt="..."/>
-                        <img src={str} className="" alt="..."/>
-                        <img src={str} className="" alt="..."/>
-                        <img src={str} className="" alt="..."/>
-                        <img src={str} className="" alt="..."/>
-                    </div>
+                            
+                           
                       </div>
                     </div>
                   </div>                
-                <div className="col-8">
-                <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                <div className="col-8" style={{paddingLeft:"3rem"}}>
+                <nav className="navbar navbar-expand-lg navbar-light bg-light" >
                         <div className="container-fluid">
                             <a className="navbar-brand" href="#">My Profile</a>
                             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -118,121 +249,31 @@ export default function ProfilePatione({DataReviews,user}) {
                 <h5>Reviews</h5>              
               </div>
 
-                {/* <div className="card">
-                <div className="card-body">
-                    <h5 className="card-title">the quick fox jumps over the 
-                        lazy dog</h5>
-                    <p className="card-text">Things on a very small scale 
-                        behave like nothing </p>
-                   
-                </div>
-                </div> */}
+       
 
-//           <div className="carousel">
-//             <div className="card-container">
-//                 {DataReviews.map((data,i)=>{
-//                   return(
-
-//                     <MDBCol md="12" lg="10" xl="8" key={i} style={{paddingBottom:"1rem"}}>
-//             <MDBCard>
-//               <MDBCardBody>
-//                 <div className="d-flex flex-start align-items-center">
-//                   <MDBCardImage
-//                     className="rounded-circle shadow-1-strong me-3"
-//                     src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp"
-//                     alt="avatar"
-//                     width="60"
-//                     height="60"
-//                   />
-//                   <div>
-//                     <h6 className="fw-bold text-primary mb-1">Lily Coleman</h6>
-//                     <p className="text-muted small mb-0">
-//                       Shared publicly - Jan 2020
-//                     </p>
-//                   </div>
-//                 </div>
-
-//                 <p className="mt-3 mb-4 pb-2">
-//                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-//                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-//                   Ut enim ad minim veniam, quis nostrud exercitation ullamco
-//                   laboris nisi ut aliquip consequat.
-//                 </p>
-
-//                 <div className="small d-flex justify-content-start">
-//                   <a href="#!" className="d-flex align-items-center me-3">
-//                     <MDBIcon far icon="thumbs-up me-2" />
-//                     <p className="mb-0">Like</p>
-//                   </a>
-//                   <a href="#!" className="d-flex align-items-center me-3">
-//                     <MDBIcon far icon="comment-dots me-2" />
-//                     <p className="mb-0">Comment</p>
-//                   </a>
-//                   <a href="#!" className="d-flex align-items-center me-3">
-//                     <MDBIcon fas icon="share me-2" />
-//                     <p className="mb-0">Share</p>
-//                   </a>
-//                 </div>
-//               </MDBCardBody>
-//             </MDBCard>
-//                      </MDBCol>
-//                   )
-                  
-//                 })}
-//             </div>
-//           </div>
            
 
-                </div>}
-              {view === "edit" && 
-                <div className="row"  style={{padding:"16px",width:"700px",height:"380px",marginTop:"1.7rem" , backgroundColor:"white"}}>
-                <div className="col-6">
-                  <h5  className='text2'>name:</h5>
-                    </div> 
-                <div className="col-6" style={{padding:"10px",}}>
-                <input className="form-control me-2" style={{borderRadius:"2rem",backgroundColor:"transparent"}} type="search" placeholder="name" aria-label="Search"/>
-
-
-                  </div>
-                  <div className="col-6">
-                  <h5  className='text2'>last Name:</h5>
-                    </div> 
-                    <div className="col-6" style={{padding:"10px",}}>
-                    <input className="form-control me-2" style={{borderRadius:"2rem",backgroundColor:"transparent"}} type="search" placeholder="last Name" aria-label="Search"/>
-
-                  </div>
-                  <div className="col-6">
-                  <h5  className='text2'>email:</h5>
-                    </div> 
-                    <div className="col-6" style={{padding:"10px",}}>
-                    <input className="form-control me-2" style={{borderRadius:"2rem",backgroundColor:"transparent"}} type="search" placeholder="email" aria-label="Search"/>
-
-                  </div>
-                  <div className="col-6">
-                  <h5  className='text2'>speciality:</h5>
-                    </div> 
-                    <div className="col-6" style={{padding:"10px",}}>
-                    <input className="form-control me-2" style={{borderRadius:"2rem",backgroundColor:"transparent"}} type="search" placeholder="speciality" aria-label="Search"/>
-
                 </div>
 
 
-
-
-             </div> }
 
                 
 
-//                 </div>
-//             </div>
+                </div>
+            </div>
 
 
-//             {/* Profile User */}
-//             {/* <MyProfile/> */}
            
 
 
 
             </div>
+    </div>
+  </div>
+
+ 
+
+
+    </>
   )
 }
