@@ -16,7 +16,7 @@ const SignUp = () => {
   }
   return (
     <div>
-    <NavBarre/>
+    
 
         <div className="nav-auth">
      <span className="items-login" onClick={handlerCategory}>

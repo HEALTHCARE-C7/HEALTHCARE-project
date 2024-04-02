@@ -6,7 +6,7 @@ import NavBarre from '../components/NavBarre.jsx'
 function Contact() {
   return (
     <>
-      <NavBarre/>
+    
 
     <div className="container-fluid">
         <div className="row slide3">

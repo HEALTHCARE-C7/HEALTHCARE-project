@@ -5,7 +5,7 @@ import '../CSS/Auth.css'
 import NavBarre from '../components/NavBarre.jsx'
 
 
-const LoginPage = () => {
+const LoginPage = ({changeView}) => {
 const [view,setView]=useState('loginP')
 const [category,setCategory]=useState(false)
 
@@ -17,7 +17,8 @@ const handlerCategory=()=>{
 }
 return (
   <div>
-    <NavBarre/>
+
+   
     <div className="nav nav-auth">
      <span className="items-login" onClick={handlerCategory}>
       Choose
@@ -41,8 +42,8 @@ return (
      </div>
      
       
-    { view==="loginD" &&  <DoctorLogin/>}
-      {view==="loginP"&&<PatientLogin/>} 
+    { view==="loginD" &&  <DoctorLogin changeView={changeView}/>}
+      {view==="loginP"&&<PatientLogin changeView={changeView} />} 
 
     </div>
   )

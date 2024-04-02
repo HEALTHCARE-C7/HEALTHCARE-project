@@ -61,7 +61,7 @@ export default function ProfilePatione({DataReviews,user}) {
                         changeView('MyProfile');  
                       }} className="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
                       <img src="https://github.com/mdo.png" alt="" width="32" height="32" className="rounded-circle me-2"/>
-                      <strong>{user.firstName}</strong>
+                      <strong>test</strong>
                     </a>
                     <ul className="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
                       <li><a className="dropdown-item" href="#">New project...</a></li>
@@ -95,8 +95,8 @@ export default function ProfilePatione({DataReviews,user}) {
                       <img src={doc1} style={{borderRadius:"50rem",width:"150px",height:"150px",marginLeft:"4rem",marginTop:"1rem"}} className="card-img-top" alt="..."/>
                       <div className="card-body" style={{textAlign:"center"}}>
                         <div>
-                        <h5 className="card-title" style={{color:"black"}}>{user.firstName}</h5>
-                        <p>{user.speciality}</p>
+                        <h5 className="card-title" style={{color:"black"}}>test</h5>
+                        <p>se</p>
                         </div>
                             <button  onClick={()=>{
                               changeView('edit')  

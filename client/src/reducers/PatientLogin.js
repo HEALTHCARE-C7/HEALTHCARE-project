@@ -1,7 +1,5 @@
 
 import { createSlice } from '@reduxjs/toolkit'
-// import {  createAsyncThunk } from '@reduxjs/toolkit';
-
 import {patientLogin} from '../components/AuthActionPatient.jsx'
 // export const fetchPatientData = createAsyncThunk('api/patient', async () => {
 //   const response = await fetch('http://localhost:5000/api/patient/login');
@@ -9,11 +7,12 @@ import {patientLogin} from '../components/AuthActionPatient.jsx'
 //   return jsonData;
 // });
 const userToken = localStorage.getItem('userToken')
-  // ? localStorage.getItem('userToken')
-  // : null
+  ? localStorage.getItem('userToken')
+  : null
 const initialState = {
   loading: false,
   userInfo: null, 
+  data: null,
   userToken:null, 
   error: null,
   success: false,

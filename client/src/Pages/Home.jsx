@@ -36,7 +36,7 @@ export default function Home(props) {
 
   return (
     <>    
-      <NavBarre/>
+  
     <Slide />
     <main className="container" style={{}}>
       {/* {console.log("user",user)} */}
