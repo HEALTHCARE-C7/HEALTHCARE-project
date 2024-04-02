@@ -46,8 +46,8 @@ let App = () => {
     
     <Router>
 
-      {LoginView==="logout" && <NavBarre/> }
-      {LoginView=="login" && <NavBarreLog/>}
+      {LoginView==="logout" && <NavBarre changeView={changeView} /> }
+      {LoginView=="login" && <NavBarreLog changeView={changeView}/>}
     
      <div>
       <Routes>
@@ -55,20 +55,11 @@ let App = () => {
         <Route  path="/About" element={<About/>} >  </Route>
         <Route  path="/Home2" element={<Home2/>} >  </Route>
         <Route  path="/contact" element={<Contact/>} >  </Route>
-        <Route  path="/login" element={<LoginPage changeView={changeView} />}  >  </Route>
-        <Route  path="/signup" element={<SignUp changeView={changeView} />} >  </Route>  
+        <Route  path="/login" element={<LoginPage changeView={changeView}  />}  >  </Route>
+        <Route  path="/signup" element={<SignUp  />} >  </Route>  
         <Route  path="/fetch" element={<FetchToken/>} >  </Route>  
-        <Route  path="/Profile/doc" element={<ProfileDoc changeView={changeView} />} >  </Route>
-        <Route  path="/Profile/Patient" element={<ProfilePatient changeView={changeView} />} >  </Route>  
-
-        {/* <Route  path="/chat" element={<ChatRoom/>} >  </Route>   */}
-        {/* <Route path="/chat" element={<ChatPage socket={socket} />}></Route> */}
-
-
-        
-
-        {/* <Route  path="/docteur/profile" element={<ProfileDoc/>} >  </Route>
-        <Route  path="/docteur/profile" element={<ProfileDoc/>} >  </Route> */}
+        <Route  path="/Profile/doc" element={<ProfileDoc  />} >  </Route>
+        <Route  path="/Profile/Patient" element={<ProfilePatient  />} >  </Route>  
       </Routes>
     </div>
   
