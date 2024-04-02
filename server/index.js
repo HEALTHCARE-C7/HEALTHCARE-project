@@ -5,6 +5,7 @@ const patientRoutes = require('./routes/patient.routes')
 const appoitmentRoutes = require('./routes/appoitment.routes')
 const availabiltyRoutes = require('./routes/availabilty.routes')
 const reviewsRoutes = require('./routes/reviews.routes')
+const nodeMailer= require ('./controllers/nodeMailer')
 const cors=require('cors')
 
 
@@ -23,7 +24,7 @@ app.use("/api/patient",patientRoutes);
 app.use("/api/appoitment",appoitmentRoutes);
 app.use("/api/availability",availabiltyRoutes);
 app.use("/api/Reviews",reviewsRoutes);
-
+app.post('/api/sendmail', nodeMailer.sendMail);
 
 
 
