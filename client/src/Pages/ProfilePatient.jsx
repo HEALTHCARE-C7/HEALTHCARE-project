@@ -185,7 +185,7 @@ const changeView =(view)=>{
                 <li><a className="dropdown-item" href="#">Profile</a></li>
                 <li><hr className="dropdown-divider"/></li>
                 <li><a className="dropdown-item" href="#"  onClick={()=>{
-                  props.changeView("logout")
+                  
                   logout();
                 }}
                 >Sign out</a></li>
