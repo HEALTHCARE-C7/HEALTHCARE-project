@@ -28,6 +28,9 @@ import search from '../Images/icons/search.png'
 import bell from '../Images/icons/bell.png'
 
 
+
+
+
 export default function ProfileDoc(props) {
   const dispatch=useDispatch()
   const navigate = useNavigate();
@@ -45,6 +48,7 @@ export default function ProfileDoc(props) {
   const [view,setView]=useState('Overview')
   const [view1,setView1]=useState('Overview')
   const [body,setBody]=useState({})
+  const [likeCounter, setLikeCounter] = useState(0);
 
 
   const [user, setUser] = useState();
@@ -92,6 +96,9 @@ const rendreView =(view1)=>{
   console.log("view1", view1);
 
 }
+const incrementLikeCounter = () => {
+  setLikeCounter(likeCounter + 1);
+};
 
 
   return (
@@ -470,11 +477,16 @@ const rendreView =(view1)=>{
                                       Ut enim ad minim veniam, quis nostrud exercitation ullamco
                                       laboris nisi ut aliquip consequat.
                                     </p>
+                                    
                     
                                     <div className="small d-flex justify-content-start">
                                       <a href="#!" className="d-flex align-items-center me-3">
                                         <MDBIcon far icon="thumbs-up me-2" />
-                                        <p className="mb-0">Like</p>
+                                        <button className="d-flex align-items-center me-3" onClick={incrementLikeCounter}>
+                                <MDBIcon far icon="thumbs-up me-2" />
+                                <p className="mb-0">Like {likeCounter}</p>
+                              </button>
+                                        {/* <p className="mb-0">Like</p>  */}
                                       </a>
                                       <a href="#!" className="d-flex align-items-center me-3">
                                         <MDBIcon far icon="comment-dots me-2" />
