@@ -3,6 +3,7 @@ import '../CSS/FileDoc.css'
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchAppoitments,fetchPationOfDoctor,fetchPationOfThisDat,acceptAppoitment } from '../reducers/appoitmentSlice.js'; 
+import {sendSignupEmail} from '../reducers/DoctorSignUp.js'
 import{fetchreview} from '../reducers/reviewSlice.js'
 import { useNavigate } from "react-router-dom";
 import doc1 from '../Images/doc1.jpeg';
@@ -10,6 +11,7 @@ import axios from 'axios'
 import str from '../Images/icons/star.png' 
 import search from '../Images/icons/search.png'
 import bell from '../Images/icons/bell.png'
+
 
 
 
@@ -41,6 +43,7 @@ export default function FileDoc(props) {
     useEffect(() => {
     dispatch(fetchAppoitments())
     dispatch(fetchPationOfDoctor(1))
+    
     const fetchProfile = async () => {
       try {        
         const  token  =localStorage.getItem('token')
@@ -58,7 +61,7 @@ export default function FileDoc(props) {
     dispatch(fetchPationOfThisDat(today))
     
  
-
+    // dispatch(sendSignupEmail("ihabghdifi@gmail.com", "iheb"))
   }, [isFetch])
 
   //  useEffect(() => {

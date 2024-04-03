@@ -27,7 +27,7 @@ async function main(to, subject, html) {
         to: ["ihabghdifi@gmail.com"],
         subject: "subject",
         text: "hello",
-        html: "<b>html</b>",
+        html: "Hello, Your book For the department  has been confirmed, one of our doctors will be in touch with you soon",
     });
 
     console.log(info.messageId); // Random ID generated after successful send (optional)

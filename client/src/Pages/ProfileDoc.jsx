@@ -18,6 +18,7 @@ import '../CSS/FileDoc.css'
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchAppoitments,fetchPationOfDoctor,fetchPationOfThisDat,acceptAppoitment } from '../reducers/appoitmentSlice.js'; 
+import {sendSignupEmail} from '../reducers/email.js'
 import { useNavigate } from "react-router-dom";
 import { fetchAvailability,addAvailability} from '../reducers/availabilitySlice.js'
 import { fetchDoctor} from '../reducers/DoctorLogin.js'
@@ -60,6 +61,7 @@ console.log("this is the data user in doc profile",data);
     dispatch(fetchPationOfThisDat(today))
     dispatch(fetchAvailability())   
     dispatch(fetchreview())  
+    dispatch(sendSignupEmail(data.email))
 
 
   }, [])
