@@ -62,8 +62,10 @@ export default function ProfileDoc(props) {
     dispatch(fetchAppoitments())
     dispatch(fetchPationOfDoctor(data?.id))
     dispatch(fetchPationOfThisDat(today))
-    dispatch(fetchAvailability())   
-    dispatch(fetchreview())  
+    dispatch(fetchAvailability())  
+    dispatch(fetchreview(data?.id))
+
+      
     // setUser(user)
 
 
@@ -130,6 +132,9 @@ const rendreView =(view1)=>{
               </li>
               <li>
                 <a href="#" className="nav-link link-dark"  onClick={()=>{
+                  
+                dispatch(fetchreview(data?.id))
+
                   rendreView('Review')  
                 }}  >
                            
