@@ -5,6 +5,9 @@ import { useEffect } from "react";
 import { fetchAppoitments,fetchPationOfDoctor,fetchPationOfThisDat,acceptAppoitment } from '../reducers/appoitmentSlice.js'; 
 import {sendSignupEmail} from '../reducers/DoctorSignUp.js'
 import{fetchreview} from '../reducers/reviewSlice.js'
+import{fetchpatient} from '../reducers/PatientLogin.js'
+
+
 import { useNavigate } from "react-router-dom";
 import doc1 from '../Images/doc1.jpeg';
 import axios from 'axios'
@@ -22,6 +25,9 @@ export default function FileDoc(props) {
   const { DataAppoitment } =useSelector (state => state.appoitment)
   const { DotorPation } =useSelector (state => state.appoitment)
   const { toDayAppoitment } =useSelector (state => state.appoitment)
+  const { data } =useSelector (state => state.patient)
+  // console.log("this is the data user in patient profile",data);
+
  
 
   const [isFetch,setIsFetch]=useState(false)
@@ -39,8 +45,9 @@ export default function FileDoc(props) {
 
 
 
-
-    useEffect(() => {
+  
+  useEffect(() => {
+    dispatch( fetchpatient())  
     dispatch(fetchAppoitments())
     dispatch(fetchPationOfDoctor(1))
     
@@ -81,6 +88,13 @@ export default function FileDoc(props) {
   //   fetchProfile()
   
   // }, [isFetch]);
+    // setUser(user)
+
+ 
+
+  // }, [])
+
+  
 
 
   const toogle=()=>{
@@ -101,6 +115,7 @@ const changeView =(view)=>{
 
   return (
     <>
+   { console.log("patien  ",data)}
   <div className="container-fluid">
     <div className="row">
         <div className="col-2 " >
@@ -166,38 +181,7 @@ const changeView =(view)=>{
         <div className="col-10" style={{paddingLeft:"1.5rem",paddingRight:"1.5rem"}}>
  
 
-                <nav className="navbar">
-                <div className="container-fluid">
-                    <form className="d-flex serach-input-file-Doc">
-                    <input className="form-control me-2" style={{borderRadius:"2rem",backgroundColor:"transparent"}} type="search" placeholder="Search" aria-label="Search"/>
-                    <img style={{ width: "20px",height:"30px",paddingTop:"6px"}} src={search} alt="" />
-
-                  
-                    </form> 
-                     <div>
-                    <div className="dropdown">
-              <a href="#" onClick={()=>{
-                  changeView('MyProfile');  
-                }} className="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="https://github.com/mdo.png" alt="" width="32" height="32" className="rounded-circle me-2"/>
-                <strong>{user.firstName}</strong>
-              </a>
-              <ul className="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-                <li><a className="dropdown-item" href="#">New project...</a></li>
-                <li><a className="dropdown-item" href="#">Settings</a></li>
-                <li><a className="dropdown-item" href="#">Profile</a></li>
-                <li><hr className="dropdown-divider"/></li>
-                <li><a className="dropdown-item" href="#"  onClick={()=>{
-                  props.changeView("logout")
-                  logout();
-                }}
-                >Sign out</a></li>
-              </ul>
-            </div>
-                    </div>
-                </div>
-
-                 </nav>
+               
 
             <div className="row">
               <div className="col-12" style={{paddingBottom:"3rem"}}>
@@ -210,12 +194,12 @@ const changeView =(view)=>{
                       <img src={doc1} style={{borderRadius:"50rem",width:"150px",height:"150px",marginLeft:"4rem",marginTop:"1rem"}} className="card-img-top" alt="..."/>
                       <div className="card-body" style={{textAlign:""}}>
                         <div>
-                        <h5 className="card-title" style={{color:"black"}}>{user.firstName}</h5>
+                        <h5 className="card-title" style={{color:"black"}}>{data?.firstName}</h5>
                        
-                        <p>{user.email}</p>
-                        <p>{user.age} ans</p>
-                        <p>{user.gender}</p>
-                        <p>{user.phoneNumber}</p>
+                        <p>{data?.email}</p>
+                        <p>{data?.age} ans</p>
+                        <p>{data?.gender}</p>
+                        <p>{data?.phoneNumber}</p>
 
                         </div>
                             <button className='btn btn1-slide2' style={{borderRadius:"0rem",backgroundColor:"#7a6efe"}}>Edite Profile</button>  
