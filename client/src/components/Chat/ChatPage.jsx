@@ -27,13 +27,14 @@ useEffect(() => {
 
   socket.on('message', (data) => {
     setMessages((prevMessages) => [...prevMessages, data]);
+    console.log('data is ready',data);
   });
 
   return () => socket.off('message');
 }, []);
 
 
-      console.log(messages);
+      console.log('done',messages);
       console.log(socket);
   return (
     <div className="chat">

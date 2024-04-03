@@ -1,13 +1,22 @@
 import axios from 'axios'
-
 import { createSlice,createAsyncThunk } from '@reduxjs/toolkit'
-// import {  createAsyncThunk } from '@reduxjs/toolkit';
 import {doctorLogin} from '../components/AuthActionDoctor.jsx'
-// export const fetchDoctorData = createAsyncThunk('api/doctor', async () => {
-//   const response = await fetch('http://localhost:5000/api/doctor/login');
-//   const jsonData = await response.json();
-//   return jsonData;
-// });
+
+
+  export const fetchDoctor=createAsyncThunk('fetchDoctor',async (dispatch)=>{
+  try {
+    console.log("hey");
+    const  token  =localStorage.getItem('token')
+    const config={headers:{Authorization:`Bearer ${token}`}}
+    const response = await axios.get('http://localhost:5000/api/doctor/user',config)
+    console.log('res data',response.data);
+    return response.data
+   
+  } catch (error) {
+    console.log(error);
+    
+  }
+})
 
 export const fetchDoc=createAsyncThunk('fetchDoc',async (dispatch)=>{
  
@@ -22,7 +31,6 @@ export const fetchDocByDep=createAsyncThunk('fetchDocByDep',async(dep)=>{
  
   try {
    const res =await axios.get(`http://localhost:5000/api/doctor/getDep/${dep}`)  
-  //  console.log("from back",res.data); 
     return res.data
   } catch (error) {
    console.log(error);   
@@ -31,15 +39,16 @@ export const fetchDocByDep=createAsyncThunk('fetchDocByDep',async(dep)=>{
 
 
 
-const userToken = localStorage.getItem('userToken')
-  ? localStorage.getItem('userToken')
-  : null
+// const userToken = localStorage.getItem('userToken')
+//   ? localStorage.getItem('userToken')
+//   : null
 const initialState = {
   allDoc:[],
   DocByDep:[],
   loading: false,
+  data: {},
   userInfo: null, 
-  userToken, 
+  userToken:null,  
   error: null,
   success: false,
   }
@@ -47,7 +56,6 @@ const initialState = {
   export const authSlice = createSlice({
     name: 'auth',
     initialState,
-    reducers: {},
     extraReducers:  (builder) => {
       builder
         .addCase(doctorLogin.pending, (state) => {
@@ -84,6 +92,18 @@ const initialState = {
           state.loading = true; 
         })
         .addCase(fetchDocByDep.rejected, (state, action) => {
+          state.loading = false;
+          state.error = action.error.message;
+        })
+        .addCase(fetchDoctor.pending, (state) => {
+          state.loading = true;
+        })
+        .addCase(fetchDoctor.fulfilled, (state, action) => {
+          state.loading = false;
+          state.data = action.payload;
+          state.loading = true; 
+        })
+        .addCase(fetchDoctor.rejected, (state, action) => {
           state.loading = false;
           state.error = action.error.message;
         });

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchAppoitments,fetchPationOfDoctor,fetchPationOfThisDat,acceptAppoitment } from '../reducers/appoitmentSlice.js'; 
 import{fetchreview} from '../reducers/reviewSlice.js'
+import { useNavigate } from "react-router-dom";
 import doc1 from '../Images/doc1.jpeg';
 import axios from 'axios'
 import str from '../Images/icons/star.png' 
@@ -12,7 +13,9 @@ import bell from '../Images/icons/bell.png'
 
 
 
-export default function FileDoc() {
+export default function FileDoc(props) {
+  const navigate = useNavigate(props);
+
 
   const { DataAppoitment } =useSelector (state => state.appoitment)
   const { DotorPation } =useSelector (state => state.appoitment)
@@ -38,20 +41,12 @@ export default function FileDoc() {
     useEffect(() => {
     dispatch(fetchAppoitments())
     dispatch(fetchPationOfDoctor(1))
-    dispatch(fetchPationOfThisDat(today))
-    
- 
-
-  }, [isFetch])
-
-   useEffect(() => {
     const fetchProfile = async () => {
-      try {
-        
+      try {        
         const  token  =localStorage.getItem('token')
         const config={headers:{Authorization:`Bearer ${token}`}}
         const response = await axios.get('http://localhost:5000/api/patient/user',config)
-     console.log('res user',response.data);
+        console.log('res user',response.data.firstName);
         setUser(response.data);
         console.log(user);
 
@@ -60,12 +55,38 @@ export default function FileDoc() {
       }
     };
     fetchProfile()
+    dispatch(fetchPationOfThisDat(today))
+    
+ 
+
+  }, [isFetch])
+
+  //  useEffect(() => {
+  //   const fetchProfile = async () => {
+  //     try {        
+  //       const  token  =localStorage.getItem('token')
+  //       const config={headers:{Authorization:`Bearer ${token}`}}
+  //       const response = await axios.get('http://localhost:5000/api/patient/user',config)
+  //       console.log('res user',response.data);
+  //       setUser(response.data);
+  //       console.log(user);
+
+  //     } catch (error) {
+        
+  //     }
+  //   };
+  //   fetchProfile()
   
-  }, [isFetch]);
-console.log(user);
+  // }, [isFetch]);
+
 
   const toogle=()=>{
     setIsFetch(!isFetch)  
+  }
+  const logout=()=>{
+    localStorage.removeItem('token')
+    navigate('/')
+  
   }
 
 const changeView =(view)=>{
@@ -163,7 +184,11 @@ const changeView =(view)=>{
                 <li><a className="dropdown-item" href="#">Settings</a></li>
                 <li><a className="dropdown-item" href="#">Profile</a></li>
                 <li><hr className="dropdown-divider"/></li>
-                <li><a className="dropdown-item" href="#">Sign out</a></li>
+                <li><a className="dropdown-item" href="#"  onClick={()=>{
+                  
+                  logout();
+                }}
+                >Sign out</a></li>
               </ul>
             </div>
                     </div>

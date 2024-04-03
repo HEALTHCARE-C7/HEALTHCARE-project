@@ -26,10 +26,10 @@ db.Service=require('./service.model.js')(connection,DataTypes)
 db.Review=require('./reviews.model.js')(connection,DataTypes)
 
 
-db.UserChat=require('../Models/UserChat.js')(connection,DataTypes)
-db.Message=require('../Models/Message.js')(connection,DataTypes)
-db.Conversation=require('../Models/Conversation.js')(connection,DataTypes)
-db.Room=require('../Models/room.js')(connection,DataTypes)
+db.UserChat=require('./UserChat.js')(connection,DataTypes)
+db.Message=require('./Message.js')(connection,DataTypes)
+db.Conversation=require('./Conversation.js')(connection,DataTypes)
+db.Room=require('./room.js')(connection,DataTypes)
 
 db.Room.hasMany(db.Message)
 db.Message.belongsTo(db.Room)
@@ -63,7 +63,7 @@ db.Review.belongsTo(db.Doctor)
 
 
 //  connection.sync({force:true}) 
-//  db.Review.sync({force:true}) 
+//  db.Message.sync({force:true}) 
 
 
 

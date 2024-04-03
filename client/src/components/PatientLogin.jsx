@@ -6,7 +6,7 @@ import { useState } from 'react'
 import { FaEye,FaEyeSlash  } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
-const LoginScreen = () => {
+const LoginScreen = ({changeView}) => {
   const navigate = useNavigate();
 
 const [showPassword, setShowPassword] = useState(false);
@@ -17,9 +17,10 @@ const [showPassword, setShowPassword] = useState(false);
   )
   const submitForm = (data) => {
     dispatch(patientLogin(data))
+    if(success){
     console.log("succc",success); 
-  if(success){
     navigate('/Profile/Patient')
+    changeView('login')
   }else{
 
     console.log('error');

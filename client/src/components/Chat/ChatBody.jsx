@@ -3,13 +3,12 @@ import { useNavigate } from 'react-router-dom';
 
 const ChatBody = ({ messages }) => {
   const navigate = useNavigate();
-
+console.log('body',messages);
   const handleLeaveChat = () => {
     localStorage.removeItem('token');
-    navigate('/Home2');
+    navigate('/');
     window.location.reload();
   };
-console.log('hello',messages.id);
   return (
     <>
       <header className="chat__mainHeader">
@@ -23,27 +22,28 @@ console.log('hello',messages.id);
         {messages.map((message) =>
           message.name === localStorage.getItem('token') ? (
             <div className="message__chats" key={message.id}>
-              <p className="sender__name">You</p>
+   { console.log('hello',messages.id)}
+              <p className="sender__name">Your</p>
               <div className="message__sender">
-                <p>{message.text}</p>
+                <p>omar</p>
               </div>
             </div>
           ) : (
             <div className="message__chats" key={message.id}>
-              <p>{message.name}</p>
+              <p>omar</p>
               <div className="message__recipient">
-                <p>{message.text}</p>
+                <p>{message}</p>
               </div>
             </div>
           )
         )}
 
         <div className="message__status">
-          <p>Someone is typing...</p>
+          <p></p>
         </div>
       </div>
     </>
   );
 };
 
-export default ChatBody;
+export default ChatBody
