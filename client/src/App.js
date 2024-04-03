@@ -14,6 +14,7 @@ import ProfileDoc from "./Pages/ProfileDoc.jsx";
 import LoginPage from "./components/LoginPage.jsx";
 import SignUp from "./components/SignUp.jsx";
 import FetchToken from "./components/FetchToken.jsx";
+import ProfileDetails from "./Pages/ProfileDetails.jsx";
 // import ChatRoom from "./components/Chat/ChatRoom.jsx";
 import  io  from "socket.io-client";
 // import socketIO from 'socket.io-client';
@@ -65,6 +66,8 @@ let App = () => {
         <Route  path="/fetch" element={<FetchToken/>} >  </Route>  
         <Route  path="/Profile/doc" element={<ProfileDoc  />} >  </Route>
         <Route  path="/Profile/Patient" element={<ProfilePatient  />} >  </Route>  
+        <Route  path="/ProfileDetails" element={<ProfileDetails  />} >  </Route>  
+
       </Routes>
     </div>
   

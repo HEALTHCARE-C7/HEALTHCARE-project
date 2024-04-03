@@ -4,10 +4,11 @@ import axios from 'axios'
 
 
 
-export const fetchreview=createAsyncThunk('fetchreview',async (dispatch)=>{
+export const fetchreview=createAsyncThunk('fetchreview',async (id)=>{
  
     try {
-     const res =await axios.get("http://localhost:5000/api/Reviews")
+     const res =await axios.get(`http://localhost:5000/api/Reviews/getByDoc/${id}`)
+     console.log("fetchreview",res.data);
      
       return res.data
     } catch (error) {

@@ -46,11 +46,6 @@ db.Doctor.hasMany(db.Availabilty)
 db.Availabilty.belongsTo(db.Doctor)
 
 
-
-db.Doctor.hasMany(db.Availabilty)
-db.Availabilty.belongsTo(db.Doctor)
-
-
 db.Service.hasMany(db.Doctor) 
 db.Doctor.belongsTo(db.Service)
 
