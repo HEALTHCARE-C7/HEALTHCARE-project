@@ -45,11 +45,11 @@ const logout=()=>{
         </li>
       </ul>
     </div>
- {!token&&  <div className='log-btn'>
+ {!token &&  <div className='log-btn'>
    <button type="button"  className="btn btn-up" onClick={()=>navigate('/signup')} >Sign Up </button>
     <button type="button" onClick={()=>navigate('/login')}className="btn btn-in">Log In</button>
    </div>}
- {  token&& <div className='log-btn'>
+ {  token && <div className='log-btn'>
    <ul className="navbar-nav">
    <li className="nav-item"  style={{paddingTop:"0.10rem"}}>
           <a className="nav-link"  onClick={logout}>

@@ -5,8 +5,8 @@
     z-index: 1;
     left: 0;
     top: 0;
-    width: 10%;
-    height: 10%;
+    width: 50%;
+    height: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.4);
   }
@@ -57,7 +57,7 @@
   }
   
   .form-input-signup {
-    width: 95%;
+    width: 80%;
     padding: 10px;
     font-size: 16px;
     border-radius: 5px;
