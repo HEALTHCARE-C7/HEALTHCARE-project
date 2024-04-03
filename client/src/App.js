@@ -22,6 +22,9 @@ import ChatPage from "./components/Chat/ChatPage.jsx";
 
 
 import { fetchDoctor} from './reducers/DoctorLogin.js'
+import { fetchpatient} from './reducers/PatientLogin.js'
+
+
 import { useDispatch } from "react-redux";
 
 
@@ -36,6 +39,8 @@ let App = () => {
   }
   useEffect(()=>{
     dispatch( fetchDoctor())
+    dispatch( fetchpatient())
+
 
 
   },[dispatch])

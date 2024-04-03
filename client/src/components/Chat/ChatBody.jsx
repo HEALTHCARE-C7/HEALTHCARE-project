@@ -20,24 +20,24 @@ console.log('body',messages);
 
       <div className="message__container">
         {messages.map((message) =>
-          message.name === localStorage.getItem('token') ? (
-            <div className="message__chats" key={message.id}>
+          <div className="message__chats" key={message.id}>
+              <p>omar</p>
+              <div className="message__recipient">
+                <p>{message.content}</p>
+              </div>
+            </div>
+        
+          
+          
+        )}
+    {/* <div className="message__chats" key={message.id}>
    { console.log('hello',messages.id)}
               <p className="sender__name">Your</p>
               <div className="message__sender">
                 <p>omar</p>
               </div>
             </div>
-          ) : (
-            <div className="message__chats" key={message.id}>
-              <p>omar</p>
-              <div className="message__recipient">
-                <p>{message}</p>
-              </div>
-            </div>
-          )
-        )}
-
+          ) : ( */}
         <div className="message__status">
           <p></p>
         </div>

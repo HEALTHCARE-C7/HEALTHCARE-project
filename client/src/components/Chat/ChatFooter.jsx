@@ -3,7 +3,7 @@ import React, {  useState } from 'react';
 // import ChatBody from './ChatBody';
 
 const ChatFooter = ({ socket }) => {
-  const [messages, setMessages] = useState([]);
+
   // const [refrech,setRefrech]=useState(false);
 const [messageInput, setMessageInput]=useState('')
 // const addMsg=(body)=>{
@@ -17,22 +17,22 @@ const [messageInput, setMessageInput]=useState('')
 const sendMessage = (e) => {
   e.preventDefault();
   const newMessage = {
-    content: messages,
+    content: messageInput,
     currentChatReceiverId:1
   };
 
-  setMessages(prevMessages => [...prevMessages, newMessage]);
+  // setMessages(prevMessages => [...prevMessages, newMessage]);
   axios.post('http://localhost:5000/api/message', newMessage)
   .then(response => {
     console.log('Message saved successfully:', response.data);
-    setMessages(response.data.content)
+    // setMessages(response.data.content)
     setMessageInput('');
   })
   .catch(error => {
     console.error('Error saving message:', error);
   });
   if (socket) {
-    socket.emit('message', messages);
+    socket.emit('message', newMessage);
   }
 };
 // console.log('msg input',messageInput);
@@ -53,8 +53,8 @@ const sendMessage = (e) => {
           type="text"
           placeholder="Write message"
           className="message"
-          value={messages}
-          onChange={(e) => setMessages(e.target.value)}
+     
+          onChange={(e) => setMessageInput(e.target.value)}
         />
         <button className="sendBtn">SEND</button>
       </form>

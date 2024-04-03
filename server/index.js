@@ -35,7 +35,7 @@ app.use("/api/services",serviceRoutes);
 
 app.use('/api/chat',UserRouter)
 app.use('/api/message',MessageRouter)
-app.use('/api/conversation',Conversation)
+app.use('/api/chat',Conversation)
 
 
 app.listen(PORT, () => {

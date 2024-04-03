@@ -10,6 +10,7 @@ const Signup = () => {
  
   const dispatch = useDispatch()
   const { register, handleSubmit } = useForm()
+  
   const submitForm = (data) => {
    
     data.email = data.email.toLowerCase()
