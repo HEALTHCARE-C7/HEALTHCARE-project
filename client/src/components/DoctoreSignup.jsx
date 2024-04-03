@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux'
 import {registerDoctor} from './AuthActionDoctor.jsx'
 import '../CSS/Signup.css'
 import { useNavigate } from "react-router-dom";
+import { sendSignupEmail } from '../reducers/email.js';
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -15,6 +16,7 @@ const Signup = () => {
     data.email = data.email.toLowerCase()
    const doctor= dispatch(registerDoctor(data))
     console.log(doctor);
+    dispatch(sendSignupEmail(data.email))
   }
  
 

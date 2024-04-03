@@ -5,10 +5,10 @@ module.exports=(connection,DataTypes)=>{
             type: DataTypes.STRING,
             allowNull: false,
           },
-          currentChatReceiverId: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-          },
+          // currentChatReceiverId: {
+          //   type: DataTypes.INTEGER,
+          //   allowNull: false,
+          // },
         
       });
       return Message

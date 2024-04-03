@@ -26,7 +26,7 @@ db.Service=require('./service.model.js')(connection,DataTypes)
 db.Review=require('./reviews.model.js')(connection,DataTypes)
 
 
-db.UserChat=require('../Models/UserChat.js')(connection,DataTypes)
+db.UserChat=require('./UserChat.js')
 db.Message=require('../Models/Message.js')(connection,DataTypes)
 db.Conversation=require('../Models/Conversation.js')(connection,DataTypes)
 db.UserToConversation=require('../Models/UserToConversation.js')(connection,DataTypes)
@@ -65,7 +65,7 @@ db.Review.belongsTo(db.Doctor)
 
 
 //  connection.sync({force:true}) 
-//  db.Review.sync({force:true}) 
+//  db.Message.sync({force:true}) 
 
 
 
