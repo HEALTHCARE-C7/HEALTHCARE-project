@@ -12,7 +12,7 @@ import {
   MDBTextArea,
 } from "mdb-react-ui-kit";
 import str from '../Images/icons/star.png' 
-
+import { FaShare } from "react-icons/fa";
 import axios from 'axios'
 import '../CSS/FileDoc.css'
 import { useDispatch, useSelector } from "react-redux";
@@ -26,6 +26,7 @@ import { fetchreview} from '../reducers/reviewSlice.js'
 import doc1 from '../Images/doc1.jpeg';
 import search from '../Images/icons/search.png'
 import bell from '../Images/icons/bell.png'
+// import {createSlice} from '../reducers/reviewSlice.js'
 
 
 
@@ -49,6 +50,7 @@ export default function ProfileDoc(props) {
   const [view1,setView1]=useState('Overview')
   const [body,setBody]=useState({})
   const [likeCounter, setLikeCounter] = useState(0);
+  const [showCommentInput, setShowCommentInput] = useState(false);
 
 
   const [user, setUser] = useState();
@@ -70,6 +72,7 @@ export default function ProfileDoc(props) {
     dispatch(fetchAvailability())   
     dispatch(fetchreview())  
     dispatch(sendSignupEmail(data.email))
+    // dispatch(createSlice(data.id))
     // setUser(user)
 
 
@@ -98,6 +101,9 @@ const rendreView =(view1)=>{
 }
 const incrementLikeCounter = () => {
   setLikeCounter(likeCounter + 1);
+};
+const toggleCommentInput = () => {
+  setShowCommentInput(!showCommentInput);
 };
 
 
@@ -488,13 +494,20 @@ const incrementLikeCounter = () => {
                               </button>
                                         {/* <p className="mb-0">Like</p>  */}
                                       </a>
-                                      <a href="#!" className="d-flex align-items-center me-3">
+                                      <a href="#!" className="d-flex align-items-center me-3" >
                                         <MDBIcon far icon="comment-dots me-2" />
-                                        <p className="mb-0">Comment</p>
+                                        <button className="d-flex align-items-center me-3" onClick={toggleCommentInput}>
+                                <MDBIcon far icon="thumbs-up me-2" />
+                                <p className="mb-0">comment {showCommentInput}</p>
+                              </button>
+                              <input type="text" />
+                                        {/* <p className="mb-0">Comment {showCommentInput}</p> */}
                                       </a>
                                       <a href="#!" className="d-flex align-items-center me-3">
                                         <MDBIcon fas icon="share me-2" />
-                                        <p className="mb-0">Share</p>
+                                        <p className="mb-0">Share .</p>
+                                        <br />  <br />  <br />
+                                        <FaShare />
                                       </a>
                                     </div>
                                   </MDBCardBody>
