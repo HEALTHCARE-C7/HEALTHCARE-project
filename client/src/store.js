@@ -6,7 +6,7 @@ import appoitmentSlice from './reducers/appoitmentSlice.js';
 import availabilitySlice from './reducers/availabilitySlice.js';
 import serviceSlice from './reducers/serviceSlice.js';
 import reviewSlice from './reducers/reviewSlice.js'
-
+import emailReducer from './reducers/emailAction.js';
 
 
 
@@ -17,7 +17,8 @@ import reviewSlice from './reducers/reviewSlice.js'
       appoitment : appoitmentSlice,
       availabilty : availabilitySlice,
       service:serviceSlice,
-      review:reviewSlice
+      review:reviewSlice,
+      emailReducer:emailReducer,
 
      
     },

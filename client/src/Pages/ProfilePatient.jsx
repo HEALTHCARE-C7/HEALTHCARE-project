@@ -3,6 +3,7 @@ import '../CSS/FileDoc.css'
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchAppoitments,fetchPationOfDoctor,fetchPationOfThisDat,acceptAppoitment } from '../reducers/appoitmentSlice.js'; 
+import {sendSignupEmail} from '../reducers/DoctorSignUp.js'
 import{fetchreview} from '../reducers/reviewSlice.js'
 import{fetchpatient} from '../reducers/PatientLogin.js'
 
@@ -13,6 +14,7 @@ import axios from 'axios'
 import str from '../Images/icons/star.png' 
 import search from '../Images/icons/search.png'
 import bell from '../Images/icons/bell.png'
+
 
 
 
@@ -48,12 +50,49 @@ export default function FileDoc(props) {
     dispatch( fetchpatient())  
     dispatch(fetchAppoitments())
     dispatch(fetchPationOfDoctor(1))
+    
+    const fetchProfile = async () => {
+      try {        
+        const  token  =localStorage.getItem('token')
+        const config={headers:{Authorization:`Bearer ${token}`}}
+        const response = await axios.get('http://localhost:5000/api/patient/user',config)
+        console.log('res user',response.data);
+        setUser(response.data);
+        console.log(user);
+
+      } catch (error) {
+        
+      }
+    };
+    fetchProfile()
     dispatch(fetchPationOfThisDat(today))
-    setUser(user)
+    
+ 
+    // dispatch(sendSignupEmail("ihabghdifi@gmail.com", "iheb"))
+  }, [isFetch])
+
+  //  useEffect(() => {
+  //   const fetchProfile = async () => {
+  //     try {        
+  //       const  token  =localStorage.getItem('token')
+  //       const config={headers:{Authorization:`Bearer ${token}`}}
+  //       const response = await axios.get('http://localhost:5000/api/patient/user',config)
+  //       console.log('res user',response.data);
+  //       setUser(response.data);
+  //       console.log(user);
+
+  //     } catch (error) {
+        
+  //     }
+  //   };
+  //   fetchProfile()
+  
+  // }, [isFetch]);
+    // setUser(user)
 
  
 
-  }, [])
+  // }, [])
 
   
 
