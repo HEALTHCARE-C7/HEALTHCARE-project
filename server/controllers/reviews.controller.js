@@ -12,6 +12,19 @@ module.exports = {
         }   
    
     },
+    
+    getByDoc:async function(req,res){
+        try {
+            const Review= await db.Review.findAll({where:{
+                doctorId:req.params.doctorId    
+            }})
+            res.status(200).send(Review)    
+        } catch (error) {
+            throw error    
+        }   
+   
+    },
+    
     addComment: async function(req,res){
         try {
             const comment= await db.Review.create(req.body)
