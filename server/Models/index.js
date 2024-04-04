@@ -60,7 +60,7 @@ db.Review.belongsTo(db.Doctor)
 
 
 //  connection.sync({force:true}) 
-//  db.Message.sync({force:true}) 
+//  db.Review.sync({force:true}) 
 
 
 

@@ -475,44 +475,29 @@ const toggleCommentInput = () => {
                                         height="60"
                                       />
                                       <div>
-                                        <h6 className="fw-bold text-primary mb-1">Lily Coleman</h6>
+                                        <h6 className="fw-bold text-primary mb-1">{data.patientName}</h6>
                                         <p className="text-muted small mb-0">
-                                          Shared publicly - Jan 2020
+                                          Shared publicly - {data.createdAt}
                                         </p>
                                       </div>
                                     </div>
                     
                                     <p className="mt-3 mb-4 pb-2">
-                                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                                      do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                      Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                                      laboris nisi ut aliquip consequat.
+                                     {data.comment}
                                     </p>
                                     
                     
                                     <div className="small d-flex justify-content-start">
                                       <a href="#!" className="d-flex align-items-center me-3">
                                         <MDBIcon far icon="thumbs-up me-2" />
-                                        <button className="d-flex align-items-center me-3" onClick={incrementLikeCounter}>
+                                        <button  className=" btn d-flex align-items-center me-3" onClick={incrementLikeCounter}>
                                 <MDBIcon far icon="thumbs-up me-2" />
                                 <p className="mb-0">Like {likeCounter}</p>
                               </button>
-                                        {/* <p className="mb-0">Like</p>  */}
-                                      </a>
-                                      <a href="#!" className="d-flex align-items-center me-3" >
-                                        <MDBIcon far icon="comment-dots me-2" />
-                                        <button className="d-flex align-items-center me-3" onClick={toggleCommentInput}>
-                                <MDBIcon far icon="thumbs-up me-2" />
-                                <p className="mb-0">comment {showCommentInput}</p>
-                              </button>
-                              <input type="text" />
-                                        {/* <p className="mb-0">Comment {showCommentInput}</p> */}
-                                      </a>
-                                      <a href="#!" className="d-flex align-items-center me-3">
-                                        <MDBIcon fas icon="share me-2" />
-                                        <p className="mb-0">Share .</p>
-                                        <br />  <br />  <br />
-                                        <FaShare />
+                                   
+                                        
+                             
+                                     
                                       </a>
                                     </div>
                                   </MDBCardBody>
@@ -525,7 +510,7 @@ const toggleCommentInput = () => {
                               </div>
                               
                     
-                                    </div>
+                      </div>
             </div>
                             
                             
