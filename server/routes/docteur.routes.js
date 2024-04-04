@@ -17,5 +17,5 @@ router.post("/",addDoc);
 router.patch("/",updateDoc);
 router.post('/register',securite,register)
 router.post('/login',login)
-router.delete('/logout/:token',logout)
+// router.delete('/logout/:token',logout)
 module.exports = router;

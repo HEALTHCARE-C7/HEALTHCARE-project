@@ -34,7 +34,7 @@ db.Room=require('./room.js')(connection,DataTypes)
 db.Room.hasMany(db.Message)
 db.Message.belongsTo(db.Room)
 db.UserChat.belongsToMany(db.Room,{through:db.Conversation})
-db.Room.belongsToManyMany(db.UserChat,{through:db.Conversation})
+db.Room.belongsToMany(db.UserChat,{through:db.Conversation})
 db.UserChat.hasMany(db.Message)
 db.Message.belongsTo(db.UserChat)
 

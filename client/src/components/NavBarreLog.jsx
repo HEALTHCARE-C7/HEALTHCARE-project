@@ -35,7 +35,7 @@ const logout=()=>{
         </li>
        
         <li className="nav-item">
-          <a className="nav-link" >Help</a>
+          <a className="nav-link"  onClick={()=>navigate('/chat')} >Help</a>
         </li>
         <li className="nav-item">
           <a className="nav-link"  onClick={()=>navigate('/About')}  >Blogs</a>
