@@ -1,45 +1,36 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { useEffect } from "react";
-import NavBarre from '../components/NavBarre.jsx'
-import Slide from '../components/Slide.jsx'
-import  '../CSS/home.css'
-import slide2 from '../Images/slide2.jpeg' 
+import React,{ useEffect,useState } from 'react'
+import { Link,useNavigate } from 'react-router-dom'
 import { useDispatch,useSelector } from 'react-redux' 
+import {fetchDoc,fetchDocByDep,getDocById} from '../reducers/DoctorLogin.js'
+import {fetchService} from '../reducers/serviceSlice.js'
+
+import  '../CSS/Home.css'
+import Slide from '../components/Slide.jsx'
+import slide2 from '../Images/slide2.jpeg' 
 import cardimg1 from '../Images/card-img1.jpeg'
 import doc1 from '../Images/doc1.jpeg' 
 
-import { useState } from "react";
-import {fetchDoc,fetchDocByDep} from '../reducers/DoctorLogin.js'
-import {fetchService} from '../reducers/serviceSlice.js'
-import axios from 'axios'
 
 export default function Home(props) {
   const dispatch= useDispatch()
+  const navigate = useNavigate();
   const { allDoc } =useSelector (state => state.doctor)
   const { DocByDep } =useSelector (state => state.doctor)
- 
-
   const { serviceData } =useSelector (state => state.service)
-
-
-
-  
 
   useEffect(() => {
     dispatch(fetchDoc())
     dispatch(fetchService())
     dispatch(fetchDocByDep('General'))
 
-
-  }, [])
+}, [])
 
   return (
     <>    
   
     <Slide />
     <main className="container" style={{}}>
-      {/* {console.log("user",user)} */}
+      {console.log("fetchDocByDep",DocByDep)}
 
 
         <div className="container" style={{backgroundColor:"white",paddingBottom:"0.5rem",borderRadius:"20px"}}>
@@ -151,7 +142,11 @@ export default function Home(props) {
                       <img src={doc1} style={{borderRadius:"50rem",width:"150px",height:"150px",marginLeft:"4rem",marginTop:"1rem"}} className="card-img-top" alt="..."/>
                       <div className="card-body">
                         <div>
-                        <h5 className="card-title" style={{color:"#007E85"}}>{data.firstName}</h5>
+                        <h5 className="card-title" style={{color:"#007E85"}} onClick={()=>{
+
+                          dispatch(getDocById(data.id));
+                          navigate('/ProfileDetails')
+                        }}>{data.firstName}</h5>
                         <p>{data.speciality}</p>
                         </div>
                         <p className="card-text" style={{color:"#8a8a8a"}}>Some quick example text to build on the card title and make up the bulk of the card's content.</p>

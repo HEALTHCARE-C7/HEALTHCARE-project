@@ -31,6 +31,8 @@ const [showPassword, setShowPassword] = useState(false);
     setShowPassword(!showPassword);
   };
   
+
+  
     return (
         <div className="modal-content">
         <div className="login-page">
@@ -52,7 +54,9 @@ const [showPassword, setShowPassword] = useState(false);
               <input
                 className="form-input-login"
                 {...register('password')}
+                
                 required
+                
                 placeholder="Password"
                 type={showPassword ? 'text' : 'password'}
                 

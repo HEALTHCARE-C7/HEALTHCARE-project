@@ -4,16 +4,30 @@ import axios from 'axios'
 
 
 
-export const fetchreview=createAsyncThunk('fetchreview',async (dispatch)=>{
+export const fetchreview=createAsyncThunk('fetchreview',async (id)=>{
  
     try {
-     const res =await axios.get("http://localhost:5000/api/Reviews")
+     const res =await axios.get(`http://localhost:5000/api/Reviews/getByDoc/${id}`)
+     console.log("fetchreview",res.data);
      
       return res.data
     } catch (error) {
      console.log(error);   
     } 
   }) 
+  
+export const addReview=createAsyncThunk('addReview',async (body)=>{
+ 
+  try {
+   const res =await axios.post(`http://localhost:5000/api/Reviews`,body)
+   console.log("fetchreview",res.data);
+   
+    return res.data
+  } catch (error) {
+   console.log(error);   
+  } 
+}) 
+
 
 
 const reviewSlice = createSlice({
@@ -34,6 +48,17 @@ const reviewSlice = createSlice({
         state.DataReviews = action.payload;
       })
       .addCase(fetchreview.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+      .addCase(addReview.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(addReview.fulfilled, (state, action) => {
+        state.loading = false;
+        state.DataReviews = action.payload;
+      })
+      .addCase(addReview.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       });

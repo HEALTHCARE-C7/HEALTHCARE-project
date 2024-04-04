@@ -12,12 +12,13 @@ import {
   MDBTextArea,
 } from "mdb-react-ui-kit";
 import str from '../Images/icons/star.png' 
-
+import { FaShare } from "react-icons/fa";
 import axios from 'axios'
 import '../CSS/FileDoc.css'
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchAppoitments,fetchPationOfDoctor,fetchPationOfThisDat,acceptAppoitment } from '../reducers/appoitmentSlice.js'; 
+import {sendSignupEmail} from '../reducers/email.js'
 import { useNavigate } from "react-router-dom";
 import { fetchAvailability,addAvailability} from '../reducers/availabilitySlice.js'
 import { fetchDoctor} from '../reducers/DoctorLogin.js'
@@ -25,7 +26,11 @@ import { fetchreview} from '../reducers/reviewSlice.js'
 import doc1 from '../Images/doc1.jpeg';
 import search from '../Images/icons/search.png'
 import bell from '../Images/icons/bell.png'
-import ProfilePatione from '../components/ProfilePatione.jsx';
+// import {createSlice} from '../reducers/reviewSlice.js'
+
+
+
+
 
 export default function ProfileDoc(props) {
   const dispatch=useDispatch()
@@ -38,11 +43,15 @@ export default function ProfileDoc(props) {
   const { dataAvalability } =useSelector (state => state.availabilty)
   const { DataReviews } =useSelector (state => state.review)
   const { data } =useSelector (state => state.doctor)
-  console.log("this is the data user in doc profile",data);
+  // console.log("this is the data user in doc profile",data);
 
   const [isFetch,setIsFetch]=useState(false)
   const [view,setView]=useState('Overview')
   const [view1,setView1]=useState('Overview')
+  const [body,setBody]=useState({})
+  const [likeCounter, setLikeCounter] = useState(0);
+  const [showCommentInput, setShowCommentInput] = useState(false);
+
 
   const [user, setUser] = useState();
   
@@ -60,9 +69,13 @@ export default function ProfileDoc(props) {
     dispatch(fetchAppoitments())
     dispatch(fetchPationOfDoctor(data?.id))
     dispatch(fetchPationOfThisDat(today))
-    dispatch(fetchAvailability())   
-    dispatch(fetchreview())  
-    setUser(user)
+    dispatch(fetchAvailability())  
+    dispatch(fetchreview(data?.id))
+
+      
+    dispatch(sendSignupEmail(data.email))
+    // dispatch(createSlice(data.id))
+    // setUser(user)
 
 
   }, [])
@@ -88,6 +101,12 @@ const rendreView =(view1)=>{
   console.log("view1", view1);
 
 }
+const incrementLikeCounter = () => {
+  setLikeCounter(likeCounter + 1);
+};
+const toggleCommentInput = () => {
+  setShowCommentInput(!showCommentInput);
+};
 
 
   return (
@@ -127,7 +146,13 @@ const rendreView =(view1)=>{
                 </a>
               </li>
               <li>
-                <a href="#" className="nav-link link-dark"  >           
+                <a href="#" className="nav-link link-dark"  onClick={()=>{
+                  
+                dispatch(fetchreview(data?.id))
+
+                  rendreView('Review')  
+                }}  >
+                           
                   Reviews
                 </a>
               </li>
@@ -156,44 +181,11 @@ const rendreView =(view1)=>{
           
             </div>
 
-            {view1 === "Overview" &&
-            
+            {view1 === "Overview" &&            
               <>
 
-            <div className="col-10" style={{paddingLeft:"1.5rem",paddingRight:"1.5rem",paddingTop:"0rem"}}>
-            <nav className="">
-                    <div className="container-fluid" style={{paddingTop:"1rem",paddingBottom:"3rem"}}>
-                      <div className="row">
-                    <div className="col-8">
-                    
-                    </div>
-                      <div className="col-4" style={{display:"flex",gap:"2rem"}}>
-                      
-                        <img style={{ width: "20px",height:"30px",paddingTop:"6px"}} src={bell} alt="" />
-
-                        <div className="dropdown">
-
-                            <a href="#" onClick={()=>{
-                                rendreView('MyProfile');  
-                              }} className="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-                              <img src="https://github.com/mdo.png" alt="" width="32" height="32" className="rounded-circle me-2"/>
-                              <strong>test</strong>
-                            </a>
-                            <ul className="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-                              <li><a className="dropdown-item" href="#">New project...</a></li>
-                              <li><a className="dropdown-item" href="#">Settings</a></li>
-                              <li><a className="dropdown-item" href="#">Profile</a></li>
-                              <li><hr className="dropdown-divider"/></li>
-                              <li><a className="dropdown-item"  onClick={()=>{          
-                            }}>Sign out</a></li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                    
-                    </div>
-
-                </nav>
+            <div className="col-10" style={{paddingLeft:"1.5rem",paddingRight:"1.5rem",paddingTop:"7rem"}}>
+         
                 <div className="row">
                   <div className="col-12" style={{paddingBottom:"3rem"}}>
                     <h3>Welcome , Dr {data?.firstName} </h3>
@@ -348,63 +340,20 @@ const rendreView =(view1)=>{
             </>
             }
             {view1 === "MyProfile" && 
-                <div className="col-10" style={{paddingLeft:"1.5rem",paddingRight:"1.5rem",paddingTop:"0rem"}}>
-                <nav className="">
-                        <div className="container-fluid" style={{paddingTop:"1rem",paddingBottom:"3rem"}}>
-                          <div className="row">
-                        <div className="col-8">
-                        <form className="d-flex serach-input-file-Doc">
-                            <img style={{ width: "20px",height:"30px",paddingTop:"6px"}} src={search} alt="" />
-                            <input className="form-control me-2" type="search" style={{borderRadius:"2rem",backgroundColor:"transparent"}} placeholder="Search" aria-label="Search"/>
-            
-                          
-                            </form> 
-                        </div>
-                          <div className="col-4" style={{display:"flex",gap:"2rem"}}>
-                          
-                            <img style={{ width: "20px",height:"30px",paddingTop:"6px"}} src={bell} alt="" />
-            
-                            <div className="dropdown">
-            
-                                <a href="#" onClick={()=>{
-                                    changeView('MyProfile');  
-                                  }} className="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-                                  <img src="https://github.com/mdo.png" alt="" width="32" height="32" className="rounded-circle me-2"/>
-                                  <strong>test</strong>
-                                </a>
-                                <ul className="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-                                  <li><a className="dropdown-item" href="#">New project...</a></li>
-                                  <li><a className="dropdown-item" href="#">Settings</a></li>
-                                  <li><a className="dropdown-item" href="#">Profile</a></li>
-                                  <li><hr className="dropdown-divider"/></li>
-                                  <li><a className="dropdown-item"  onClick={()=>{            
-                                  
-                                  }}>Sign out</a></li>
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
-                        
-                        </div>
-            
-                    </nav>
-            
-            
-                        
-            
-                        <div className="row">
+                <div className="col-10" style={{paddingLeft:"1.5rem",paddingRight:"1.5rem",paddingTop:"0rem"}}>            
+                    <div className="row">
                           <div className="col-12" style={{paddingBottom:"3rem"}}>
                             <h3>My Profile </h3>              
                           </div>
-                          </div>
+                      </div>
                           <div className="row" style={{gap:"1rem"}}>
                             <div className="col-2" style={{paddingBottom:"2rem", paddingTop:"5rem"}}>
                               <div className="card" style={{width:"18rem"}}>
                                   <img src={doc1} style={{borderRadius:"50rem",width:"150px",height:"150px",marginLeft:"4rem",marginTop:"1rem"}} className="card-img-top" alt="..."/>
                                   <div className="card-body" style={{textAlign:"center"}}>
                                     <div>
-                                    <h5 className="card-title" style={{color:"black"}}>test</h5>
-                                    <p>se</p>
+                                    <h5 className="card-title" style={{color:"black"}}>{data?.firstName}</h5>
+                                    <p>{data?.speciality}</p>
                                     </div>
                                         <button  onClick={()=>{
                                           changeView('edit')  
@@ -446,70 +395,9 @@ const rendreView =(view1)=>{
             
             
             
-              {view ==="review" &&   <div className="row"style={{paddingTop:"1rem"}}>
-                            <div className="col-12" >
-                            <h5>Reviews</h5>              
-                          </div>
-            
-            
-            
-                      <div className="carousel">
-                        <div className="card-container">
-                            {DataReviews.map((data,i)=>{
-                              return(
-            
-                                <MDBCol md="12" lg="10" xl="8" key={i} style={{paddingBottom:"1rem"}}>
-                        <MDBCard>
-                          <MDBCardBody>
-                            <div className="d-flex flex-start align-items-center">
-                              <MDBCardImage
-                                className="rounded-circle shadow-1-strong me-3"
-                                src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp"
-                                alt="avatar"
-                                width="60"
-                                height="60"
-                              />
-                              <div>
-                                <h6 className="fw-bold text-primary mb-1">Lily Coleman</h6>
-                                <p className="text-muted small mb-0">
-                                  Shared publicly - Jan 2020
-                                </p>
-                              </div>
-                            </div>
-            
-                            <p className="mt-3 mb-4 pb-2">
-                              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                              do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                              Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                              laboris nisi ut aliquip consequat.
-                            </p>
-            
-                            <div className="small d-flex justify-content-start">
-                              <a href="#!" className="d-flex align-items-center me-3">
-                                <MDBIcon far icon="thumbs-up me-2" />
-                                <p className="mb-0">Like</p>
-                              </a>
-                              <a href="#!" className="d-flex align-items-center me-3">
-                                <MDBIcon far icon="comment-dots me-2" />
-                                <p className="mb-0">Comment</p>
-                              </a>
-                              <a href="#!" className="d-flex align-items-center me-3">
-                                <MDBIcon fas icon="share me-2" />
-                                <p className="mb-0">Share</p>
-                              </a>
-                            </div>
-                          </MDBCardBody>
-                        </MDBCard>
-                                </MDBCol>
-                              )
-                              
-                            })}
-                        </div>
-                      </div>
-                      
-            
-                            </div>}
+           
                           {view === "edit" && 
+
                             <div className="row"  style={{padding:"16px",width:"700px",height:"380px",marginTop:"1.7rem" , backgroundColor:"white"}}>
                             <div className="col-6">
                               <h5  className='text2'>name:</h5>
@@ -549,18 +437,84 @@ const rendreView =(view1)=>{
                             
             
                             </div>
-                        </div>
+                 </div>
             
             
-                        {/* Profile User */}
-                        {/* <MyProfile/> */}
+                    
                       
             
             
             
-                        </div>
+                </div>
             
             }
+            {view1 ==="Review" &&   
+             <div className="col-10" style={{paddingLeft:"1.5rem",paddingRight:"1.5rem",paddingTop:"4.5rem"}}>            
+                  
+                    <div className="row"style={{paddingTop:"1rem"}}>
+                                    <div className="col-12" >
+                                    <h5>Reviews</h5>              
+                                  </div>
+                    
+                    
+                    
+                              <div className="carousel">
+                                <div className="card-container">
+                                    {DataReviews.map((data,i)=>{
+                                      return(
+                    
+                                        <MDBCol md="12" lg="10" xl="8" key={i} style={{paddingBottom:"1rem"}}>
+                                <MDBCard>
+                                  <MDBCardBody>
+                                    <div className="d-flex flex-start align-items-center">
+                                      <MDBCardImage
+                                        className="rounded-circle shadow-1-strong me-3"
+                                        src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp"
+                                        alt="avatar"
+                                        width="60"
+                                        height="60"
+                                      />
+                                      <div>
+                                        <h6 className="fw-bold text-primary mb-1">{data.patientName}</h6>
+                                        <p className="text-muted small mb-0">
+                                          Shared publicly - {data.createdAt}
+                                        </p>
+                                      </div>
+                                    </div>
+                    
+                                    <p className="mt-3 mb-4 pb-2">
+                                     {data.comment}
+                                    </p>
+                                    
+                    
+                                    <div className="small d-flex justify-content-start">
+                                      <a href="#!" className="d-flex align-items-center me-3">
+                                        <MDBIcon far icon="thumbs-up me-2" />
+                                        <button  className=" btn d-flex align-items-center me-3" onClick={incrementLikeCounter}>
+                                <MDBIcon far icon="thumbs-up me-2" />
+                                <p className="mb-0">Like {likeCounter}</p>
+                              </button>
+                                   
+                                        
+                             
+                                     
+                                      </a>
+                                    </div>
+                                  </MDBCardBody>
+                                </MDBCard>
+                                        </MDBCol>
+                                      )
+                                      
+                                    })}
+                                </div>
+                              </div>
+                              
+                    
+                      </div>
+            </div>
+                            
+                            
+                            }
 
 
 

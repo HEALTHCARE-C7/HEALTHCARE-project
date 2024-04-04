@@ -5,11 +5,12 @@ import {doctorLogin} from '../components/AuthActionDoctor.jsx'
 
   export const fetchDoctor=createAsyncThunk('fetchDoctor',async (dispatch)=>{
   try {
-    console.log("hey");
+    // console.log("hey");
     const  token  =localStorage.getItem('token')
     const config={headers:{Authorization:`Bearer ${token}`}}
     const response = await axios.get('http://localhost:5000/api/doctor/user',config)
-    // console.log('res data',response.data);
+    console.log('res data',response.data);
+    // console.log('hes doc',response.data);
     return response.data
    
   } catch (error) {
@@ -36,6 +37,15 @@ export const fetchDocByDep=createAsyncThunk('fetchDocByDep',async(dep)=>{
    console.log(error);   
   } 
 }) 
+export const getDocById=createAsyncThunk('getDocById',async(id)=>{
+ 
+  try {
+   const res =await axios.get(`http://localhost:5000/api/doctor/docById/${id}`)  
+    return res.data
+  } catch (error) {
+   console.log(error);   
+  } 
+}) 
 
 
 
@@ -45,6 +55,7 @@ export const fetchDocByDep=createAsyncThunk('fetchDocByDep',async(dep)=>{
 const initialState = {
   allDoc:[],
   DocByDep:[],
+  oneDoc:{},
   loading: false,
   data: {},
   userInfo: null, 
@@ -104,6 +115,18 @@ const initialState = {
           state.loading = true; 
         })
         .addCase(fetchDoctor.rejected, (state, action) => {
+          state.loading = false;
+          state.error = action.error.message;
+        })
+        .addCase(getDocById.pending, (state) => {
+          state.loading = true;
+        })
+        .addCase(getDocById.fulfilled, (state, action) => {
+          state.loading = false;
+          state.oneDoc = action.payload;
+          state.loading = true; 
+        })
+        .addCase(getDocById.rejected, (state, action) => {
           state.loading = false;
           state.error = action.error.message;
         });

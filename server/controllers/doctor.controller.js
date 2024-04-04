@@ -35,6 +35,7 @@ module.exports = {
      delete docteurData.password;
      res.status(200).json({ token, docteur: docteurData });
     },
+   
     getAll:async function(req,res){
         try {
             const doctor= await db.Doctor.findAll({})
@@ -62,6 +63,16 @@ module.exports = {
             throw error    
         }
     },
+    docById:async function(req,res){
+        try {
+            const doctor= await db.Doctor.findOne({ where: { id:req.params.id } })
+            res.status(200).send(doctor)    
+        } catch (error) {
+            throw error    
+        }
+    },
+
+
     addDoc: async function(req,res){
         try {
             const doctor= await db.Doctor.create(req.body)

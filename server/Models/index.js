@@ -26,24 +26,17 @@ db.Service=require('./service.model.js')(connection,DataTypes)
 db.Review=require('./reviews.model.js')(connection,DataTypes)
 
 
-db.UserChat=require('../Models/UserChat.js')(connection,DataTypes)
-db.Message=require('../Models/Message.js')(connection,DataTypes)
-db.Conversation=require('../Models/Conversation.js')(connection,DataTypes)
-db.UserToConversation=require('../Models/UserToConversation.js')(connection,DataTypes)
+db.UserChat=require('./UserChat.js')(connection,DataTypes)
+db.Message=require('./Message.js')(connection,DataTypes)
+db.Conversation=require('./Conversation.js')(connection,DataTypes)
+db.Room=require('./room.js')(connection,DataTypes)
 
-
-// db.UserChat.hasMany(db.UserToConversation);
-// db.UserToConversation.belongsTo(db.UserChat);
-// db.Conversation.hasMany(db.UserToConversation);
-// db.UserToConversation.belongsTo(db.Conversation);
-// db.Conversation.hasMany(db.Message);
-// db.Message.belongsTo(db.Conversation);
-// db.UserChat.hasMany(db.Message);
-// db.Message.belongsTo(db.UserChat);
-
-
-db.Doctor.hasMany(db.Availabilty)
-db.Availabilty.belongsTo(db.Doctor)
+db.Room.hasMany(db.Message)
+db.Message.belongsTo(db.Room)
+db.UserChat.belongsToMany(db.Room,{through:db.Conversation})
+db.Room.belongsToMany(db.UserChat,{through:db.Conversation})
+db.UserChat.hasMany(db.Message)
+db.Message.belongsTo(db.UserChat)
 
 
 
