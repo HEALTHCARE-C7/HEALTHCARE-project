@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useEffect } from "react";
 import NavBarre from '../components/NavBarre.jsx'
 import Slide from '../components/Slide.jsx'
-import  '../CSS/Home.css'
+import  '../CSS/home.css'
 import slide2 from '../Images/slide2.jpeg' 
 import { useDispatch,useSelector } from 'react-redux' 
 import cardimg1 from '../Images/card-img1.jpeg'
@@ -91,7 +91,7 @@ export default function Home(props) {
               <div className='btn-slide-2'>
               <button type="button" className="btn btn1-slide2"><h6>Get started</h6> </button>
               <button type="button" className="btn btn2-slide2" onClick={()=>{
-                // dispatch(write({value:"brahim"}))+
+                // dispatch(write({value:"youssef"}))+
                 }}><h6>Talk to sales</h6> </button>
 
               </div>
