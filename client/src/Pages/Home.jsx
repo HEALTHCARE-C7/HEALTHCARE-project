@@ -82,7 +82,7 @@ export default function Home(props) {
               <div className='btn-slide-2'>
               <button type="button" className="btn btn1-slide2"><h6>Get started</h6> </button>
               <button type="button" className="btn btn2-slide2" onClick={()=>{
-                // dispatch(write({value:"brahim"}))+
+                // dispatch(write({value:"youssef"}))+
                 }}><h6>Talk to sales</h6> </button>
 
               </div>
