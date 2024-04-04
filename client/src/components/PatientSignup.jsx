@@ -1,13 +1,13 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import {registerPatient} from './AuthActionPatient.jsx'
 // import { useNavigate } from "react-router-dom";
 // import Securite from '../../../server/middleware/patien.middleware.js'
 const Signup = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const dispatch = useDispatch()
   const { register, handleSubmit } = useForm()

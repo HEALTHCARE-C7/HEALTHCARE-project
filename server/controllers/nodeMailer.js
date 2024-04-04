@@ -30,7 +30,7 @@ async function main(to, subject, html) {
         html: "Hello, Your book For the department  has been confirmed, one of our doctors will be in touch with you soon",
     });
 
-    console.log(info.messageId); // Random ID generated after successful send (optional)
+    // console.log(info.messageId); // Random ID generated after successful send (optional)
 }
 
 

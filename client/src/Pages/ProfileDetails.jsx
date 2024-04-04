@@ -1,29 +1,66 @@
 import React from 'react'
-import { useDispatch,useSelector } from 'react-redux' 
 import '../CSS/ProfileDetails.css'
-import appoitmentSlide from '../Images/appoitmentSlide.jpg'
+import { useDispatch,useSelector } from 'react-redux' 
 import { useState } from "react";
 import {addAppoitments } from '../reducers/appoitmentSlice.js'; 
+import { useEffect } from "react";
+import { fetchreview,addReview} from '../reducers/reviewSlice.js'
+import appoitmentSlide from '../Images/appoitmentSlide.jpg'
+import { FaShare } from "react-icons/fa";
 
+import {
+  MDBBtn,
+  MDBCard,
+  MDBCardBody,
+  MDBCardFooter,
+  MDBCardImage,
+  MDBCol,
+  MDBContainer,
+  MDBIcon,
+  MDBRow,
+  MDBTextArea,
+} from "mdb-react-ui-kit";
 
 
 
 
 export default function ProfileDetails() {
 
+  const { DataReviews } =useSelector (state => state.review)
   const { oneDoc } =useSelector (state => state.doctor)
+  const [isFetch,setIsFetch]=useState(false)
+
   const [date,setDate]=useState()
   const [time,setTime]=useState()
   const [patientName,setpatientName]=useState("")
   const [patientEmail,setpatientEmail]=useState()
   const [departement,setdepartement]=useState()
-  const [accepted,setaccepted]=useState("Declined")
-  const [view,setView]=useState("Bookapp")
+  const [comment,setcomment]=useState("")
+  const [doctorId,setdoctorId]=useState()
+ 
 
   
+
+  const { data } =useSelector (state => state.patient)
+
+
+  const [accepted,setaccepted]=useState("Declined")
+  const [view,setView]=useState("Bookapp")
+  const [likeCounter, setLikeCounter] = useState(0);
+  const [showCommentInput, setShowCommentInput] = useState(false);
+  
 const changeView = (view) => {
-  setView("Bookapp")
+  setView(view)
 }
+
+useEffect(()=>{
+  dispatch(fetchreview(oneDoc.id))
+
+},[isFetch])
+const toggle=()=>{
+  setIsFetch(!isFetch)
+}
+
 
 
   const dispatch= useDispatch()
@@ -37,16 +74,25 @@ const changeView = (view) => {
           accepted:accepted,
           })) 
       }
+      const incrementLikeCounter = () => {
+        setLikeCounter(likeCounter + 1);
+      };
+      const toggleCommentInput = () => {
+        setShowCommentInput(!showCommentInput);
+      };
 
   return (
    <section>
+    {console.log("data Patient",data)}
+
+    
     <div className="container page-title-details" >
      
-      <nav class="navbar navbar-light bg-light" style={{borderRadius:"1rem"}}>
+      <nav className="navbar navbar-light bg-light" style={{borderRadius:"1rem"}}>
   
-    <a class="navbar-brand page-title" href="#"> 
-         <h1> Welcome To {oneDoc.firstName} doctor's office</h1>   
-    </a> 
+              <a className="navbar-brand page-title" href="#"> 
+                  <h1> Welcome To {oneDoc.firstName} doctor's office</h1>   
+              </a> 
   
   <div   style={{paddingRight:"3rem",gap:"1rem",display:"flex"}}> 
   <button className='btn btn2-slide2' onClick={()=>{changeView('Bookapp')}} >Book Appoitment</button>
@@ -118,7 +164,114 @@ const changeView = (view) => {
 </div>
     </div>}
 
-    {view ==="review" && <div className=""></div>}
+      {view ==="review" && <div className="container">
+      <div className="row"style={{paddingTop:"1rem",paddingLeft:"5rem"}}>
+                                    <div className="col-6" >
+                                    <h5>Reviews</h5>              
+                                  </div>
+                                  <div style={{textAlign:"end",paddingRight:"7rem"}} className="col-6">
+                                   <button  onClick={()=>{
+                                    changeView("addComment")
+                                   }} className='btn'>
+                                   <h5> Add Comment</h5>
+                                   </button>
+                                  </div>
+                    
+                    
+                    
+                              <div className="col-12">
+                                <div className=" col-11 card-container">
+                                    {DataReviews.map((data,i)=>{
+                                      return(
+                    
+                                        <MDBCol key={i} style={{paddingBottom:"1rem"}}>
+                                <MDBCard>
+                                  <MDBCardBody>
+                                    <div className="d-flex flex-start align-items-center">
+                                      <MDBCardImage
+                                        className="rounded-circle shadow-1-strong me-3"
+                                        src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(19).webp"
+                                        alt="avatar"
+                                        width="60"
+                                        height="60"
+                                      />
+                                      <div>
+                                        <h6 className="fw-bold text-primary mb-1">{data.patientName}</h6>
+                                        <p className="text-muted small mb-0">
+                                          Shared publicly - {data.createdAt}
+                                        </p>
+                                      </div>
+                                    </div>
+                    
+                                    <p className="mt-3 mb-4 pb-2">{data.comment}
+                                    </p>
+                                    
+                    
+                                    <div className="small d-flex justify-content-start">
+                                      <a href="#!" className="d-flex align-items-center me-3">
+                                        <MDBIcon far icon="thumbs-up me-2" />
+                                        <button className="btn d-flex align-items-center me-3" onClick={incrementLikeCounter}>
+                                <MDBIcon far icon="thumbs-up me-2" />
+                                <p className="mb-0">Like {likeCounter}</p>
+                              </button>
+                                        {/* <p className="mb-0">Like</p>  */}
+                                      </a>
+                                      <a href="#!" className="d-flex align-items-center me-3" >
+                                        <MDBIcon far icon="comment-dots me-2" />
+                                        <button className=" btn btn2-slide2 d-flex align-items-center me-3" onClick={toggleCommentInput}>
+                                <MDBIcon far icon="thumbs-up me-2" />
+                              
+                              </button>
+                              
+                                        {/* <p className="mb-0">Comment {showCommentInput}</p> */}
+                                      </a>
+                                      <a href="#!" className="d-flex align-items-center me-3">
+                                      
+                                       
+                                      </a>
+                                    </div>
+                                  </MDBCardBody>
+                                </MDBCard>
+                                        </MDBCol>
+                                      )
+                                      
+                                    })}
+                                </div>
+                              </div>
+                              
+                    
+                      </div>
+        
+      </div>}
+      {view ==="addComment" && 
+      <div className="container">
+        <div className="row">
+        <div className="col-12 col-contact-box">
+                <label for="" className="form-label">Add youre Comment</label>
+
+                    <textarea  onChange={(e)=>{setcomment(e.target.value)}}  style={{ background:"none",border:" 1px solid #007E85"}} type="text" className="form-control"  aria-describedby="emailHelp" placeholder="Type your message..." rows="8" cols="50"  />
+                </div>
+                <div style={{textAlign:"center",paddingTop:"3rem"}}>
+                <button  onClick={()=>{
+
+              dispatch(addReview({
+                comment:comment,
+                patientName:data.firstName,
+                doctorId:oneDoc.id           
+              }))
+            
+              toggle()
+                
+
+                }} style={{textAlign:"center",width:"50%"}}   className='btn btn1-slide2'>Send</button>
+
+                </div>
+        </div>
+
+        
+      </div>
+   
+                }
    </section>
   )
 }

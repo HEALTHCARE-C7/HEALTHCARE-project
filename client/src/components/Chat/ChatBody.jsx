@@ -5,7 +5,7 @@ const ChatBody = ({ messages }) => {
   const navigate = useNavigate();
 console.log('body',messages);
   const handleLeaveChat = () => {
-    localStorage.removeItem('token');
+    // localStorage.removeItem('token');
     navigate('/');
     window.location.reload();
   };

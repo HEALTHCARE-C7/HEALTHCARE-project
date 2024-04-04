@@ -71,28 +71,7 @@ export default function FileDoc(props) {
     // dispatch(sendSignupEmail("ihabghdifi@gmail.com", "iheb"))
   }, [isFetch])
 
-  //  useEffect(() => {
-  //   const fetchProfile = async () => {
-  //     try {        
-  //       const  token  =localStorage.getItem('token')
-  //       const config={headers:{Authorization:`Bearer ${token}`}}
-  //       const response = await axios.get('http://localhost:5000/api/patient/user',config)
-  //       console.log('res user',response.data);
-  //       setUser(response.data);
-  //       console.log(user);
 
-  //     } catch (error) {
-        
-  //     }
-  //   };
-  //   fetchProfile()
-  
-  // }, [isFetch]);
-    // setUser(user)
-
- 
-
-  // }, [])
 
   
 
