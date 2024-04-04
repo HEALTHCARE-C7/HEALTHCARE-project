@@ -35,6 +35,7 @@ module.exports = {
      delete docteurData.password;
      res.status(200).json({ token, docteur: docteurData });
     },
+   
     getAll:async function(req,res){
         try {
             const doctor= await db.Doctor.findAll({})

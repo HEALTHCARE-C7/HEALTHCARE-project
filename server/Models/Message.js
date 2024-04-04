@@ -4,11 +4,9 @@ module.exports=(connection,DataTypes)=>{
         content: {
             type: DataTypes.STRING,
             allowNull: false,
+            required: true
           },
-          // currentChatReceiverId: {
-          //   type: DataTypes.INTEGER,
-          //   allowNull: false,
-          // },
+       
         
       });
       return Message
