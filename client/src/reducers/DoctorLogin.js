@@ -9,6 +9,7 @@ import {doctorLogin} from '../components/AuthActionDoctor.jsx'
     const  token  =localStorage.getItem('token')
     const config={headers:{Authorization:`Bearer ${token}`}}
     const response = await axios.get('http://localhost:5000/api/doctor/user',config)
+    console.log('res data',response.data);
     // console.log('hes doc',response.data);
     return response.data
    

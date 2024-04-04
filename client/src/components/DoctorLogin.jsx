@@ -13,7 +13,11 @@ const LoginScreen = ({changeView}) => {
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch()
   const { register, handleSubmit } = useForm()
-  const success= useSelector((state)=> state.doctor.success)
+  const success= useSelector((state)=>
+    state.doctor.success
+  )
+  console.log('succes',success);
+  // const success= useSelector((state)=> state.doctor.success)
   
   const submitForm = (data) => {
   dispatch(doctorLogin(data)) 

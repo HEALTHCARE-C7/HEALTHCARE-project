@@ -1,25 +1,26 @@
 const db=require('../Models/index');
 
 module.exports = {
-    create: async function(req,res){
+    createMessage: async function(req,res){
+        
         try {
-            const post=await db.Conversation.create(req.body)
+            const post=await db.Message.create(req.body)
             res.status(200).send(post)
         } catch (error) {
             throw error
         }
     },
-    getAll: async function(req,res){
+    getRoomsByUserId: async function(req,res){
         try {
-            const get=await db.Conversation.findAll({})
+            const get=await db.Room.findAll({})
             res.status(200).send(get)
         } catch (error) {
             throw error
         }
     },
-    getOne: async function(req,res){
+    getAllMessageByRoomId: async function(req,res){
         try {
-            const find=await db.Conversation.findOne({where:{id:req.params.id}})
+            const find=await db.Message.findAll({where:{roomId:req.params.roomId}})
             res.status(200).send(find)
         } catch (error) {
             throw error

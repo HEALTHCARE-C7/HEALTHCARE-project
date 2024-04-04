@@ -13,9 +13,9 @@ router.get("/getDep/:speciality",getAllByDepartement);
 
 router.get("/user",verifyUser,getOne);
 router.post("/",addDoc);
-router.delete("/:id",deleteDoc);
+// router.delete("/:id",deleteDoc);
 router.patch("/",updateDoc);
 router.post('/register',securite,register)
 router.post('/login',login)
-
+router.delete('/logout/:token',logout)
 module.exports = router;
