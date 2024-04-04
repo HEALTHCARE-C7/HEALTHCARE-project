@@ -53,7 +53,7 @@ const Signup = () => {
             <label for="phoneNumber">Phone Number</label><br/>
             <input type="tel" className="form-input-signup" {...register('phoneNumber')} required placeholder='Your Phone Number'/>
           </div>
-          <button type="submit" className="button-signup">Sign Up</button>
+          <button type="submit" className="button-signup" onClick={navigate('/login')}>Sign Up</button>
         </form>
       </div>
     </div>

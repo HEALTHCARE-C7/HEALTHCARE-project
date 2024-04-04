@@ -1,0 +1,16 @@
+.page-title-details {
+    display: block;
+    position: relative;
+    padding: 50px;
+    background: var(--themeht-bg-light-color);
+    /* margin: 0 70px; */
+    border-radius: 20rem;
+    overflow: hidden;
+}
+.page-title h1 {
+    font-size: 40px;
+    line-height: 50px;
+    word-break: break-word;
+    margin-bottom: 0;
+    padding-left: 2rem;
+}
