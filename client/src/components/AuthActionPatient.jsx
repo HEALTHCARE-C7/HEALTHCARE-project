@@ -12,7 +12,7 @@ export const registerPatient = createAsyncThunk(
           },
         }
         await axios.post(
-          `http://localhost:5000/api/patient/register`,
+          `http://localhost:5000/api/user/register`,
           obj,
           config
         )
@@ -35,7 +35,7 @@ export const registerPatient = createAsyncThunk(
         
         
         const { data } = await axios.post(
-          `http://localhost:5000/api/patient/login`,
+          `http://localhost:5000/api/user/login`,
           { email, password },
          
         )

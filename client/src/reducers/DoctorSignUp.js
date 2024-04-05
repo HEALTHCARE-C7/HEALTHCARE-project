@@ -5,14 +5,6 @@ import { useDispatch } from 'react-redux';
 import axios from "axios";
 
 
-// export const fetchDoctorData = createAsyncThunk('api/doctor', async () => {
-//   const response = await fetch('http://localhost:5000/api/doctor/signup');
-//   const jsonData = await response.json();
-//   return jsonData;
-// });
-
-
-
 const initialState = {
   loading: false,
   userInfo: null,

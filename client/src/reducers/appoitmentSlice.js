@@ -2,7 +2,7 @@ import { createSlice,createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 
 
-export const fetchAppoitments=createAsyncThunk('fetchAppoitments',async (dispatch)=>{
+export const fetchAppoitments=createAsyncThunk('fetchAppoitments',async ()=>{
  
   try {
    const res =await axios.get("http://localhost:5000/api/appoitment/getAllAppoitments")
@@ -66,9 +66,9 @@ extraReducers: (builder) => {
   // Add reducers for additional action types here, and handle loading state as needed
   builder.addCase(fetchAppoitments.fulfilled, (state, action) => {
     // Add user to the state array
-    state.loading = false;
     state.DataAppoitment = action.payload;
-    state.loading = true; 
+    state.loading = false;
+    
   })
   builder.addCase(fetchAppoitments.rejected, (state, action) => {
     state.loading = false;
@@ -77,6 +77,22 @@ extraReducers: (builder) => {
   builder.addCase(fetchAppoitments.pending, (state, action) => {
     state.loading = true; 
   })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   builder.addCase(addAppoitments.fulfilled, (state, action) => {
     // Add user to the state array
     state.loading = false;

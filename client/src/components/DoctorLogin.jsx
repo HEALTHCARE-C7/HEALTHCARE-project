@@ -68,7 +68,7 @@ const LoginScreen = ({changeView}) => {
              </div>
              
             </div>
-            <button type="submit" className="button-login" >Log In</button>
+            <button type="submit" className="button-login"  >Log In</button>
           </form>
         </div>
       </div>

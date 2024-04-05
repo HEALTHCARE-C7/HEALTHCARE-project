@@ -18,43 +18,39 @@ async function connectionTest (){
   connectionTest()
   const db={}
 
-db.Doctor=require('./doctor.model.js')(connection,DataTypes)
-db.Patient=require('./patien.model.js')(connection,DataTypes)
+// db.Doctor=require('./doctor.model.js')(connection,DataTypes)
+// db.Patient=require('./patien.model.js')(connection,DataTypes)
+
+
 db.Appoitment=require('./appoitment.model.js')(connection,DataTypes)
 db.Availabilty=require('./availabilty.model.js')(connection,DataTypes)
 db.Service=require('./service.model.js')(connection,DataTypes)
 db.Review=require('./reviews.model.js')(connection,DataTypes)
+db.User=require('./user.model.js')(connection,DataTypes)
+
+ 
 
 
-db.UserChat=require('./UserChat.js')(connection,DataTypes)
-db.Message=require('./Message.js')(connection,DataTypes)
-db.Conversation=require('./Conversation.js')(connection,DataTypes)
-db.Room=require('./room.js')(connection,DataTypes)
-
-db.Room.hasMany(db.Message)
-db.Message.belongsTo(db.Room)
-db.UserChat.belongsToMany(db.Room,{through:db.Conversation})
-db.Room.belongsToMany(db.UserChat,{through:db.Conversation})
-db.UserChat.hasMany(db.Message)
-db.Message.belongsTo(db.UserChat)
-
-
-
-db.Doctor.hasMany(db.Availabilty)
-db.Availabilty.belongsTo(db.Doctor)
-
-
-db.Service.hasMany(db.Doctor) 
-db.Doctor.belongsTo(db.Service)
+db.User.hasMany(db.Appoitment)
+db.Appoitment.belongsTo(db.User)
+db.User.hasMany(db.Review)
+db.Review.belongsTo(db.User)
+db.User.hasMany(db.Availabilty)
+db.Availabilty.belongsTo(db.User)
 
 
 
+// db.UserChat=require('./UserChat.js')(connection,DataTypes)
+// db.Message=require('./Message.js')(connection,DataTypes)
+// db.Conversation=require('./Conversation.js')(connection,DataTypes)
+// db.Room=require('./room.js')(connection,DataTypes)
+// db.Room.hasMany(db.Message)
+// db.Message.belongsTo(db.Room)
+// db.UserChat.belongsToMany(db.Room,{through:db.Conversation})
+// db.Room.belongsToMany(db.UserChat,{through:db.Conversation})
+// db.UserChat.hasMany(db.Message)
+// db.Message.belongsTo(db.UserChat)
 
-db.Doctor.hasMany(db.Appoitment) 
-db.Appoitment.belongsTo(db.Doctor)
-
-db.Doctor.hasMany(db.Review)
-db.Review.belongsTo(db.Doctor)
 
 
 //  connection.sync({force:true}) 

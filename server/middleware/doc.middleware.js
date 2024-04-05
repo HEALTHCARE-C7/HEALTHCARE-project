@@ -10,7 +10,7 @@ const chekSignup=(req,res,next)=>{
         
         return res.status(400).json('Please provide a valid email address')
     }
-    if(!password || password.length<8 || !isValidPassword(password)){
+    if(!password || password.length<8 ){
         return res.status(400).json('Password must be at least 8 characters long')
     }
     if(!location){
