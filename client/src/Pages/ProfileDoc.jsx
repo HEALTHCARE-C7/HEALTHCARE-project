@@ -14,7 +14,7 @@ import {
 import str from '../Images/icons/star.png' 
 import { FaShare } from "react-icons/fa";
 import axios from 'axios'
-import '../CSS/FileDoc.css'
+// import '../CSS/FileDoc.css'
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchAppoitments,fetchPationOfDoctor,fetchPationOfThisDat,acceptAppoitment } from '../reducers/appoitmentSlice.js'; 

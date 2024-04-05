@@ -18,11 +18,10 @@ import {doctorLogin} from '../components/AuthActionDoctor.jsx'
     
   }
 })
-
 export const fetchDoc=createAsyncThunk('fetchDoc',async (dispatch)=>{
  
   try {
-   const res =await axios.get("http://localhost:5000/api/doctor")   
+   const res =await axios.get("http://localhost:5000/api/user/getAllDoc")   
     return res.data
   } catch (error) {
    console.log(error);   
@@ -31,7 +30,7 @@ export const fetchDoc=createAsyncThunk('fetchDoc',async (dispatch)=>{
 export const fetchDocByDep=createAsyncThunk('fetchDocByDep',async(dep)=>{
  
   try {
-   const res =await axios.get(`http://localhost:5000/api/doctor/getDep/${dep}`)  
+   const res =await axios.get(`http://localhost:5000/api/user/getDep/${dep}`)  
     return res.data
   } catch (error) {
    console.log(error);   
@@ -40,7 +39,7 @@ export const fetchDocByDep=createAsyncThunk('fetchDocByDep',async(dep)=>{
 export const getDocById=createAsyncThunk('getDocById',async(id)=>{
  
   try {
-   const res =await axios.get(`http://localhost:5000/api/doctor/docById/${id}`)  
+   const res =await axios.get(`http://localhost:5000/api/user/docById/${id}`)  
     return res.data
   } catch (error) {
    console.log(error);   

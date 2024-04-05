@@ -32,8 +32,6 @@ module.exports = {
             throw error    
         }   
     },
-    
-
     getAllAppoitmentPatient:async function(req,res){
         try {
             const appoitment= await db.Appoitment.findAll({where:{patientId:req.params.patientId}});
@@ -42,7 +40,6 @@ module.exports = {
             throw error    
         }   
     },
-
     getOneByDate:async function(req,res){
         try {
             const appoitment= await db.Appoitment.findByPk(req.params.createdAt)

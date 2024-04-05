@@ -1,11 +1,7 @@
 import { createSlice ,createAsyncThunk } from "@reduxjs/toolkit";
 import {registerPatient} from '../components/AuthActionPatient.jsx'
 
-// export const fetchPatientData = createAsyncThunk('api/patient', async () => {
-//   const response = await fetch('http://localhost:5000/api/patient/signup');
-//   const jsonData = await response.json();
-//   return jsonData;
-// });
+
 const initialState = {
   loading: false,
   userInfo: null,

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import '../CSS/FileDoc.css'
+
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchAppoitments,fetchPationOfDoctor,fetchPationOfThisDat,acceptAppoitment } from '../reducers/appoitmentSlice.js'; 

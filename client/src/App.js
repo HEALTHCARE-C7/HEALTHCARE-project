@@ -10,11 +10,11 @@ import NavBarre from "./components/NavBarre.jsx";
 import NavBarreLog from './components/NavBarreLog.jsx';
 import Contact from "./Pages/Contact.jsx";
 import ProfilePatient from "./Pages/ProfilePatient.jsx";
-import ProfileDoc from "./Pages/ProfileDoc.jsx";
 import LoginPage from "./components/LoginPage.jsx";
 import SignUp from "./components/SignUp.jsx";
 import ProfileDetails from "./Pages/ProfileDetails.jsx";
 import ChatPage from "./components/Chat/ChatPage.jsx";
+import ProfileDoc from './Pages/ProfileDoc.jsx';
 
 
 

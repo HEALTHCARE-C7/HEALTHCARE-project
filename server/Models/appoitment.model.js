@@ -3,12 +3,6 @@ const sequelize = new Sequelize('sqlite::memory:');
 
 module.exports=(sequelize,DataTypes)=>{
   const Appoitment = sequelize.define('appoitment', {
-    id:{
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      autoIncrement: true,
-      primaryKey: true
-    },
     date: {
       type: DataTypes.DATEONLY,
       allowNull: false,

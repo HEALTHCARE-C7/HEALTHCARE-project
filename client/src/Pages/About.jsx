@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import Calendra from '../components/Calendar.jsx'
+// import PatientProfile from '../components/patientProfile.jsx'
 export class About extends Component {
   render() {
-    return (
+    return (  
       <>
+      
      <div className="cotainer">
       <div className="row">
          <div className="col-6">

@@ -2,14 +2,8 @@ const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = new Sequelize('sqlite::memory:');
 
 module.exports=(sequelize,DataTypes)=>{
-  const Patient = sequelize.define('patient', {
-    id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      autoIncrement: true,
-      primaryKey: true
-    },
-    firstName: {
+  const User = sequelize.define('user', {
+  firstName: {
       type: DataTypes.STRING,
       allowNull: false
     },
@@ -30,7 +24,7 @@ module.exports=(sequelize,DataTypes)=>{
          allowNull: false,
          defaultValue: "None",
     },
-    location:{
+    location:{  
       type:DataTypes.STRING,
       allowNull:true,
       defaultValue: "None"
@@ -43,6 +37,21 @@ module.exports=(sequelize,DataTypes)=>{
     type:DataTypes.INTEGER,
     allowNull:true,
   },
+  speciality:{
+    type: DataTypes.ENUM("None","General","Dental treatments","Bones treatments","Diagnosis","Cardiology","Surgery","Eye care"),
+    allowNull: false,
+    defaultValue: "None",
+    },
+    role:{
+        type: DataTypes.ENUM("patient","doctor"),
+        allowNull: false,
+        defaultValue: "patient",    
+    },
+    doctorId:{
+        type: DataTypes.INTEGER,
+        allowNull: true,
+        defaultValue: null,
+    }
   });
-  return Patient
+  return User
 }
